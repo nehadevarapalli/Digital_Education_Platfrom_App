@@ -6,14 +6,14 @@ package UserInterface;
 
 /**
  *
- * @author ashishnevan
+ * @author nehadevarapalli
  */
-public class ProfessorDashboardJPanel extends javax.swing.JPanel {
+public class StudentDashboardJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ProfessorDashboardJPanel
+     * Creates new form StudentDashboardJPanel
      */
-    public ProfessorDashboardJPanel() {
+    public StudentDashboardJPanel() {
         initComponents();
     }
 
@@ -32,6 +32,9 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -39,7 +42,7 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Professor Dashboard");
+        jLabel1.setText("Student Dashboard");
 
         jSplitPane1.setDividerLocation(30);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -48,9 +51,15 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
         jButton2.setText("My Profile");
 
-        jButton4.setText("Analytics");
+        jButton4.setText("Transcripts");
 
         jButton5.setText("Courses");
+
+        jButton1.setText("Degree Audit");
+
+        jButton3.setText("Find a Job");
+
+        jButton6.setText("Professor Review");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -63,7 +72,13 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addContainerGap(482, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton4, jButton5});
@@ -75,7 +90,10 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
+                    .addComponent(jButton6))
                 .addContainerGap())
         );
 
@@ -93,7 +111,7 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 461, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -122,9 +140,12 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
