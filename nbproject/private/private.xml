@@ -3,10 +3,34 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/nehadevarapalli/NetBeansProjects/assignment-3-cyberschool/src/UserInterface/MainJFrame.java</file>
             <file>file:/Users/nehadevarapalli/NetBeansProjects/assignment-3-cyberschool/src/UserInterface/StudentDashboardJPanel.java</file>
             <file>file:/Users/nehadevarapalli/NetBeansProjects/assignment-3-cyberschool/src/UserInterface/SignupJPanel.java</file>
             <file>file:/Users/nehadevarapalli/NetBeansProjects/assignment-3-cyberschool/src/UserInterface/ProfessorDashboardJPanel.java</file>
+=======
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Course.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/UserInterface/ProfCourseJPanel.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/UserInterface/ProfessorDashboardJPanel.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/UserInterface/StuCourseJPanel.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Analytics.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Professor.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Employers.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Employer.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/CourseCatalog.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Person.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Professors.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Persons.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/UserInterface/MainJFrame.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/UserInterface/SignupJPanel.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Admin.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Manager.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Student.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Transcript.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Students.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/UserInterface/LoginJPanel.java</file>
+            <file>file:/Users/arnav/Desktop/assignment-3-cyberschool/src/model/Degree.java</file>
+>>>>>>> 6863f2c0b25cbf9c496114c1866175aa2f8d737f
         </group>
     </open-files>
 </project-private>
