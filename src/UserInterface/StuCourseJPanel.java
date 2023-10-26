@@ -4,7 +4,9 @@
  */
 package UserInterface;
 
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -23,17 +25,18 @@ public class StuCourseJPanel extends javax.swing.JPanel {
     Courses courses;
     Student selectedUser;
     Manager manager;
-
+    JPanel workArea;
     /**
      * Creates new form CourseJPanel
      */
-    public StuCourseJPanel() {
+    public StuCourseJPanel(JPanel workArea) {
+        this.workArea = workArea;
+        
         initComponents();
         course = new Course();
         courses = new Courses();
         manager = new Manager();
         populateTable();
-        
     }
 
     /**
@@ -74,6 +77,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
         instructor1 = new javax.swing.JTextField();
         codeLbl1 = new javax.swing.JLabel();
         code1 = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
         scheduleLbl.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
         scheduleLbl.setText("Schedule");
@@ -138,9 +142,9 @@ public class StuCourseJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lblTitle.setFont(lblTitle.getFont().deriveFont(lblTitle.getFont().getStyle() | java.awt.Font.BOLD, lblTitle.getFont().getSize()+11));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Student Course panel");
+        lblTitle.setText("Student Course Panel");
 
         tblCourse.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         tblCourse.setModel(new javax.swing.table.DefaultTableModel(
@@ -193,7 +197,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
         nameLbl1.setText("Tuiton cost:");
 
         instructorLbl1.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
-        instructorLbl1.setText("Prereq:");
+        instructorLbl1.setText("Pre-Requisites:");
 
         scheduleLbl1.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
         scheduleLbl1.setText("Curriculum:");
@@ -210,6 +214,13 @@ public class StuCourseJPanel extends javax.swing.JPanel {
         code1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 code1ActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText("<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -288,16 +299,21 @@ public class StuCourseJPanel extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(createCourse)
                                 .addGap(323, 323, 323)))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnView)
                 .addGap(46, 46, 46))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnBack)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTitle)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -357,7 +373,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
                         .addComponent(creditsLbl)))
                 .addGap(18, 18, 18)
                 .addComponent(createCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -428,6 +444,13 @@ public class StuCourseJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_code1ActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        workArea.remove(this);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.previous(workArea);
+    }//GEN-LAST:event_btnBackActionPerformed
+
   private void populateTable() {
               DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
         model.setRowCount(0);
@@ -457,6 +480,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
     }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnView;
     private javax.swing.JTextField code1;
     private javax.swing.JLabel codeLbl1;
