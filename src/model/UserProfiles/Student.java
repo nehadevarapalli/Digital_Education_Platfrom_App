@@ -1,7 +1,10 @@
-package model;
+package model.UserProfiles;
 
+import model.Person.Person;
 import java.util.ArrayList;
 import java.util.HashMap;
+import model.Course;
+import model.Degree;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,6 +20,10 @@ public class Student {
     private Degree selectedDegree;
     private HashMap<Course, String> transcript;
 
+    public Student() {
+        transcript = new HashMap<Course, String>();
+    }
+    
     public HashMap<Course, String> getTranscript() {
         return transcript;
     }
@@ -39,13 +46,14 @@ public class Student {
 
     public void setPerson(Person person) {
         this.person = person;
-      
-  @Override
+    }
+    
+    @Override
     public String toString() {
         return "Student{" +
                 "person=" + person +
                 ", selectedDegree='" + selectedDegree + '\'' +
-                ", transcript=" + transcript +
+                ", transcript=" + transcript.toString() +
                 '}';
     }
 

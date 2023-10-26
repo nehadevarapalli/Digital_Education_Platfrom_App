@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.Course;
 import model.Courses;
-import model.Student;
+import model.UserProfiles.Student;
 import utils.Manager;
 
 /**

@@ -5,18 +5,19 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import model.Course;
 import model.Courses;
-import model.Person;
-import model.Persons;
-import model.Professor;
-import model.Professors;
-import model.Student;
-import model.Students;
-import model.Transcript;
+import model.Degree;
+import model.Person.Person;
+import model.Person.Persons;
+import model.UserProfiles.Professor;
+import model.UserProfiles.Professors;
+import model.UserProfiles.Student;
+import model.UserProfiles.Students;
 
 public class Manager {
 
@@ -24,6 +25,85 @@ public class Manager {
     private final Courses courses = new Courses();
     private final Students students = new Students();
     private final Professors professors = new Professors();
+    private HashMap<String, Degree> degreeOfferings = new HashMap<String, Degree>();
+
+    void populateDegrees() {
+        Degree degree1 = new Degree();
+        degree1.setName("MSIS");
+
+        Course course1 = new Course();
+        course1.setCode(101);
+        course1.setName("Introduction to Computer Science");
+        course1.setInstructor("Prof. Smith");
+        course1.setSchedule("Mon, Wed, Fri 10:00 AM - 11:30 AM");
+        course1.setLanguage("Java");
+        course1.setDesc("This course provides an introduction to the fundamentals of computer science, including algorithms, data structures, and programming.");
+        course1.setReview(4);
+        course1.setCredits(3);
+        course1.setGrade("A");
+        course1.setSemester("Fall 23");
+
+        Course course2 = new Course();
+        course2.setCode(102);
+        course2.setName("Data Structures and Algorithms");
+        course2.setInstructor("Prof. Johnson");
+        course2.setSchedule("Tue, Thu 1:00 PM - 2:30 PM");
+        course2.setLanguage("Java");
+        course2.setDesc("This course builds on the basics of computer science and delves deeper into data structures and algorithms.");
+        course2.setReview(4);
+        course2.setCredits(4);
+        course2.setGrade("B+");
+        course2.setSemester("Fall 23");
+
+        Course course3 = new Course();
+        course3.setCode(103);
+        course3.setName("Web Development Fundamentals");
+        course3.setInstructor("Prof. Davis");
+        course3.setSchedule("Mon, Wed 3:00 PM - 4:30 PM");
+        course3.setLanguage("HTML, CSS, JavaScript");
+        course3.setDesc("Learn the basics of web development, including HTML, CSS, and JavaScript.");
+        course3.setReview(4);
+        course3.setCredits(3);
+        course3.setGrade("B");
+        course3.setSemester("Fall 23");
+
+        Course course4 = new Course();
+        course4.setCode(104);
+        course4.setName("Introduction to Python");
+        course4.setInstructor("Prof. Martinez");
+        course4.setSchedule("Tue, Thu 10:00 AM - 11:30 AM");
+        course4.setLanguage("Python");
+        course4.setDesc("An introductory course to Python programming language.");
+        course4.setReview(4);
+        course4.setCredits(3);
+        course4.setGrade("A-");
+        course4.setSemester("Fall 23");
+
+        Course course5 = new Course();
+        course5.setCode(101);
+        course5.setName("Introduction to Computer Science");
+        course5.setInstructor("Prof. Adams");
+        course5.setSchedule("Tue, Thu 10:00 AM - 11:30 AM");
+        course5.setLanguage("Java");
+        course5.setDesc("This course provides an introduction to the fundamentals of computer science, including algorithms, data structures, and programming.");
+        course5.setReview(4);
+        course5.setCredits(3);
+        course5.setGrade("A");
+        course5.setSemester("Fall 23");
+        
+        ArrayList<Course> courseList = new ArrayList<>();
+        courseList.add(course1);
+        courseList.add(course2);
+        courseList.add(course3);
+        courseList.add(course4);
+        courseList.add(course5);
+        
+        degree1.setCourseRequirement(courseList);
+        
+        degreeOfferings.put("MSIS", degree1);
+        degreeOfferings.put("CS", degree1);
+        degreeOfferings.put("DS", degree1);
+    }
 
     private Person createPerson(String email, boolean enabled, String gender, String password, String username, String role) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
@@ -106,9 +186,7 @@ public class Manager {
             Person person = createPerson(email, enabled, gender, password, username, "student");
             Student student = new Student();
             student.setPerson(person);
-            student.setSelectedDegree(selectedDegree);
-            Transcript transcript = new Transcript();
-            student.setTranscript(transcript);
+            student.setSelectedDegree(degreeOfferings.get(selectedDegree));
             students.add(student);
             JOptionPane.showMessageDialog(null, "Student created");
             return student;
@@ -122,7 +200,7 @@ public class Manager {
         Person updatedPerson = updatePerson(student.getPerson(), email, enabled, gender, password, username);
         if (updatedPerson != null) {
             student.setPerson(updatedPerson);
-            student.setSelectedDegree(selectedDegree);
+            student.setSelectedDegree(degreeOfferings.get(selectedDegree));
             students.update(student.getPerson().getpId(), student);
             JOptionPane.showMessageDialog(null, "Student updated");
             return student;

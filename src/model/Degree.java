@@ -8,6 +8,7 @@ package model;
  *
  * @author arnav
  */
+import model.UserProfiles.Student;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -55,4 +56,5 @@ public class Degree {
         }
         return relevantCourses;
     }
+    
 }
