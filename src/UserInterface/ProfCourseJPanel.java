@@ -58,7 +58,6 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
         languageLbl = new javax.swing.JLabel();
         schedule = new javax.swing.JTextField();
         createCourse = new javax.swing.JButton();
-        lblTitle = new javax.swing.JLabel();
         credits = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCourse = new javax.swing.JTable();
@@ -178,12 +177,6 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblTitle.setBackground(new java.awt.Color(255, 255, 255));
-        lblTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
-        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Professor Course panel");
-
         credits.setBackground(new java.awt.Color(255, 255, 255));
         credits.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -272,13 +265,13 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(321, 321, 321)
                         .addComponent(createCourse)
-                        .addGap(354, 354, 354))
+                        .addContainerGap(354, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -329,29 +322,28 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
                                         .addComponent(codeLbl1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(outcomes, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(19, 19, 19))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnView)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(19, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(jLabel1)
                 .addGap(357, 357, 357)
                 .addComponent(searchNUIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnView)
+                .addGap(18, 18, 18)
+                .addComponent(btnDelete)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(lblTitle)
-                .addGap(28, 28, 28)
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(searchNUIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -542,7 +534,6 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField language1;
     private javax.swing.JLabel languageLbl;
     private javax.swing.JLabel languageLbl1;
-    private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField name;
     private javax.swing.JLabel nameLbl;
     private javax.swing.JTextField outcomes;
