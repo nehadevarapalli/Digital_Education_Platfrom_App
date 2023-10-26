@@ -21,6 +21,20 @@ public class Course {
     private String outcomes;
     private String grade;
 
+//     public Course(int code, String name, String instructor, String schedule, String language, String desc,
+//                  int review, int credits, String outcomes, String grade) {
+//        this.code = code;
+//        this.name = name;
+//        this.instructor = instructor;
+//        this.schedule = schedule;
+//        this.language = language;
+//        this.desc = desc;
+//        this.review = review;
+//        this.credits = credits;
+//        this.outcomes = outcomes;
+//        this.grade = grade;
+//    }
+     
     public String getGrade() {
         return grade;
     }
@@ -101,7 +115,5 @@ public class Course {
     public void setOutcomes(String outcomes) {
         this.outcomes = outcomes;
     }
-
-  
-    
+   
 }

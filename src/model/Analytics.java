@@ -11,15 +11,13 @@ import java.util.HashMap;
  * @author arnav
  */
 public class Analytics {
-    
-    Users users;
+   
     Persons persons;
-    Courses courses;
+    CourseCatalog courses;
 
   public Analytics() {
-   users = new Users();
    persons = new Persons();
-   courses = new Courses();
+   courses = new CourseCatalog();
   }
   
   //Add prof review, course review, course region, students region, get degre
@@ -28,7 +26,6 @@ public class Analytics {
       HashMap<String, Integer> hashMap = new HashMap<>();
       hashMap.put("Persons", persons.getPersons().size());
       hashMap.put("Courses", courses.getCourses().size());
-      hashMap.put("Users", users.getUsers().size());
       return hashMap;
   }
     

@@ -10,12 +10,16 @@ import java.awt.CardLayout;
  *
  * @author nehadevarapalli
  */
-public class MainJFrame extends javax.swing.JFrame {
 
+public class MainJFrame extends javax.swing.JFrame {
+      
+    Manager manager;
+    
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
+        manager = Manager();
         initComponents();
     }
 
@@ -237,6 +241,7 @@ public class MainJFrame extends javax.swing.JFrame {
         workArea.add("Signup", panel);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);
+        manager.ge       
     }//GEN-LAST:event_btnSignupActionPerformed
 
     /**
