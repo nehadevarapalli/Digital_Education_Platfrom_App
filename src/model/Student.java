@@ -1,47 +1,45 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author arnav
  */
 public class Student {
 
-  public Person person;
-  private String selectedDegree;
-  private Transcript transcript;
+    private Person person;
+    private Degree selectedDegree;
+    private HashMap<Course, String> transcript;
 
-    public Transcript getTranscript() {
+    public HashMap<Course, String> getTranscript() {
         return transcript;
     }
 
-    public void setTranscript(Transcript transcript) {
+    public void setTranscript(HashMap<Course, String> transcript) {
         this.transcript = transcript;
     }
 
-  
-    public String getSelectedDegree() {
+    public Degree getSelectedDegree() {
         return selectedDegree;
     }
 
-    public void setSelectedDegree(String selectedDegree) {
+    public void setSelectedDegree(Degree selectedDegree) {
         this.selectedDegree = selectedDegree;
     }
 
-  public Person getPerson() {
-    return person;
-  }
+    public Person getPerson() {
+        return person;
+    }
 
-  public void setPerson(Person person) {
-    this.person = person;
-  }
-
+    public void setPerson(Person person) {
+        this.person = person;
+      
   @Override
     public String toString() {
         return "Student{" +
@@ -52,4 +50,3 @@ public class Student {
     }
 
 }
-

@@ -13,23 +13,46 @@ import java.util.HashMap;
 
 public class Degree {
 
-    HashMap<String, ArrayList<Integer>> hashMap = new HashMap<>();
-    private int codeCounter = 0;
+    private String name;
+    private ArrayList<Course> courseRequirement;
 
-    public Degree() {
-        addDegree("Information Systems");
-        addDegree("Computer Science");
-        addDegree("Mathematics");
-        addDegree("Physics");
-        addDegree("Biology");
+    public String getName() {
+        return name;
     }
 
-    private void addDegree(String degreeName) {
-        ArrayList<Integer> codes = new ArrayList<>();
-        for (int i = codeCounter; i < codeCounter + 8; i++) {
-            codes.add(i);
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Course> getCourseRequirement() {
+        return courseRequirement;
+    }
+
+    public void setCourseRequirement(ArrayList<Course> courseRequirement) {
+        this.courseRequirement = courseRequirement;
+    }
+
+    public boolean audit(Student s) {
+        int relevantCourses = 0;
+        for (HashMap.Entry<Course, String> a : s.getTranscript().entrySet()) {
+            if (courseRequirement.contains(a.getKey()) && !a.getValue().equals("TBA")) {
+                relevantCourses++;
+            }
         }
-        codeCounter += 8;
-        hashMap.put(degreeName, codes);
+        return relevantCourses >= 8;
+    }
+
+    public int switchDegree(Student s, Degree newDegree, boolean preview) {
+        int relevantCourses = 0;
+        HashMap<Course, String> assignedCourses = s.getTranscript();
+        for (HashMap.Entry<Course, String> a : s.getTranscript().entrySet()) {
+            if (newDegree.getCourseRequirement().contains(a.getKey()) && !a.getValue().equals("TBA")) {
+                relevantCourses++;
+            }
+        }
+        if (!preview) {
+            s.setSelectedDegree(newDegree);
+        }
+        return relevantCourses;
     }
 }
