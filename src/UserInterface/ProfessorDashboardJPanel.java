@@ -18,7 +18,7 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
      */
     JPanel workArea;
     
-    public ProfessorDashboardJPanel(JPanel workarea) {
+    public ProfessorDashboardJPanel(JPanel workArea) {
         initComponents();
         this.workArea = workArea;
     }
