@@ -17,7 +17,6 @@ public class Person {
     private String gender;
     private boolean enabled;
     private String email;
-    private String password;
     private int pId;
     private byte[] salt;
     private ArrayList<String> hashedPassword;
@@ -77,14 +76,6 @@ public class Person {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
