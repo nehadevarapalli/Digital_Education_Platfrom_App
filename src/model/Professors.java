@@ -14,6 +14,10 @@ public class Professors {
 
   public ArrayList<Professor> professors;
   
+  public Professors() {
+      professors = new ArrayList<Professor>();
+  }
+  
   public ArrayList<Professor> getProfessors() {
     return professors;
   }

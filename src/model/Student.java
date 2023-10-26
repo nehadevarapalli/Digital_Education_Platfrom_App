@@ -39,6 +39,14 @@ public class Student {
 
     public void setPerson(Person person) {
         this.person = person;
+      
+  @Override
+    public String toString() {
+        return "Student{" +
+                "person=" + person +
+                ", selectedDegree='" + selectedDegree + '\'' +
+                ", transcript=" + transcript +
+                '}';
     }
 
 }

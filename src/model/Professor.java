@@ -13,7 +13,17 @@ public class Professor {
     public String qualifications;
     public int yearsOfExperience;
     public int rating;
+    public Person person;
 
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    
     public String getSpeciality() {
         return speciality;
     }
@@ -46,4 +56,14 @@ public class Professor {
         this.rating = rating;
     }
     
+      @Override
+    public String toString() {
+        return "Professor{" +
+                "speciality='" + speciality + '\'' +
+                ", qualifications='" + qualifications + '\'' +
+                ", yearsOfExperience=" + yearsOfExperience +
+                ", rating=" + rating +
+                ", person=" + person +
+                '}';
+    }
 }
