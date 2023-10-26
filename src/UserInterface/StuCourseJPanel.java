@@ -9,7 +9,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.Course;
-import model.CourseCatalog;
+import model.Courses;
 import model.Student;
 import utils.Manager;
 
@@ -20,7 +20,7 @@ import utils.Manager;
 public class StuCourseJPanel extends javax.swing.JPanel {
 
     Course course;
-    CourseCatalog courses;
+    Courses courses;
     Student selectedUser;
     Manager manager;
 
@@ -30,7 +30,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
     public StuCourseJPanel() {
         initComponents();
         course = new Course();
-        courses = new CourseCatalog();
+        courses = new Courses();
         manager = new Manager();
         populateTable();
         
@@ -442,7 +442,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
             course1.getInstructor(),
             course1.getLanguage(),
             course1.getName(),
-            course1.getOutcomes(),
+    
             course1.getReview(),
             course1.getSchedule(),          
         });                              

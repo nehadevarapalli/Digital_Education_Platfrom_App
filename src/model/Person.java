@@ -5,7 +5,6 @@
 package model;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -86,5 +85,17 @@ public class Person {
         this.email = email;
     }
 
+   @Override
+    public String toString() {
+        return "Person{" +
+                "username='" + username + '\'' +
+                ", gender='" + gender + '\'' +
+                ", enabled=" + enabled +
+                ", email='" + email + '\'' +
+                ", pId=" + pId +
+                ", hashedPassword=" + hashedPassword +
+                '}';
+    }
+    
 }
 

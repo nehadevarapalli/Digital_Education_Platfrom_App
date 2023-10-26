@@ -13,10 +13,19 @@ import java.util.ArrayList;
  */
 public class Student {
 
-  private Person person;
-  private ArrayList<Course> courses;
+  public Person person;
   private String selectedDegree;
+  private Transcript transcript;
 
+    public Transcript getTranscript() {
+        return transcript;
+    }
+
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
+    }
+
+  
     public String getSelectedDegree() {
         return selectedDegree;
     }
@@ -24,15 +33,6 @@ public class Student {
     public void setSelectedDegree(String selectedDegree) {
         this.selectedDegree = selectedDegree;
     }
-
-    public ArrayList<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
-    }
-
 
   public Person getPerson() {
     return person;
@@ -42,7 +42,14 @@ public class Student {
     this.person = person;
   }
 
-
+  @Override
+    public String toString() {
+        return "Student{" +
+                "person=" + person +
+                ", selectedDegree='" + selectedDegree + '\'' +
+                ", transcript=" + transcript +
+                '}';
+    }
 
 }
 
