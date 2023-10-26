@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package utils;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -12,6 +12,12 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import model.Course;
+import model.CourseCatalog;
+import model.Person;
+import model.Persons;
+import model.Student;
+import model.Students;
 
 /**
  *
@@ -20,39 +26,53 @@ import javax.swing.JOptionPane;
 
 public class Manager {
 
-    Student user = new Student();
-    Students users = new Students();
-    Course course = new Course();
-    CourseCatalog courses = new CourseCatalog();
-    Persons persons = new Persons();
+//    Student user = new Student();
+//    Students users = new Students();
+//    Course course = new Course();
+//    CourseCatalog courses = new CourseCatalog();
+//    Persons persons = new Persons();
 //    
-//  //TODO
-//  //any other course present in degree then swap course list and user will have to take more courses for degree completion
-////  public void swapDegree(User user) {
-////   ArrayList<Course> coursesL = user.getCourses();
-////   for(int i = 0; i<= coursesL.size(); i++) {
-////      if(coursesL[i].code == 
-////     HashMap<String, ArrayList<Integer>> hashMap = degree.hashMap.get(user.getCourses());
-////    
-////  }
-//  
-// 
-//     public void createPerson(String email) {
+// //Person functions
+//    //TODO: password
+//    public void createPerson(String email,boolean enabled,String gender,String password,String username) {
 //    if(isValidEmail(email)) {
-//    Student st = new Student();
 //    Person person = new Person();
+//    ArrayList<Person> personsL = persons.getPersons();
 //    person.setEmail(email);
+//    person.setEnabled(enabled);
+//    person.setGender(gender);
+//   // person.setHashedPassword(password);
+//    person.setUsername(username);
 //    person.setpId(persons.getPersons().size());
-//    st.setPerson(person);
-//    //st.setp(users.getStudents().size());
-//    //users.add(st);
-//    persons.add(person); 
+//    personsL.add(person); 
 //     JOptionPane.showMessageDialog(null, "Person created");
 //    } else {
 //     JOptionPane.showMessageDialog(null, "Invalid email format.");   
 //    }
 //  }
+//    
+//  public void updatePerson(Person person, String email,boolean enabled,String gender,String password,String username) {
+//    if (isValidEmail(email)) {
+//       person.setEnabled(enabled);
+//    person.setGender(gender);
+//     person.setEmail(email);
+//   // person.setHashedPassword(password);
+//    person.setUsername(username);
+//    person.setpId(persons.getPersons().size());
+//      persons.update(person.getpId(), person);
+//      JOptionPane.showMessageDialog(null, "Person updated");     
+//    } else {
+//      JOptionPane.showMessageDialog(null, "Invalid email");
+//    }
+//  }
+//  
+//  public void deletePerson(User user) {
+//    Person person = user.getPerson();
+//    persons.delete(person);
+//  }
 //
+//  //Course functions
+//  
 //    public void createCourse(int credits, String desc,String instructor,String lang,String name,String outcomes, String schedule) {
 //      course.setCode(courses.getCourses().size()+1);
 //      course.setCredits(credits);
@@ -66,11 +86,19 @@ public class Manager {
 //      JOptionPane.showMessageDialog(null, "Course created");
 //  }
 //    
-//     public void updateCourse(Course course) {
-//      ArrayList<Course> coursesL = courses.getCourses();
-//      coursesL.set(course.getCode(), course);
-//      JOptionPane.showMessageDialog(null, "Course updated");
-//  }
+////     public void updateCourse(Course course,) {
+////      ArrayList<Course> coursesL = courses.getCourses();
+////      course.setCode(courses.getCourses().size()+1);
+////      course.setCredits(credits);
+////      course.setDesc(desc);
+////      course.setInstructor(instructor);
+////      course.setLanguage(lang);
+////      course.setName(name);
+////      course.setOutcomes(outcomes);
+////      course.setSchedule(schedule);
+////      coursesL.set(course.getCode(), course);
+////      JOptionPane.showMessageDialog(null, "Course updated");
+////  }
 //    
 //     public void deleteCourse(int code) {
 //      ArrayList<Course> coursesL = courses.getCourses();
@@ -79,6 +107,7 @@ public class Manager {
 //      JOptionPane.showMessageDialog(null, "Course updated");
 //  }
 //     
+// //Register course functions - student
 //    public void registerCourse(Student st,Course course) {
 //      ArrayList<Course> coursesL = st.getCourses();
 //      coursesL.add(course);
@@ -93,6 +122,7 @@ public class Manager {
 //      JOptionPane.showMessageDialog(null, "De-Registered for course");
 //  }
 //    
+// //User functions
 //   public void createUser(String username, String plaintextPassword, boolean enabled, String role, String email,User user) {
 //    if (isValidUsername(username) && isValidPassword(plaintextPassword)) {
 //      String hashedPassword = hashPassword(user,plaintextPassword);
@@ -132,26 +162,22 @@ public class Manager {
 //    }
 //}
 //
-//   
-//  public void updatePerson(Person person, String email) {
-//    if (isValidEmail(email)) {
-//      person.setEmail(email);
-//      persons.update(person.getNuId(), person);
-//    } else {
-//      JOptionPane.showMessageDialog(null, "Invalid email");
-//    }
-//  }
-//  
-//  public void deletePerson(User user) {
-//    Person person = user.getPerson();
-//    persons.delete(person);
-//  }
-//  
 //  public void deleteUser(User user) {
 //    users.delete(user);
 //  }
-//
-//  public boolean containsAdmin() {
+//  
+////Degree functions
+//  //any other course present in degree then swap course list and user will have to take more courses for degree completion
+////  public void swapDegree(User user) {
+////   ArrayList<Course> coursesL = user.getCourses();
+////   for(int i = 0; i<= coursesL.size(); i++) {
+////      if(coursesL[i].code == 
+////     HashMap<String, ArrayList<Integer>> hashMap = degree.hashMap.get(user.getCourses());
+////    
+////  }
+//  
+// //Auth functions
+//    public boolean _containsAdmin() {
 //    ArrayList<User> usersL = users.getUsers();
 //    for (User user : usersL) {
 //        if(user.getUsername() != null)
@@ -161,8 +187,9 @@ public class Manager {
 //    }
 //    return false; 
 //}
+//    
 //  public User login(String username, String password) { 
-//    if (!containsAdmin()) {
+//    if (!_containsAdmin()) {
 //       User admin = new User();
 //          admin.setRole("admin");
 //          admin.setUsername("admin");
@@ -189,8 +216,7 @@ public class Manager {
 //    
 //    return null;
 //}
-//
-//
+//  
 //  private String hashPassword(User user, String password) {
 //    try {
 //        if(user.getSalt() == null) {
@@ -222,35 +248,37 @@ public class Manager {
 //      throw new RuntimeException("Error validating password", e);
 //    }    
 //  }
-
-  private boolean isValidUsername(String username) {
-    return username.matches("[a-zA-Z0-9_]+");
-  }
-
-  private boolean isValidPassword(String password) {
-    return password.length() >= 6;
-  }
-
-  private boolean isValidEmail(String email) {
-    return email.matches("^(.+)@(.+)$"); 
-  }
-  
-  public static ArrayList<String> extractDateTime(String schedule) {
-        ArrayList<String> dateTimeList = new ArrayList<>();
-        String regex = "(Sun|Mon|Tue|Wed|Thu|Fri|Sat), ([0-9]{1,2}:[0-9]{2} [APMapm]{2}) - ([0-9]{1,2}:[0-9]{2} [APMapm]{2})";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(schedule);
-
-        if (matcher.find()) {
-            String day = matcher.group(1);
-            String startTime = matcher.group(2);
-            String endTime = matcher.group(3);
-            dateTimeList.add(day);
-            dateTimeList.add(startTime);
-            dateTimeList.add(endTime);
-        }
-
-        return dateTimeList;
-    }
+//
+//  //Validators
+//  
+//  private boolean isValidUsername(String username) {
+//    return username.matches("[a-zA-Z0-9_]+");
+//  }
+//
+//  private boolean isValidPassword(String password) {
+//    return password.length() >= 6;
+//  }
+//
+//  private boolean isValidEmail(String email) {
+//    return email.matches("^(.+)@(.+)$"); 
+//  }
+//  
+//  public static ArrayList<String> extractDateTime(String schedule) {
+//        ArrayList<String> dateTimeList = new ArrayList<>();
+//        String regex = "(Sun|Mon|Tue|Wed|Thu|Fri|Sat), ([0-9]{1,2}:[0-9]{2} [APMapm]{2}) - ([0-9]{1,2}:[0-9]{2} [APMapm]{2})";
+//        Pattern pattern = Pattern.compile(regex);
+//        Matcher matcher = pattern.matcher(schedule);
+//
+//        if (matcher.find()) {
+//            String day = matcher.group(1);
+//            String startTime = matcher.group(2);
+//            String endTime = matcher.group(3);
+//            dateTimeList.add(day);
+//            dateTimeList.add(startTime);
+//            dateTimeList.add(endTime);
+//        }
+//
+//        return dateTimeList;
+//    }
 
 }
