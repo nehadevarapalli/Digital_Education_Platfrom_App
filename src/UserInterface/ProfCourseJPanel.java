@@ -72,10 +72,17 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
         codeLbl1 = new javax.swing.JLabel();
         outcomes = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(0, 0, 0));
+
+        scheduleLbl.setBackground(new java.awt.Color(255, 255, 255));
         scheduleLbl.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        scheduleLbl.setForeground(new java.awt.Color(0, 0, 0));
         scheduleLbl.setText("Schedule");
 
+        btnView.setBackground(new java.awt.Color(255, 255, 255));
         btnView.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        btnView.setForeground(new java.awt.Color(0, 0, 0));
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +90,9 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnDelete.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(0, 0, 0));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,15 +100,24 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
             }
         });
 
+        language.setBackground(new java.awt.Color(255, 255, 255));
+        language.setForeground(new java.awt.Color(0, 0, 0));
         language.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 languageActionPerformed(evt);
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Search:");
 
+        name.setBackground(new java.awt.Color(255, 255, 255));
+        name.setForeground(new java.awt.Color(0, 0, 0));
+
+        searchNUIDTF.setBackground(new java.awt.Color(255, 255, 255));
+        searchNUIDTF.setForeground(new java.awt.Color(0, 0, 0));
         searchNUIDTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchNUIDTFActionPerformed(evt);
@@ -111,31 +129,48 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
             }
         });
 
+        desc.setBackground(new java.awt.Color(255, 255, 255));
+        desc.setForeground(new java.awt.Color(0, 0, 0));
+
+        nameLbl.setBackground(new java.awt.Color(255, 255, 255));
         nameLbl.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        nameLbl.setForeground(new java.awt.Color(0, 0, 0));
         nameLbl.setText("Name:");
 
+        descLbl.setBackground(new java.awt.Color(255, 255, 255));
         descLbl.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        descLbl.setForeground(new java.awt.Color(0, 0, 0));
         descLbl.setText("Description:");
 
+        instructor.setBackground(new java.awt.Color(255, 255, 255));
+        instructor.setForeground(new java.awt.Color(0, 0, 0));
         instructor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 instructorActionPerformed(evt);
             }
         });
 
+        creditsLbl.setBackground(new java.awt.Color(255, 255, 255));
         creditsLbl.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        creditsLbl.setForeground(new java.awt.Color(0, 0, 0));
         creditsLbl.setText("Credits:");
 
+        languageLbl.setBackground(new java.awt.Color(255, 255, 255));
         languageLbl.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        languageLbl.setForeground(new java.awt.Color(0, 0, 0));
         languageLbl.setText("Language:");
 
+        schedule.setBackground(new java.awt.Color(255, 255, 255));
+        schedule.setForeground(new java.awt.Color(0, 0, 0));
         schedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scheduleActionPerformed(evt);
             }
         });
 
+        createCourse.setBackground(new java.awt.Color(255, 255, 255));
         createCourse.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
+        createCourse.setForeground(new java.awt.Color(0, 0, 0));
         createCourse.setText("Create Course");
         createCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,11 +178,18 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblTitle.setBackground(new java.awt.Color(255, 255, 255));
         lblTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Professor Course panel");
 
+        credits.setBackground(new java.awt.Color(255, 255, 255));
+        credits.setForeground(new java.awt.Color(0, 0, 0));
+
+        tblCourse.setBackground(new java.awt.Color(255, 255, 255));
         tblCourse.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        tblCourse.setForeground(new java.awt.Color(0, 0, 0));
         tblCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -169,39 +211,57 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblCourse);
 
+        instructorLbl.setBackground(new java.awt.Color(255, 255, 255));
         instructorLbl.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        instructorLbl.setForeground(new java.awt.Color(0, 0, 0));
         instructorLbl.setText("Instructor:");
 
+        languageLbl1.setBackground(new java.awt.Color(255, 255, 255));
         languageLbl1.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        languageLbl1.setForeground(new java.awt.Color(0, 0, 0));
         languageLbl1.setText("Region:");
 
+        language1.setBackground(new java.awt.Color(255, 255, 255));
+        language1.setForeground(new java.awt.Color(0, 0, 0));
         language1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 language1ActionPerformed(evt);
             }
         });
 
+        schedule1.setBackground(new java.awt.Color(255, 255, 255));
+        schedule1.setForeground(new java.awt.Color(0, 0, 0));
         schedule1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 schedule1ActionPerformed(evt);
             }
         });
 
+        instructorLbl1.setBackground(new java.awt.Color(255, 255, 255));
         instructorLbl1.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        instructorLbl1.setForeground(new java.awt.Color(0, 0, 0));
         instructorLbl1.setText("Prereq:");
 
+        scheduleLbl1.setBackground(new java.awt.Color(255, 255, 255));
         scheduleLbl1.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        scheduleLbl1.setForeground(new java.awt.Color(0, 0, 0));
         scheduleLbl1.setText("Curriculum:");
 
+        instructor1.setBackground(new java.awt.Color(255, 255, 255));
+        instructor1.setForeground(new java.awt.Color(0, 0, 0));
         instructor1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 instructor1ActionPerformed(evt);
             }
         });
 
+        codeLbl1.setBackground(new java.awt.Color(255, 255, 255));
         codeLbl1.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        codeLbl1.setForeground(new java.awt.Color(0, 0, 0));
         codeLbl1.setText("Outcomes:");
 
+        outcomes.setBackground(new java.awt.Color(255, 255, 255));
+        outcomes.setForeground(new java.awt.Color(0, 0, 0));
         outcomes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 outcomesActionPerformed(evt);
@@ -214,7 +274,7 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(createCourse)
@@ -271,14 +331,13 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
                                         .addComponent(outcomes, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(19, 19, 19))))
             .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnView)
                         .addGap(18, 18, 18)
                         .addComponent(btnDelete))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(98, 98, 98)
