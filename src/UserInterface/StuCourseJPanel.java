@@ -8,10 +8,10 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.User;
 import model.Course;
-import model.Courses;
-import model.Manager;
+import model.CourseCatalog;
+import model.Student;
+import utils.Manager;
 
 /**
  *
@@ -20,8 +20,8 @@ import model.Manager;
 public class StuCourseJPanel extends javax.swing.JPanel {
 
     Course course;
-    Courses courses;
-    User selectedUser;
+    CourseCatalog courses;
+    Student selectedUser;
     Manager manager;
 
     /**
@@ -30,7 +30,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
     public StuCourseJPanel() {
         initComponents();
         course = new Course();
-        courses = new Courses();
+        courses = new CourseCatalog();
         manager = new Manager();
         populateTable();
         
@@ -408,7 +408,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_scheduleActionPerformed
 
     private void createCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCourseActionPerformed
-       manager.registerCourse(selectedUser, course);
+      // manager.registerCourse(selectedUser, course);
         populateTable();
     }//GEN-LAST:event_createCourseActionPerformed
 

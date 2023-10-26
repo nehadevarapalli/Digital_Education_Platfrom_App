@@ -9,8 +9,8 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.Course;
-import model.Courses;
-import model.Manager;
+import model.CourseCatalog;
+import utils.Manager;
 
 /**
  *
@@ -19,7 +19,7 @@ import model.Manager;
 public class ProfCourseJPanel extends javax.swing.JPanel {
 
     Course course;
-    Courses courses;
+    CourseCatalog courses;
     Manager manager;
  
 
@@ -29,7 +29,7 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
     public ProfCourseJPanel() {
         initComponents();
         course = new Course();
-        courses = new Courses();
+        courses = new CourseCatalog();
         manager = new Manager();
         populateTable();
     }
@@ -385,7 +385,8 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
         Course selectedCourse = (Course) model.getValueAt(selectedRowIndex,0);
         JOptionPane.showMessageDialog(this,"Account info deleted.");
-        manager.deleteCourse(selectedCourse.getCode());
+        //TODO
+        //manager.deleteCourse(selectedCourse.getCode());
         populateTable();
 
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -415,7 +416,8 @@ public class ProfCourseJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_scheduleActionPerformed
 
     private void createCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCourseActionPerformed
-    manager.createCourse(Integer.valueOf(credits.getText()),desc.getText(),instructor.getText(),language.getText(),name.getText(),outcomes.getText(),schedule.getText());
+   //TODO
+// manager.createCourse(Integer.valueOf(credits.getText()),desc.getText(),instructor.getText(),language.getText(),name.getText(),outcomes.getText(),schedule.getText());
     populateTable();
     }//GEN-LAST:event_createCourseActionPerformed
 
