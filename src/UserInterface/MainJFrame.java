@@ -5,9 +5,9 @@
 package UserInterface;
 
 import java.awt.CardLayout;
-import model.Person;
-import model.Professor;
-import model.Student;
+import model.person.Person;
+import model.userProfiles.Professor;
+import model.userProfiles.Student;
 import utils.Manager;
 
 /**
