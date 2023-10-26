@@ -10,12 +10,16 @@ import java.awt.CardLayout;
  *
  * @author nehadevarapalli
  */
-public class MainJFrame extends javax.swing.JFrame {
 
+public class MainJFrame extends javax.swing.JFrame {
+      
+    Manager manager;
+    
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
+        manager = Manager();
         initComponents();
     }
 
@@ -55,7 +59,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setDividerSize(0);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
@@ -111,7 +114,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -131,16 +133,12 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Password");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -151,8 +149,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Don't have an account?");
 
-        btnSignup.setBackground(new java.awt.Color(255, 255, 255));
-        btnSignup.setForeground(new java.awt.Color(0, 0, 0));
         btnSignup.setText("Signup");
         btnSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,6 +241,7 @@ public class MainJFrame extends javax.swing.JFrame {
         workArea.add("Signup", panel);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);
+        manager.ge       
     }//GEN-LAST:event_btnSignupActionPerformed
 
     /**
