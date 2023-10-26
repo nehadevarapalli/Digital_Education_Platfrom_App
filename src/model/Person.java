@@ -12,13 +12,22 @@ import java.util.ArrayList;
  */
 public class Person {
 
-  private String username;
-  private String gender;
-  private boolean enabled;
-  private String email;
-  private int pId;
+    private String username;
+    private String gender;
+    private boolean enabled;
+    private String email;
+    private int pId;
     private byte[] salt;
-  private ArrayList<String> hashedPassword;
+    private ArrayList<String> hashedPassword;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public byte[] getSalt() {
         return salt;
@@ -36,7 +45,6 @@ public class Person {
         this.hashedPassword = hashedPassword;
     }
 
-  
     public int getpId() {
         return pId;
     }
@@ -45,7 +53,6 @@ public class Person {
         this.pId = pId;
     }
 
-  
     public String getUsername() {
         return username;
     }
@@ -54,7 +61,6 @@ public class Person {
         this.username = username;
     }
 
-    
     public String getGender() {
         return gender;
     }
@@ -70,14 +76,14 @@ public class Person {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+  
+    public String getEmail() {
+        return email;
+    }
 
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
    @Override
     public String toString() {
