@@ -6,6 +6,8 @@ package UserInterface;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.userProfiles.Student;
+import utils.Manager;
 
 /**
  *
@@ -18,10 +20,15 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
      */
     
     private JPanel workArea;
+    private Student s;
+    private Manager m;
     
-    public StudentDashboardJPanel(JPanel workArea) {
+    public StudentDashboardJPanel(JPanel workArea, Student s, Manager m) {
         initComponents();
         this.workArea = workArea;
+        this.s = s;
+        s.toString();
+        this.m = m;
     }
 
     /**

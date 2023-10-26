@@ -5,6 +5,7 @@
 package UserInterface;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import model.person.Person;
 import model.userProfiles.Professor;
 import model.userProfiles.Student;
@@ -263,7 +264,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
         // TODO add your handling code here:
-        SignupJPanel panel = new SignupJPanel(workArea);
+        SignupJPanel panel = new SignupJPanel(workArea, manager);
         workArea.add("Signup", panel);
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.next(workArea);
@@ -271,24 +272,27 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        Person p = manager.login(txtUsername.getText(), txtPassword.getText());
-        System.out.println("login person" + p.toString());
+        Object p = manager.login(txtUsername.getText(), txtPassword.getText());
         if (p != null) {
-            if (p.getRole().equals("student")) {
-                StudentDashboardJPanel panel = new StudentDashboardJPanel(workArea);
+            JOptionPane.showMessageDialog(this, "Login success!");
+            if (p.getClass() == Student.class) {
+                StudentDashboardJPanel panel = new StudentDashboardJPanel(workArea, (Student) p, manager);
                 workArea.add("studDashboard", panel);
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
-            }
-            else if (p.getRole().equals("professor")) {
-                ProfessorDashboardJPanel panel = new ProfessorDashboardJPanel(workArea);
+            } else if (p.getClass() == Professor.class) {
+                ProfessorDashboardJPanel panel = new ProfessorDashboardJPanel(workArea, (Professor) p, manager);
                 workArea.add("profDashboard", panel);
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
+            } //            else if (p.getClass() == Employee.class) {
+            //                
+            //            }
+            //        }
+            else {
+                JOptionPane.showMessageDialog(this, "User not found!", "login error", JOptionPane.ERROR_MESSAGE);
+                System.out.println("user not found");
             }
-        }
-        else {
-            System.out.println("user not found");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

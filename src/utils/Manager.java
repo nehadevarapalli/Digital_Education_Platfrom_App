@@ -101,8 +101,8 @@ public class Manager {
         degree1.setCourseRequirement(courseList);
         
         degreeOfferings.put("MSIS", degree1);
-        degreeOfferings.put("CS", degree1);
-        degreeOfferings.put("DS", degree1);
+        degreeOfferings.put("MSCS", degree1);
+        degreeOfferings.put("MSDS", degree1);
     }
 
     private Person createPerson(String email, boolean enabled, String gender, String password, String username, String role) {
@@ -119,10 +119,10 @@ public class Manager {
             person.setUsername(username);
             person.setpId(persons.getPersons().size());
             persons.getPersons().add(person);
-            JOptionPane.showMessageDialog(null, "Person created");
+//            JOptionPane.showMessageDialog(null, "Person created");
             return person;
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid email format.");
+//            JOptionPane.showMessageDialog(null, "Invalid email format.");
             return null;
         }
     }
@@ -138,10 +138,10 @@ public class Manager {
             person.setHashedPassword(hashedPasswordList);
             person.setUsername(username);
             persons.update(person.getpId(), person);
-            JOptionPane.showMessageDialog(null, "Person updated");
+//            JOptionPane.showMessageDialog(null, "Person updated");
             return person;
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid email");
+//            JOptionPane.showMessageDialog(null, "Invalid email");
             return null;
         }
     }
@@ -157,7 +157,7 @@ public class Manager {
         course.setSchedule(schedule);
         course.setSemester(semester);
         courses.add(course);
-        JOptionPane.showMessageDialog(null, "Course created");
+//        JOptionPane.showMessageDialog(null, "Course created");
         return course;
     }
 
@@ -170,15 +170,15 @@ public class Manager {
         course.setSemester(semester);
         course.setSchedule(schedule);
         courses.getCourses().set(course.getCode(), course);
-        JOptionPane.showMessageDialog(null, "Course updated");
+//        JOptionPane.showMessageDialog(null, "Course updated");
         return course;
     }
 
-    public void deleteCourse(int code) {
+    public boolean deleteCourse(int code) {
         ArrayList<Course> coursesList = courses.getCourses();
         Course courseR = coursesList.get(code);
-        coursesList.remove(courseR);
-        JOptionPane.showMessageDialog(null, "Course deleted");
+        return coursesList.remove(courseR);
+//        JOptionPane.showMessageDialog(null, "Course deleted");
     }
 
     public Student createStudent(String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
@@ -188,10 +188,10 @@ public class Manager {
             student.setPerson(person);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
             students.add(student);
-            JOptionPane.showMessageDialog(null, "Student created");
+//            JOptionPane.showMessageDialog(null, "Student created");
             return student;
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid email format.");
+//            JOptionPane.showMessageDialog(null, "Invalid email format.");
             return null;
         }
     }
@@ -202,19 +202,19 @@ public class Manager {
             student.setPerson(updatedPerson);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
             students.update(student.getPerson().getpId(), student);
-            JOptionPane.showMessageDialog(null, "Student updated");
+//            JOptionPane.showMessageDialog(null, "Student updated");
             return student;
         } else {
-            JOptionPane.showMessageDialog(null, "Error updating student information");
+//            JOptionPane.showMessageDialog(null, "Error updating student information");
             return null;
         }
     }
 
-    public void deleteStudent(int studentId) {
+    public boolean deleteStudent(int studentId) {
         ArrayList<Student> studentsList = students.getStudents();
         Student student = studentsList.get(studentId);
-        studentsList.remove(student);
-        JOptionPane.showMessageDialog(null, "Student deleted");
+        return studentsList.remove(student);
+//        JOptionPane.showMessageDialog(null, "Student deleted");
     }
 
     public Professor createProfessor(String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
@@ -227,10 +227,10 @@ public class Manager {
             professor.setYearsOfExperience(yearsOfExperience);
             professor.setRating(rating);
             professors.add(professor);
-            JOptionPane.showMessageDialog(null, "Professor created");
+//            JOptionPane.showMessageDialog(null, "Professor created");
             return professor;
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid email format.");
+//            JOptionPane.showMessageDialog(null, "Invalid email format.");
             return null;
         }
     }
@@ -244,19 +244,19 @@ public class Manager {
             professor.setYearsOfExperience(yearsOfExperience);
             professor.setRating(rating);
             professors.update(professor.getPerson().getpId(), professor);
-            JOptionPane.showMessageDialog(null, "Professor updated");
+//            JOptionPane.showMessageDialog(null, "Professor updated");
             return professor;
         } else {
-            JOptionPane.showMessageDialog(null, "Error updating professor information");
+//            JOptionPane.showMessageDialog(null, "Error updating professor information");
             return null;
         }
     }
 
-    public void deleteProfessor(int professorId) {
+    public boolean deleteProfessor(int professorId) {
         ArrayList<Professor> professorsList = professors.getProfessors();
         Professor professor = professorsList.get(professorId);
-        professorsList.remove(professor);
-        JOptionPane.showMessageDialog(null, "Professor deleted");
+        return professorsList.remove(professor);
+//        JOptionPane.showMessageDialog(null, "Professor deleted");
     }
 
     private boolean containsAdmin() {
@@ -268,7 +268,7 @@ public class Manager {
         return false;
     }
 
-    public Person login(String username, String password) {
+    public Object login(String username, String password) {
         if (!containsAdmin()) {
             Person admin = new Person();
             admin.setUsername("admin");
@@ -282,8 +282,21 @@ public class Manager {
         for (Person person : persons.getPersons()) {
             if (person.isEnabled() && person.getUsername().equals(username)) {
                 if (checkPassword(person, password)) {
-                    JOptionPane.showMessageDialog(null, "Login successful.");
-                    return person;
+//                    JOptionPane.showMessageDialog(null, "Login successful.");
+                      if (person.getRole() == "student") {
+                          for (Student s: students.getStudents()) {
+                              if (s.getPerson().equals(person)) {
+                                  return s;
+                              }
+                          }
+                      }
+                      else if (person.getRole() == "professor") {
+                          for (Professor p: professors.getProfessors()) {
+                              if (p.getPerson().equals(person)) {
+                                  return p;
+                              }
+                          }
+                      }
                 }
             }
         }

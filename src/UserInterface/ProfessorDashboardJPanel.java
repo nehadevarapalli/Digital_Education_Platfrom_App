@@ -6,6 +6,8 @@ package UserInterface;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.userProfiles.Professor;
+import utils.Manager;
 
 /**
  *
@@ -17,10 +19,15 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
      * Creates new form ProfessorDashboardJPanel
      */
     JPanel workArea;
+    Professor p;
+    Manager m;
     
-    public ProfessorDashboardJPanel(JPanel workArea) {
+    public ProfessorDashboardJPanel(JPanel workArea, Professor p, Manager m) {
         initComponents();
         this.workArea = workArea;
+        this.p = p;
+        p.toString();
+        this.m = m;
     }
 
     /**
@@ -36,8 +43,8 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnAnalytics = new javax.swing.JButton();
+        btnCourse = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnLogOut = new javax.swing.JButton();
 
@@ -45,10 +52,12 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Professor Dashboard");
 
-        splitPane.setDividerLocation(30);
+        splitPane.setDividerLocation(40);
+        splitPane.setDividerSize(0);
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -60,9 +69,18 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Analytics");
+        btnAnalytics.setBackground(new java.awt.Color(255, 255, 255));
+        btnAnalytics.setForeground(new java.awt.Color(0, 0, 0));
+        btnAnalytics.setText("Analytics");
 
-        jButton5.setText("Courses");
+        btnCourse.setBackground(new java.awt.Color(255, 255, 255));
+        btnCourse.setForeground(new java.awt.Color(0, 0, 0));
+        btnCourse.setText("Courses");
+        btnCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCourseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,13 +90,13 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(btnProfile)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnAnalytics)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(btnCourse)
                 .addContainerGap(482, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnProfile, jButton4, jButton5});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAnalytics, btnCourse, btnProfile});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,12 +104,12 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProfile)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(btnAnalytics)
+                    .addComponent(btnCourse))
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnProfile, jButton4, jButton5});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAnalytics, btnCourse, btnProfile});
 
         splitPane.setTopComponent(jPanel1);
 
@@ -150,6 +168,12 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         splitPane.setRightComponent(profilePanel);
     }//GEN-LAST:event_btnProfileActionPerformed
 
+    private void btnCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseActionPerformed
+        // TODO add your handling code here:
+        ProfCourseJPanel coursePanel = new ProfCourseJPanel();
+        splitPane.setRightComponent(coursePanel);
+    }//GEN-LAST:event_btnCourseActionPerformed
+
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
         workArea.remove(this);
@@ -159,10 +183,10 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalytics;
+    private javax.swing.JButton btnCourse;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnProfile;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
