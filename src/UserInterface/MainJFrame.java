@@ -262,7 +262,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        Object p = manager.login(txtUsername.getText(), txtPassword.getText());
+        Object p = manager.login(txtUsername.getText(), String.valueOf(txtPassword.getPassword()));
         if (p != null) {
             JOptionPane.showMessageDialog(this, "Login success!");
             if (p.getClass() == Student.class) {
@@ -279,11 +279,14 @@ public class MainJFrame extends javax.swing.JFrame {
             //                
             //            }
             //        }
-            else {
-                JOptionPane.showMessageDialog(this, "User not found!", "login error", JOptionPane.ERROR_MESSAGE);
-                System.out.println("user not found");
-            }
         }
+        else {
+                JOptionPane.showMessageDialog(this, "User not found!", "Login Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println("User not found.");
+            }
+        
+        txtUsername.setText("");
+        txtPassword.setText("");
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
