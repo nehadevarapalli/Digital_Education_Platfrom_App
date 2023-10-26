@@ -4,6 +4,8 @@
  */
 package UserInterface;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author ashishnevan
@@ -13,8 +15,11 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ProfessorDashboardJPanel
      */
-    public ProfessorDashboardJPanel() {
+    JPanel workArea;
+    
+    public ProfessorDashboardJPanel(JPanel workArea) {
         initComponents();
+        this.workArea = workArea;
     }
 
     /**

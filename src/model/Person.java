@@ -20,6 +20,15 @@ public class Person {
     private byte[] salt;
     private ArrayList<String> hashedPassword;
     private String name;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getName() {
         return name;
