@@ -1,6 +1,6 @@
-package model.UserProfiles;
+package model.userProfiles;
 
-import model.Person.Person;
+import model.person.Person;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.Course;

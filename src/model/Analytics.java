@@ -4,7 +4,7 @@
  */
 package model;
 
-import model.Person.Persons;
+import model.person.Persons;
 import java.util.HashMap;
 
 /**

@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
 import model.Course;
 import model.Courses;
 import model.Degree;
-import model.Person.Person;
-import model.Person.Persons;
-import model.UserProfiles.Professor;
-import model.UserProfiles.Professors;
-import model.UserProfiles.Student;
-import model.UserProfiles.Students;
+import model.person.Person;
+import model.person.Persons;
+import model.userProfiles.Professor;
+import model.userProfiles.Professors;
+import model.userProfiles.Student;
+import model.userProfiles.Students;
 
 public class Manager {
 

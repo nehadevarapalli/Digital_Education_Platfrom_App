@@ -8,7 +8,7 @@ package model;
  *
  * @author arnav
  */
-import model.UserProfiles.Student;
+import model.userProfiles.Student;
 import java.util.ArrayList;
 import java.util.HashMap;
 
