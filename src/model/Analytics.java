@@ -12,12 +12,10 @@ import java.util.HashMap;
  */
 public class Analytics {
    
-    Persons persons;
-    CourseCatalog courses;
+    Persons persons = new Persons();
+    Courses courses = new Courses();
 
   public Analytics() {
-   persons = new Persons();
-   courses = new CourseCatalog();
   }
   
   //Add prof review, course review, course region, students region, get degre

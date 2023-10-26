@@ -18,23 +18,18 @@ public class Course {
     private String desc;
     private int review;
     private int credits;
-    private String outcomes;
+    private String semester;
     private String grade;
 
-//     public Course(int code, String name, String instructor, String schedule, String language, String desc,
-//                  int review, int credits, String outcomes, String grade) {
-//        this.code = code;
-//        this.name = name;
-//        this.instructor = instructor;
-//        this.schedule = schedule;
-//        this.language = language;
-//        this.desc = desc;
-//        this.review = review;
-//        this.credits = credits;
-//        this.outcomes = outcomes;
-//        this.grade = grade;
-//    }
-     
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+    
+
     public String getGrade() {
         return grade;
     }
@@ -108,12 +103,20 @@ public class Course {
         this.credits = credits;
     }
 
-    public String getOutcomes() {
-        return outcomes;
+  @Override
+    public String toString() {
+        return "Course{" +
+                "code=" + code +
+                ", name='" + name + '\'' +
+                ", instructor='" + instructor + '\'' +
+                ", schedule='" + schedule + '\'' +
+                ", language='" + language + '\'' +
+                ", desc='" + desc + '\'' +
+                ", review=" + review +
+                ", credits=" + credits +
+                ", semester='" + semester + '\'' +
+                ", grade='" + grade + '\'' +
+                '}';
     }
-
-    public void setOutcomes(String outcomes) {
-        this.outcomes = outcomes;
-    }
-   
+    
 }

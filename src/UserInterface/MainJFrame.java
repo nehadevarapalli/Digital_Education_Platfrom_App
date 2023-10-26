@@ -23,6 +23,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         manager = new Manager();
         initComponents();
+      
     }
 
     /**
