@@ -50,15 +50,6 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         btnFindAJob = new javax.swing.JButton();
         btnProfessorReview = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtGender = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtDegreeSelected = new javax.swing.JTextField();
-        btnUpdateInfo = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
         btnLogOut = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -142,87 +133,16 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setText("Name:");
-
-        txtName.setEditable(false);
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Gender:");
-
-        txtGender.setEditable(false);
-
-        jLabel4.setText("Degree Selected:");
-
-        txtDegreeSelected.setEditable(false);
-
-        btnUpdateInfo.setText("Update Information");
-
-        jLabel6.setText("Email:");
-
-        txtEmail.setEditable(false);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtGender))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdateInfo)
-                            .addComponent(txtDegreeSelected)
-                            .addComponent(txtEmail))))
-                .addContainerGap(256, Short.MAX_VALUE))
+            .addGap(0, 834, Short.MAX_VALUE)
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtDegreeSelected, txtGender, txtName});
-
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtDegreeSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(btnUpdateInfo)
-                .addContainerGap(189, Short.MAX_VALUE))
+            .addGap(0, 453, Short.MAX_VALUE)
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3});
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtDegreeSelected, txtGender, txtName});
 
         splitPane.setRightComponent(jPanel2);
 
@@ -259,10 +179,6 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
-
     private void btnCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoursesActionPerformed
         // TODO add your handling code here:
         StuCourseJPanel panel = new StuCourseJPanel(workArea);
@@ -273,10 +189,8 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
 
     private void btnStuProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStuProfileActionPerformed
         // TODO add your handling code here:
-        StudentDashboardJPanel panel = new StudentDashboardJPanel(workArea);
-        workArea.add("StudentDashboardJPanel", panel);
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        layout.next(workArea);
+        StudentProfileJPanel studentProfilePanel = new StudentProfileJPanel();
+        splitPane.setBottomComponent(studentProfilePanel);
     }//GEN-LAST:event_btnStuProfileActionPerformed
 
     private void btnTranscriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTranscriptActionPerformed
@@ -301,18 +215,9 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnProfessorReview;
     private javax.swing.JButton btnStuProfile;
     private javax.swing.JButton btnTranscript;
-    private javax.swing.JButton btnUpdateInfo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane splitPane;
-    private javax.swing.JTextField txtDegreeSelected;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtGender;
-    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }
