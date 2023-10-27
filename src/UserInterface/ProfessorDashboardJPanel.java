@@ -52,7 +52,6 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Professor Dashboard");
 
@@ -69,12 +68,8 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnAnalytics.setBackground(new java.awt.Color(255, 255, 255));
-        btnAnalytics.setForeground(new java.awt.Color(0, 0, 0));
         btnAnalytics.setText("Analytics");
 
-        btnCourse.setBackground(new java.awt.Color(255, 255, 255));
-        btnCourse.setForeground(new java.awt.Color(0, 0, 0));
         btnCourse.setText("Courses");
         btnCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +88,7 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
                 .addComponent(btnAnalytics)
                 .addGap(18, 18, 18)
                 .addComponent(btnCourse)
-                .addContainerGap(482, Short.MAX_VALUE))
+                .addContainerGap(522, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAnalytics, btnCourse, btnProfile});
@@ -119,7 +114,7 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 788, Short.MAX_VALUE)
+            .addGap(0, 828, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,9 +147,8 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(btnLogOut)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
