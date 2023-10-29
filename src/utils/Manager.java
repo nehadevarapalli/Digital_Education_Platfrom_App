@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 import model.Course;
 import model.Courses;
 import model.Degree;
+import model.Job;
 import model.person.Person;
 import model.person.Persons;
+import model.userProfiles.Employer;
+import model.userProfiles.Employers;
 import model.userProfiles.Professor;
 import model.userProfiles.Professors;
 import model.userProfiles.Student;
@@ -26,8 +28,32 @@ public class Manager {
     private final Students students = new Students();
     private final Professors professors = new Professors();
     private HashMap<String, Degree> degreeOfferings = new HashMap<String, Degree>();
+    private Employers employerList = new Employers();
 
-    void populateDegrees() {
+    public Employers populateEmployers() {
+        // Create and add employers with job listings
+        for (int i = 1; i <= 5; i++) {
+            Employer employer = new Employer();
+            employer.setName("Employer " + i);
+            employer.setDescription("Description for Employer " + i);
+
+            // Create and add 5 job listings for each employer
+            for (int j = 1; j <= 5; j++) {
+                Job job = new Job();
+                job.setName("Job " + j);
+                job.setDescription("Description for Job " + j);
+                job.setType("Job Type " + j);
+                job.setPayPerHour(50 + (j * 10)); // Vary the pay rate
+
+                employer.getJobOfferings().add(job);
+            }
+
+            employerList.getEmployers().add(employer);
+        }
+        return employerList;
+    }
+
+    public void populateDegrees() {
         Degree degree1 = new Degree();
         degree1.setName("MSIS");
 
@@ -90,16 +116,16 @@ public class Manager {
         course5.setCredits(3);
         course5.setGrade("A");
         course5.setSemester("Fall 23");
-        
+
         ArrayList<Course> courseList = new ArrayList<>();
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);
         courseList.add(course4);
         courseList.add(course5);
-        
+
         degree1.setCourseRequirement(courseList);
-        
+
         degreeOfferings.put("MSIS", degree1);
         degreeOfferings.put("MSCS", degree1);
         degreeOfferings.put("MSDS", degree1);
@@ -283,20 +309,19 @@ public class Manager {
             if (person.isEnabled() && person.getUsername().equals(username)) {
                 if (checkPassword(person, password)) {
 //                    JOptionPane.showMessageDialog(null, "Login successful.");
-                      if (person.getRole() == "student") {
-                          for (Student s: students.getStudents()) {
-                              if (s.getPerson().equals(person)) {
-                                  return s;
-                              }
-                          }
-                      }
-                      else if (person.getRole() == "professor") {
-                          for (Professor p: professors.getProfessors()) {
-                              if (p.getPerson().equals(person)) {
-                                  return p;
-                              }
-                          }
-                      }
+                    if (person.getRole() == "student") {
+                        for (Student s : students.getStudents()) {
+                            if (s.getPerson().equals(person)) {
+                                return s;
+                            }
+                        }
+                    } else if (person.getRole() == "professor") {
+                        for (Professor p : professors.getProfessors()) {
+                            if (p.getPerson().equals(person)) {
+                                return p;
+                            }
+                        }
+                    }
                 }
             }
         }

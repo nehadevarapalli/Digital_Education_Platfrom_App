@@ -7,6 +7,7 @@ package UserInterface;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import model.person.Person;
+import model.userProfiles.Employers;
 import model.userProfiles.Professor;
 import model.userProfiles.Student;
 import utils.Manager;
@@ -28,6 +29,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Student student1 = manager.createStudent("student1@gmail.com", true, "Female", "password", "student1", "MSIS");
         Professor professor1 = manager.createProfessor("abcd@gmail.com", true, "Male", "abcdefg", "hello", "MSIS", "PHD", 5, 5);
         System.out.println(professor1.toString());
+        Employers employeList = manager.populateEmployers();
     }
 
     /**
@@ -151,6 +153,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Don't have an account?");
 
+        btnSignup.setBackground(new java.awt.Color(255, 255, 255));
+        btnSignup.setForeground(new java.awt.Color(0, 0, 0));
         btnSignup.setText("Signup");
         btnSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +162,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnLogin.setForeground(new java.awt.Color(0, 0, 0));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
