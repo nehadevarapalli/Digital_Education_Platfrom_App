@@ -71,6 +71,11 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
         btnAnalytics.setForeground(new java.awt.Color(0, 0, 0));
         btnAnalytics.setText("Analytics");
+        btnAnalytics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalyticsActionPerformed(evt);
+            }
+        });
 
         btnCourse.setForeground(new java.awt.Color(0, 0, 0));
         btnCourse.setText("Courses");
@@ -179,6 +184,10 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
     }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void btnAnalyticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalyticsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnalyticsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
