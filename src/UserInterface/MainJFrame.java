@@ -26,10 +26,11 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         manager = new Manager();
         initComponents();
-        Student student1 = manager.createStudent("student1@gmail.com", true, "Female", "password", "student1", "MSIS");
-        Professor professor1 = manager.createProfessor("abcd@gmail.com", true, "Male", "abcdefg", "hello", "MSIS", "PHD", 5, 5);
+        Student student1 = manager.createStudent("Joe", "USA", "student1@gmail.com", true, "Female", "password", "student1", "MSIS");
+        Professor professor1 = manager.createProfessor("Albert", "Australia", "abcd@gmail.com", true, "Male", "abcdefg", "hello", "MSIS", "PHD", 5, 5);
         System.out.println(professor1.toString());
-        Employers employeList = manager.populateEmployers();
+        Employers employerList = manager.populateEmployers();
+        employerList.toString();
     }
 
     /**

@@ -131,9 +131,11 @@ public class Manager {
         degreeOfferings.put("MSDS", degree1);
     }
 
-    private Person createPerson(String email, boolean enabled, String gender, String password, String username, String role) {
+    private Person createPerson(String name, String country, String email, boolean enabled, String gender, String password, String username, String role) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
             Person person = new Person();
+            person.setName(name);
+            person.setCountry(country);
             person.setEmail(email);
             person.setEnabled(enabled);
             person.setGender(gender);
@@ -153,8 +155,10 @@ public class Manager {
         }
     }
 
-    private Person updatePerson(Person person, String email, boolean enabled, String gender, String password, String username) {
+    private Person updatePerson(Person person, String name, String country,String email, boolean enabled, String gender, String password, String username) {
         if (isValidEmail(email)) {
+            person.setName(name);
+            person.setCountry(country);
             person.setEnabled(enabled);
             person.setGender(gender);
             person.setEmail(email);
@@ -207,9 +211,9 @@ public class Manager {
 //        JOptionPane.showMessageDialog(null, "Course deleted");
     }
 
-    public Student createStudent(String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
+    public Student createStudent(String name, String country, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
-            Person person = createPerson(email, enabled, gender, password, username, "student");
+            Person person = createPerson(name, country, email, enabled, gender, password, username, "student");
             Student student = new Student();
             student.setPerson(person);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
@@ -222,8 +226,8 @@ public class Manager {
         }
     }
 
-    public Student updateStudent(Student student, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
-        Person updatedPerson = updatePerson(student.getPerson(), email, enabled, gender, password, username);
+    public Student updateStudent(Student student, String name, String country, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
+        Person updatedPerson = updatePerson(student.getPerson(), name, country, email, enabled, gender, password, username);
         if (updatedPerson != null) {
             student.setPerson(updatedPerson);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
@@ -243,9 +247,9 @@ public class Manager {
 //        JOptionPane.showMessageDialog(null, "Student deleted");
     }
 
-    public Professor createProfessor(String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
+    public Professor createProfessor(String name, String country, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
-            Person person = createPerson(email, enabled, gender, password, username, "professor");
+            Person person = createPerson(name, country, email, enabled, gender, password, username, "professor");
             Professor professor = new Professor();
             professor.setPerson(person);
             professor.setSpeciality(speciality);
@@ -261,8 +265,8 @@ public class Manager {
         }
     }
 
-    public Professor updateProfessor(Professor professor, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
-        Person updatedPerson = updatePerson(professor.getPerson(), email, enabled, gender, password, username);
+    public Professor updateProfessor(Professor professor, String name, String country, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
+        Person updatedPerson = updatePerson(professor.getPerson(), name, country, email, enabled, gender, password, username);
         if (updatedPerson != null) {
             professor.setPerson(updatedPerson);
             professor.setSpeciality(speciality);
