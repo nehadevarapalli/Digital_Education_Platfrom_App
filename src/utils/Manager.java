@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 import model.Course;
 import model.Courses;
 import model.Degree;
+import model.Job;
 import model.person.Person;
 import model.person.Persons;
+import model.userProfiles.Employer;
+import model.userProfiles.Employers;
 import model.userProfiles.Professor;
 import model.userProfiles.Professors;
 import model.userProfiles.Student;
@@ -26,8 +28,32 @@ public class Manager {
     private final Students students = new Students();
     private final Professors professors = new Professors();
     private HashMap<String, Degree> degreeOfferings = new HashMap<String, Degree>();
+    private Employers employerList = new Employers();
 
-    void populateDegrees() {
+    public Employers populateEmployers() {
+        // Create and add employers with job listings
+        for (int i = 1; i <= 5; i++) {
+            Employer employer = new Employer();
+            employer.setName("Employer " + i);
+            employer.setDescription("Description for Employer " + i);
+
+            // Create and add 5 job listings for each employer
+            for (int j = 1; j <= 5; j++) {
+                Job job = new Job();
+                job.setName("Job " + j);
+                job.setDescription("Description for Job " + j);
+                job.setType("Job Type " + j);
+                job.setPayPerHour(50 + (j * 10)); // Vary the pay rate
+
+                employer.getJobOfferings().add(job);
+            }
+
+            employerList.getEmployers().add(employer);
+        }
+        return employerList;
+    }
+
+    public void populateDegrees() {
         Degree degree1 = new Degree();
         degree1.setName("MSIS");
 
@@ -90,24 +116,26 @@ public class Manager {
         course5.setCredits(3);
         course5.setGrade("A");
         course5.setSemester("Fall 23");
-        
+
         ArrayList<Course> courseList = new ArrayList<>();
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);
         courseList.add(course4);
         courseList.add(course5);
-        
+
         degree1.setCourseRequirement(courseList);
-        
+
         degreeOfferings.put("MSIS", degree1);
         degreeOfferings.put("MSCS", degree1);
         degreeOfferings.put("MSDS", degree1);
     }
 
-    private Person createPerson(String email, boolean enabled, String gender, String password, String username, String role) {
+    private Person createPerson(String name, String country, String email, boolean enabled, String gender, String password, String username, String role) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
             Person person = new Person();
+            person.setName(name);
+            person.setCountry(country);
             person.setEmail(email);
             person.setEnabled(enabled);
             person.setGender(gender);
@@ -127,8 +155,10 @@ public class Manager {
         }
     }
 
-    private Person updatePerson(Person person, String email, boolean enabled, String gender, String password, String username) {
+    private Person updatePerson(Person person, String name, String country,String email, boolean enabled, String gender, String password, String username) {
         if (isValidEmail(email)) {
+            person.setName(name);
+            person.setCountry(country);
             person.setEnabled(enabled);
             person.setGender(gender);
             person.setEmail(email);
@@ -181,9 +211,9 @@ public class Manager {
 //        JOptionPane.showMessageDialog(null, "Course deleted");
     }
 
-    public Student createStudent(String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
+    public Student createStudent(String name, String country, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
-            Person person = createPerson(email, enabled, gender, password, username, "student");
+            Person person = createPerson(name, country, email, enabled, gender, password, username, "student");
             Student student = new Student();
             student.setPerson(person);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
@@ -196,8 +226,8 @@ public class Manager {
         }
     }
 
-    public Student updateStudent(Student student, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
-        Person updatedPerson = updatePerson(student.getPerson(), email, enabled, gender, password, username);
+    public Student updateStudent(Student student, String name, String country, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
+        Person updatedPerson = updatePerson(student.getPerson(), name, country, email, enabled, gender, password, username);
         if (updatedPerson != null) {
             student.setPerson(updatedPerson);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
@@ -217,9 +247,9 @@ public class Manager {
 //        JOptionPane.showMessageDialog(null, "Student deleted");
     }
 
-    public Professor createProfessor(String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
+    public Professor createProfessor(String name, String country, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
-            Person person = createPerson(email, enabled, gender, password, username, "professor");
+            Person person = createPerson(name, country, email, enabled, gender, password, username, "professor");
             Professor professor = new Professor();
             professor.setPerson(person);
             professor.setSpeciality(speciality);
@@ -235,8 +265,8 @@ public class Manager {
         }
     }
 
-    public Professor updateProfessor(Professor professor, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
-        Person updatedPerson = updatePerson(professor.getPerson(), email, enabled, gender, password, username);
+    public Professor updateProfessor(Professor professor, String name, String country, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
+        Person updatedPerson = updatePerson(professor.getPerson(), name, country, email, enabled, gender, password, username);
         if (updatedPerson != null) {
             professor.setPerson(updatedPerson);
             professor.setSpeciality(speciality);
@@ -283,20 +313,19 @@ public class Manager {
             if (person.isEnabled() && person.getUsername().equals(username)) {
                 if (checkPassword(person, password)) {
 //                    JOptionPane.showMessageDialog(null, "Login successful.");
-                      if (person.getRole() == "student") {
-                          for (Student s: students.getStudents()) {
-                              if (s.getPerson().equals(person)) {
-                                  return s;
-                              }
-                          }
-                      }
-                      else if (person.getRole() == "professor") {
-                          for (Professor p: professors.getProfessors()) {
-                              if (p.getPerson().equals(person)) {
-                                  return p;
-                              }
-                          }
-                      }
+                    if (person.getRole() == "student") {
+                        for (Student s : students.getStudents()) {
+                            if (s.getPerson().equals(person)) {
+                                return s;
+                            }
+                        }
+                    } else if (person.getRole() == "professor") {
+                        for (Professor p : professors.getProfessors()) {
+                            if (p.getPerson().equals(person)) {
+                                return p;
+                            }
+                        }
+                    }
                 }
             }
         }

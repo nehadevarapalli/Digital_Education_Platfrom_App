@@ -2,23 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.userProfiles;
-
-import java.util.ArrayList;
-import model.Job;
+package model;
 
 /**
  *
- * @author arnav
+ * @author ashishnevan
  */
-public class Employer {
+public class Job {
     private String name;
     private String description;
-    private ArrayList<Job> jobOfferings;
+    private String type;
+    private float payPerHour;
 
-    public Employer() {
-        jobOfferings = new ArrayList<>();
-    }
     public String getName() {
         return name;
     }
@@ -35,12 +30,19 @@ public class Employer {
         this.description = description;
     }
 
-    public ArrayList<Job> getJobOfferings() {
-        return jobOfferings;
+    public String getType() {
+        return type;
     }
 
-    public void setJobOfferings(ArrayList<Job> jobOfferings) {
-        this.jobOfferings = jobOfferings;
+    public void setType(String type) {
+        this.type = type;
     }
-    
+
+    public float getPayPerHour() {
+        return payPerHour;
+    }
+
+    public void setPayPerHour(float payPerHour) {
+        this.payPerHour = payPerHour;
+    }
 }
