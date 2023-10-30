@@ -83,6 +83,7 @@ public class MainJFrame extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(840, 600));
 
         workArea.setBackground(new java.awt.Color(0, 0, 0));
         workArea.setLayout(new java.awt.CardLayout());
