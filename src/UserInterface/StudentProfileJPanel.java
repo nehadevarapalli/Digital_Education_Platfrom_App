@@ -4,6 +4,11 @@
  */
 package UserInterface;
 
+import static UserInterface.ProfessorProfileJPanel.showPasswordInputDialog;
+import javax.swing.JOptionPane;
+import model.userProfiles.Student;
+import utils.Manager;
+
 /**
  *
  * @author nehadevarapalli
@@ -13,10 +18,24 @@ public class StudentProfileJPanel extends javax.swing.JPanel {
     /**
      * Creates new form StudentProfileJPanel
      */
-    public StudentProfileJPanel() {
+    Student s;
+    Manager m;
+    
+    public StudentProfileJPanel(Student s, Manager m) {
         initComponents();
+        this.s = s;
+        this.m = m;
+        btnSave.setEnabled(false);
+        btnEdit.setEnabled(true);
+        populateStudentProfile();
     }
 
+    private void populateStudentProfile() {
+        txtName.setText(s.getPerson().getName());
+        txtGender.setText(s.getPerson().getGender());
+        txtDegreeSelected.setText(s.getSelectedDegree().getName());
+        txtEmail.setText(s.getPerson().getEmail());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,7 +62,7 @@ public class StudentProfileJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Name:");
 
-        txtName.setEditable(false);
+        txtName.setEnabled(false);
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
@@ -52,21 +71,36 @@ public class StudentProfileJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Gender:");
 
-        txtGender.setEditable(false);
+        txtGender.setEnabled(false);
 
         jLabel4.setText("Degree Selected:");
 
-        txtDegreeSelected.setEditable(false);
+        txtDegreeSelected.setEnabled(false);
 
         jLabel6.setText("Email:");
 
-        txtEmail.setEditable(false);
+        txtEmail.setEnabled(false);
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnUpdatePassword.setText("Update Password");
+        btnUpdatePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdatePasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,6 +173,56 @@ public class StudentProfileJPanel extends javax.swing.JPanel {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        txtName.setEnabled(true);
+        txtGender.setEnabled(true);
+        txtEmail.setEnabled(true);
+        btnEdit.setEnabled(false);
+        btnSave.setEnabled(true);
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        if (txtName.getText().isBlank() || txtGender.getText().isBlank() || txtEmail.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        s.getPerson().setName(txtName.getText());
+        s.getPerson().setGender(txtGender.getText());
+        s.getPerson().setEmail(txtEmail.getText());
+
+        JOptionPane.showMessageDialog(this, "Account Updated Successfully.");
+        btnSave.setEnabled(false);
+        btnEdit.setEnabled(true);
+        txtName.setEnabled(false);
+        txtGender.setEnabled(false);
+        txtEmail.setEnabled(false);
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnUpdatePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePasswordActionPerformed
+        // TODO add your handling code here:
+        String newPassword = showPasswordInputDialog();
+        if (!m.isValidPassword(newPassword)) {
+            JOptionPane.showMessageDialog(this, "Please choose a password with one uppercase letter, lowercase letters, a special character and a number.");
+            return;
+        }
+
+        newPassword = m.hashPassword(s.getPerson().getSalt(), newPassword);
+
+        if (newPassword != null && !newPassword.isEmpty()) {
+            if (!s.getPerson().setCurrentHashedPassword(newPassword)) {
+                JOptionPane.showMessageDialog(this, "You cannot use a previously used password. Please choose a different one.");
+            } else {
+                s.getPerson().setCurrentHashedPassword(newPassword);
+                JOptionPane.showMessageDialog(this, "Password updated.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No changes made to password.");
+        }
+    }//GEN-LAST:event_btnUpdatePasswordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
