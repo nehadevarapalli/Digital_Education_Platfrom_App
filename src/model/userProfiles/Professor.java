@@ -17,7 +17,8 @@ public class Professor {
     private String speciality;
     private String qualifications;
     private int yearsOfExperience;
-    private int rating;
+    private float rating;
+    private int ratingCount;
     private Person person;
     private ArrayList<Course> courseOfferings;
 
@@ -29,6 +30,27 @@ public class Professor {
         return person;
     }
 
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public int getRatingCount() {
+        return ratingCount;
+    }
+
+    public void setRatingCount(int ratingCount) {
+        this.ratingCount = ratingCount;
+    }
+    
+    public void addRating(int newRating) {
+        ratingCount++;
+        rating = (rating + newRating)/ratingCount;
+    }
+    
     public void setPerson(Person person) {
         this.person = person;
     }
@@ -55,14 +77,6 @@ public class Professor {
 
     public void setYearsOfExperience(int yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public ArrayList<Course> getCourseOfferings() {
@@ -100,8 +114,8 @@ public class Professor {
 //        }
 //        return false;
 //    }
-    @Override
-    public String toString() {
+    
+    public String display() {
         return "Professor{"
                 + "speciality='" + speciality + '\''
                 + ", qualifications='" + qualifications + '\''
@@ -109,5 +123,9 @@ public class Professor {
                 + ", rating=" + rating
                 + ", person=" + person
                 + '}';
+    }
+    @Override
+    public String toString() {
+        return person.getName();
     }
 }

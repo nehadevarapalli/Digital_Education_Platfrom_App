@@ -11,8 +11,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.Course;
-import model.Courses;
-import model.userProfiles.Student;
+import model.userProfiles.Professor;
 import utils.Manager;
 
 /**
@@ -21,21 +20,16 @@ import utils.Manager;
  */
 public class StuCourseJPanel extends javax.swing.JPanel {
 
-    Course course;
-    Courses courses;
-    Student selectedUser;
-    Manager manager;
+    Manager m;
     JPanel workArea;
+
     /**
      * Creates new form CourseJPanel
      */
-    public StuCourseJPanel(JPanel workArea) {
-        this.workArea = workArea;
-        
+    public StuCourseJPanel(JPanel workArea, Manager m) {
         initComponents();
-        course = new Course();
-        courses = new Courses();
-        manager = new Manager();
+        this.workArea = workArea;
+        this.m = m;
         populateTable();
     }
 
@@ -384,19 +378,19 @@ public class StuCourseJPanel extends javax.swing.JPanel {
 
         int selectedRowIndex = tblCourse.getSelectedRow();
 
-        if(selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this,"Please select a row to delete.");
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
             return;
         }
 
         DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
-        Course selectedCourse = (Course) model.getValueAt(selectedRowIndex,0);
+        Course selectedCourse = (Course) model.getValueAt(selectedRowIndex, 0);
         name.setText(selectedCourse.getName());
         instructor.setText(selectedCourse.getInstructor());
         schedule.setText(selectedCourse.getSchedule());
         language.setText(selectedCourse.getLanguage());
         desc.setText(selectedCourse.getDesc());
-        credits.setText(String.valueOf(selectedCourse.getCredits())); 
+        credits.setText(String.valueOf(selectedCourse.getCredits()));
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageActionPerformed
@@ -427,7 +421,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_scheduleActionPerformed
 
     private void createCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCourseActionPerformed
-      // manager.registerCourse(selectedUser, course);
+        // manager.registerCourse(selectedUser, course);
         populateTable();
     }//GEN-LAST:event_createCourseActionPerformed
 
@@ -454,25 +448,28 @@ public class StuCourseJPanel extends javax.swing.JPanel {
         layout.previous(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
 
-  private void populateTable() {
-              DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
         model.setRowCount(0);
         
-       for (Course course1: courses.getCourses()) {
-        model.addRow(new Object[]{
-            course1,  
-            course1.getCode(),
-            course1.getCredits(),
-            course1.getDesc(),
-            course1.getGrade(),
-            course1.getInstructor(),
-            course1.getLanguage(),
-            course1.getName(),
-    
-            course1.getReview(),
-            course1.getSchedule(),          
-        });                              
-    }
+        for(Professor p: m.getProfessors().getProfessors()) {
+            for (Course c: p.getCourseOfferings()) {
+                
+            }
+        }
+//        for (Course course1 : .getCourses()) {
+//            model.addRow(new Object[]{
+//                course1,
+//                course1.getCode(),
+//                course1.getCredits(),
+//                course1.getDesc(),
+//                course1.getGrade(),
+//                course1.getInstructor(),
+//                course1.getLanguage(),
+//                course1.getName(),
+//                course1.getReview(),
+//                course1.getSchedule(),});
+//    }
 //        outcomes.setText("");
 //        name.setText("");
 //        instructor.setText("");
@@ -481,7 +478,7 @@ public class StuCourseJPanel extends javax.swing.JPanel {
 //        desc.setText("");
 //        credits.setText(""); 
     }
-  
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnView;

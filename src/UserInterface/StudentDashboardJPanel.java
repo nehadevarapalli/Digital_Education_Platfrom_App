@@ -98,6 +98,11 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         btnFindAJob.setText("Find a Job");
 
         btnProfessorReview.setText("Professor Review");
+        btnProfessorReview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfessorReviewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -189,10 +194,8 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
 
     private void btnCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoursesActionPerformed
         // TODO add your handling code here:
-        StuCourseJPanel panel = new StuCourseJPanel(workArea);
-        workArea.add("StuCourseJPanel", panel);
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        layout.next(workArea);
+        StudentCourseJPanel coursePanel = new StudentCourseJPanel(s, m);
+        splitPane.setBottomComponent(coursePanel);
     }//GEN-LAST:event_btnCoursesActionPerformed
 
     private void btnStuProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStuProfileActionPerformed
@@ -220,6 +223,11 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         splitPane.setBottomComponent(auditPanel);
     }//GEN-LAST:event_btnDegreeAuditActionPerformed
 
+    private void btnProfessorReviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfessorReviewActionPerformed
+        // TODO add your handling code here:
+        StudentReviewJPanel reviewPanel = new StudentReviewJPanel(s, m);
+        splitPane.setBottomComponent(reviewPanel);
+    }//GEN-LAST:event_btnProfessorReviewActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCourses;
