@@ -19,10 +19,10 @@ public class Course {
     private String schedule;
     private String language;
     private String desc;
-    private int review;
+//    private int review;
     private int credits;
     private String semester;
-    private String grade;
+//    private String grade;
     private ArrayList<Student> registeredStudents;
 
     public Course() {
@@ -37,13 +37,13 @@ public class Course {
         this.semester = semester;
     }
 
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
+//    public String getGrade() {
+//        return grade;
+//    }
+//
+//    public void setGrade(String grade) {
+//        this.grade = grade;
+//    }
 
     public int getCode() {
         return code;
@@ -93,13 +93,13 @@ public class Course {
         this.desc = desc;
     }
 
-    public int getReview() {
-        return review;
-    }
-
-    public void setReview(int review) {
-        this.review = review;
-    }
+//    public int getReview() {
+//        return review;
+//    }
+//
+//    public void setReview(int review) {
+//        this.review = review;
+//    }
 
     public int getCredits() {
         return credits;
@@ -125,10 +125,10 @@ public class Course {
                 ", schedule='" + schedule + '\'' +
                 ", language='" + language + '\'' +
                 ", desc='" + desc + '\'' +
-                ", review=" + review +
+//                ", review=" + review +
                 ", credits=" + credits +
                 ", semester='" + semester + '\'' +
-                ", grade='" + grade + '\'' +
+//                ", grade='" + grade + '\'' +
                 '}';
     }
     
