@@ -48,13 +48,16 @@ public class Student {
         this.person = person;
     }
 
-    @Override
-    public String toString() {
+    public String display() {
         return "Student{"
                 + "person=" + person
                 + ", selectedDegree='" + selectedDegree + '\''
                 + ", transcript=" + transcript.toString()
                 + '}';
     }
-
+    
+    @Override
+    public String toString() {
+        return this.getPerson().getName();
+    }
 }

@@ -13,29 +13,30 @@ import java.util.ArrayList;
  */
 public class Courses {
 
-  final private ArrayList<Course> courses;
+    final private ArrayList<Course> courses;
 
+    public Courses() {
+        this.courses = new ArrayList<>();
+        populateCourses();
+    }
 
-  public Courses() {
-    this.courses = new ArrayList<>();
-    populateCourses();
-  }
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
 
-  public ArrayList<Course> getCourses() {
-    return courses;
-  }
+    public void add(Course course) {
+        courses.add(course);
+    }
 
-  public void add(Course course) {
-    courses.add(course);
-  }
-   public void delete(Course course) {
-    courses.remove(course);
-  }
-    public void update(int code,Course course) {
-    courses.set(code, course);
-  }
+    public void delete(Course course) {
+        courses.remove(course);
+    }
 
-   public final void populateCourses() {
+    public void update(int code, Course course) {
+        courses.set(code, course);
+    }
+
+    public final void populateCourses() {
         Course course1 = new Course();
         course1.setCode(101);
         course1.setName("Introduction to Computer Science");
@@ -58,7 +59,7 @@ public class Courses {
         course2.setReview(4);
         course2.setCredits(4);
         course2.setGrade("B+");
-course2.setSemester("Fall 23");
+        course2.setSemester("Fall 23");
 
         Course course3 = new Course();
         course3.setCode(103);
@@ -70,7 +71,7 @@ course2.setSemester("Fall 23");
         course3.setReview(4);
         course3.setCredits(3);
         course3.setGrade("B");
-course3.setSemester("Fall 23");
+        course3.setSemester("Fall 23");
 
         Course course4 = new Course();
         course4.setCode(104);
@@ -82,7 +83,7 @@ course3.setSemester("Fall 23");
         course4.setReview(4);
         course4.setCredits(3);
         course4.setGrade("A-");
-course4.setSemester("Fall 23");
+        course4.setSemester("Fall 23");
 
         Course course5 = new Course();
         course5.setCode(101);
@@ -95,5 +96,5 @@ course4.setSemester("Fall 23");
         course5.setCredits(3);
         course5.setGrade("A");
         course5.setSemester("Fall 23");
-   }
+    }
 }
