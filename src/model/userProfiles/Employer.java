@@ -6,12 +6,14 @@ package model.userProfiles;
 
 import java.util.ArrayList;
 import model.Job;
+import model.person.Person;
 
 /**
  *
  * @author arnav
  */
 public class Employer {
+    private Person person;
     private String name;
     private String description;
     private ArrayList<Job> jobOfferings;
@@ -19,8 +21,17 @@ public class Employer {
     public Employer() {
         jobOfferings = new ArrayList<>();
     }
+    
     public String getName() {
         return name;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+    
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public void setName(String name) {

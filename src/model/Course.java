@@ -12,7 +12,7 @@ import model.userProfiles.Student;
  * @author arnav
  */
 public class Course {
-    
+
     private int code;
     private String name;
     private String instructor;
@@ -28,7 +28,7 @@ public class Course {
     public Course() {
         registeredStudents = new ArrayList<>();
     }
-    
+
     public String getSemester() {
         return semester;
     }
@@ -36,7 +36,6 @@ public class Course {
     public void setSemester(String semester) {
         this.semester = semester;
     }
-    
 
     public String getGrade() {
         return grade;
@@ -46,7 +45,6 @@ public class Course {
         this.grade = grade;
     }
 
-    
     public int getCode() {
         return code;
     }
@@ -110,7 +108,7 @@ public class Course {
     public void setCredits(int credits) {
         this.credits = credits;
     }
-    
+
     public ArrayList<Student> getRegisteredStudents() {
         return registeredStudents;
     }
@@ -119,20 +117,20 @@ public class Course {
         this.registeredStudents = registeredStudents;
     }
 
-  @Override
+    @Override
     public String toString() {
-        return "Course{" +
-                "code=" + code +
-                ", name='" + name + '\'' +
-                ", instructor='" + instructor + '\'' +
-                ", schedule='" + schedule + '\'' +
-                ", language='" + language + '\'' +
-                ", desc='" + desc + '\'' +
-                ", review=" + review +
-                ", credits=" + credits +
-                ", semester='" + semester + '\'' +
-                ", grade='" + grade + '\'' +
-                '}';
+        return "Course{"
+                + "code=" + code
+                + ", name='" + name + '\''
+                + ", instructor='" + instructor + '\''
+                + ", schedule='" + schedule + '\''
+                + ", language='" + language + '\''
+                + ", desc='" + desc + '\''
+                + ", review=" + review
+                + ", credits=" + credits
+                + ", semester='" + semester + '\''
+                + ", grade='" + grade + '\''
+                + '}';
     }
-    
+
 }

@@ -29,6 +29,9 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         this.s = s;
         s.toString();
         this.m = m;
+        if (s.getSelectedDegree() == null) {
+            btnDegreeAudit.setEnabled(false);
+        }
     }
 
     /**
@@ -86,6 +89,11 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         });
 
         btnDegreeAudit.setText("Degree Audit");
+        btnDegreeAudit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDegreeAuditActionPerformed(evt);
+            }
+        });
 
         btnFindAJob.setText("Find a Job");
 
@@ -160,7 +168,7 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                    .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 828, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -205,6 +213,12 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
     }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void btnDegreeAuditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDegreeAuditActionPerformed
+        // TODO add your handling code here:
+        DegreeAuditJPanel auditPanel = new DegreeAuditJPanel(s, m);
+        splitPane.setBottomComponent(auditPanel);
+    }//GEN-LAST:event_btnDegreeAuditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

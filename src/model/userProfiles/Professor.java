@@ -13,6 +13,7 @@ import model.person.Person;
  * @author arnav
  */
 public class Professor {
+
     private String speciality;
     private String qualifications;
     private int yearsOfExperience;
@@ -23,7 +24,7 @@ public class Professor {
     public Professor() {
         courseOfferings = new ArrayList<>();
     }
-    
+
     public Person getPerson() {
         return person;
     }
@@ -32,7 +33,6 @@ public class Professor {
         this.person = person;
     }
 
-    
     public String getSpeciality() {
         return speciality;
     }
@@ -64,7 +64,7 @@ public class Professor {
     public void setRating(int rating) {
         this.rating = rating;
     }
-    
+
     public ArrayList<Course> getCourseOfferings() {
         return courseOfferings;
     }
@@ -72,15 +72,15 @@ public class Professor {
     public void setCourseOfferings(ArrayList<Course> courseOfferings) {
         this.courseOfferings = courseOfferings;
     }
-    
+
     public Course addCourse() {
         Course c = new Course();
         courseOfferings.add(c);
         return c;
     }
-    
+
     public boolean removeCourse(String name) {
-        for (Course c: courseOfferings) {
+        for (Course c : courseOfferings) {
             if (c.getName().equals(name)) {
                 courseOfferings.remove(c);
                 return true;
@@ -88,7 +88,7 @@ public class Professor {
         }
         return false;
     }
-    
+
 //    public boolean updateCourse(String name, Course newCourse) {
 //        for (Course c: courseOfferings) {
 //            if (c.getName().equals(name)) {
@@ -100,15 +100,14 @@ public class Professor {
 //        }
 //        return false;
 //    }
-    
-      @Override
+    @Override
     public String toString() {
-        return "Professor{" +
-                "speciality='" + speciality + '\'' +
-                ", qualifications='" + qualifications + '\'' +
-                ", yearsOfExperience=" + yearsOfExperience +
-                ", rating=" + rating +
-                ", person=" + person +
-                '}';
+        return "Professor{"
+                + "speciality='" + speciality + '\''
+                + ", qualifications='" + qualifications + '\''
+                + ", yearsOfExperience=" + yearsOfExperience
+                + ", rating=" + rating
+                + ", person=" + person
+                + '}';
     }
 }
