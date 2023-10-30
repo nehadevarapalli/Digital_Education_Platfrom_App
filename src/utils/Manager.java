@@ -43,7 +43,7 @@ public class Manager {
     public void setDegreeOfferings(HashMap<String, Degree> degreeOfferings) {
         this.degreeOfferings = degreeOfferings;
     }
-    
+
     public Professors getProfessors() {
         return professors;
     }
@@ -75,7 +75,7 @@ public class Manager {
 //        employers = new Employers();
         for (int i = 1; i <= 5; i++) {
             Employer employer = new Employer();
-            Person p = createPerson("emp" +i, "USA", "emp"+i+"@gmail.com", true, "Male", "employer" +i, "employer" +i, "employer");
+            Person p = createPerson("emp" + i, "USA", "emp" + i + "@gmail.com", true, "Male", "employer" + i, "employer" + i, "employer");
             employer.setName("Employer " + i);
             employer.setDescription("Description for Employer " + i);
             employer.setPerson(p);
@@ -175,11 +175,11 @@ public class Manager {
         Degree degree2 = new Degree();
         degree2.setName("MSCS");
         degree2.setCourseRequirement(populateCourses());
-        
+
         Degree degree3 = new Degree();
         degree3.setName("MSDS");
         degree3.setCourseRequirement(populateCourses());
-        
+
         degreeOfferings.put("MSIS", degree1);
         degreeOfferings.put("MSCS", degree2);
         degreeOfferings.put("MSDS", degree3);
@@ -194,10 +194,10 @@ public class Manager {
             person.setEnabled(enabled);
             person.setGender(gender);
             person.setRole(role);
-            String hashedPassword = hashPassword(person, password);
-            ArrayList<String> hashedPasswordList = new ArrayList<>();
-            hashedPasswordList.add(hashedPassword);
-            person.setHashedPassword(hashedPasswordList);
+            String hashedPassword = hashPassword(person.getSalt(), password);
+//            ArrayList<String> hashedPasswordList = new ArrayList<>();
+
+            person.setCurrentHashedPassword(hashedPassword);
             person.setUsername(username);
             person.setpId(persons.getPersons().size());
             persons.getPersons().add(person);
@@ -216,10 +216,9 @@ public class Manager {
             person.setEnabled(enabled);
             person.setGender(gender);
             person.setEmail(email);
-            String hashedPassword = hashPassword(person, password);
-            ArrayList<String> hashedPasswordList = new ArrayList<>();
-            hashedPasswordList.add(hashedPassword);
-            person.setHashedPassword(hashedPasswordList);
+            String hashedPassword = hashPassword(person.getSalt(), password);
+//            ArrayList<String> hashedPasswordList = new ArrayList<>();
+            person.setCurrentHashedPassword(hashedPassword);
             person.setUsername(username);
             persons.update(person.getpId(), person);
 //            JOptionPane.showMessageDialog(null, "Person updated");
@@ -357,7 +356,7 @@ public class Manager {
             Person admin = new Person();
             admin.setUsername("admin");
             ArrayList<String> hashedPasswordList = new ArrayList<>();
-            hashedPasswordList.add(hashPassword(admin, "admin"));
+            hashedPasswordList.add(hashPassword(admin.getSalt(), "admin"));
             admin.setHashedPassword(hashedPasswordList);
             admin.setpId(10000);
             admin.setEnabled(true);
@@ -365,7 +364,7 @@ public class Manager {
         }
         for (Person person : persons.getPersons()) {
             if (person.isEnabled() && person.getUsername().equals(username)) {
-                if (checkPassword(person, password)) {
+                if (person.getCurrentHashedPassword().equals(hashPassword(person.getSalt(), password))) {
 //                    JOptionPane.showMessageDialog(null, "Login successful.");
                     if (person.getRole() == "student") {
                         for (Student s : students.getStudents()) {
@@ -392,17 +391,17 @@ public class Manager {
         return null;
     }
 
-    private String hashPassword(Person user, String password) {
+    private String hashPassword(byte[] salt, String password) {
         try {
-            if (user.getSalt() == null) {
+            if (salt == null) {
                 SecureRandom random = new SecureRandom();
-                byte[] salt = new byte[16];
+                salt = new byte[16];
                 random.nextBytes(salt);
-                user.setSalt(salt);
+//                user.setSalt(salt);
             }
 
             MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(user.getSalt());
+            md.update(salt);
             byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
 
             return new String(hashedPassword, StandardCharsets.UTF_16);
@@ -411,17 +410,17 @@ public class Manager {
         }
     }
 
-    private boolean checkPassword(Person user, String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(user.getSalt());
-            byte[] hashedInput = md.digest(password.getBytes(StandardCharsets.UTF_8));
-            String hashedInputString = new String(hashedInput, StandardCharsets.UTF_16);
-            return hashedInputString.equals(user.getHashedPassword().get(user.getHashedPassword().size() - 1));
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Error validating password", e);
-        }
-    }
+//    private boolean checkPassword(Person user, String password) {
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("SHA-512");
+//            md.update(user.getSalt());
+//            byte[] hashedInput = md.digest(password.getBytes(StandardCharsets.UTF_8));
+//            String hashedInputString = new String(hashedInput, StandardCharsets.UTF_16);
+//            return user.setCurrentHashedPassword(hashedInputString);
+//        } catch (NoSuchAlgorithmException e) {
+//            throw new RuntimeException("Error validating password", e);
+//        }
+//    }
 
     private boolean isValidUsername(String username) {
         return username.matches("[a-zA-Z0-9_]+");
