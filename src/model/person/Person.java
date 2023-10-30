@@ -4,6 +4,7 @@
  */
 package model.person;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 /**
@@ -12,15 +13,37 @@ import java.util.ArrayList;
  */
 public class Person {
 
+    private String name;
+    private String role;
     private String username;
     private String gender;
     private boolean enabled;
     private String email;
+    private String country;
     private int pId;
     private byte[] salt;
+    private String currentHashedPassword;
     private ArrayList<String> hashedPassword;
-    private String name;
-    private String role;
+
+    public Person() {
+        hashedPassword = new ArrayList<>();
+        SecureRandom random = new SecureRandom();
+        salt = new byte[16];
+        random.nextBytes(salt);
+    }
+
+    public String getCurrentHashedPassword() {
+        return currentHashedPassword;
+    }
+
+    public boolean setCurrentHashedPassword(String newHashedPassword) {
+        if (!hashedPassword.contains(newHashedPassword)) {
+            hashedPassword.add(newHashedPassword);
+            this.currentHashedPassword = newHashedPassword;
+            return true;
+        }
+        return false;
+    }
 
     public String getRole() {
         return role;
@@ -28,6 +51,14 @@ public class Person {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getName() {
@@ -85,7 +116,7 @@ public class Person {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-  
+
     public String getEmail() {
         return email;
     }
@@ -94,17 +125,16 @@ public class Person {
         this.email = email;
     }
 
-   @Override
+    @Override
     public String toString() {
-        return "Person{" +
-                "username='" + username + '\'' +
-                ", gender='" + gender + '\'' +
-                ", enabled=" + enabled +
-                ", email='" + email + '\'' +
-                ", pId=" + pId +
-                ", hashedPassword=" + hashedPassword +
-                '}';
+        return "Person{"
+                + "username='" + username + '\''
+                + ", gender='" + gender + '\''
+                + ", enabled=" + enabled
+                + ", email='" + email + '\''
+                + ", pId=" + pId
+                + ", hashedPassword=" + hashedPassword
+                + '}';
     }
-    
-}
 
+}

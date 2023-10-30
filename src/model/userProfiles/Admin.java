@@ -4,10 +4,12 @@
  */
 package model.userProfiles;
 
+import model.person.Person;
+
 /**
  *
- * @author arnav
+ * @author ashishnevan
  */
-public class Employer {
-    
+public class Admin {
+    Person person;
 }

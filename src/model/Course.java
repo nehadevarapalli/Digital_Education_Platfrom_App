@@ -4,22 +4,30 @@
  */
 package model;
 
+import java.util.ArrayList;
+import model.userProfiles.Student;
+
 /**
  *
  * @author arnav
  */
 public class Course {
-    
+
     private int code;
     private String name;
     private String instructor;
     private String schedule;
     private String language;
     private String desc;
-    private int review;
+//    private int review;
     private int credits;
     private String semester;
-    private String grade;
+//    private String grade;
+    private ArrayList<Student> registeredStudents;
+
+    public Course() {
+        registeredStudents = new ArrayList<>();
+    }
 
     public String getSemester() {
         return semester;
@@ -28,17 +36,15 @@ public class Course {
     public void setSemester(String semester) {
         this.semester = semester;
     }
-    
 
-    public String getGrade() {
-        return grade;
-    }
+//    public String getGrade() {
+//        return grade;
+//    }
+//
+//    public void setGrade(String grade) {
+//        this.grade = grade;
+//    }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    
     public int getCode() {
         return code;
     }
@@ -87,13 +93,13 @@ public class Course {
         this.desc = desc;
     }
 
-    public int getReview() {
-        return review;
-    }
-
-    public void setReview(int review) {
-        this.review = review;
-    }
+//    public int getReview() {
+//        return review;
+//    }
+//
+//    public void setReview(int review) {
+//        this.review = review;
+//    }
 
     public int getCredits() {
         return credits;
@@ -103,8 +109,15 @@ public class Course {
         this.credits = credits;
     }
 
-  @Override
-    public String toString() {
+    public ArrayList<Student> getRegisteredStudents() {
+        return registeredStudents;
+    }
+
+    public void setRegisteredStudents(ArrayList<Student> registeredStudents) {
+        this.registeredStudents = registeredStudents;
+    }
+  
+    public String display() {
         return "Course{" +
                 "code=" + code +
                 ", name='" + name + '\'' +
@@ -112,11 +125,15 @@ public class Course {
                 ", schedule='" + schedule + '\'' +
                 ", language='" + language + '\'' +
                 ", desc='" + desc + '\'' +
-                ", review=" + review +
+//                ", review=" + review +
                 ", credits=" + credits +
                 ", semester='" + semester + '\'' +
-                ", grade='" + grade + '\'' +
+//                ", grade='" + grade + '\'' +
                 '}';
     }
     
+    @Override
+    public String toString() {
+        return String.valueOf(code);
+    }
 }

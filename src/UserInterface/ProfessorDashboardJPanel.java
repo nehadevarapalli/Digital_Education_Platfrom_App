@@ -52,7 +52,6 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Professor Dashboard");
 
@@ -62,6 +61,7 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnProfile.setForeground(new java.awt.Color(0, 0, 0));
         btnProfile.setText("My Profile");
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,11 +69,14 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnAnalytics.setBackground(new java.awt.Color(255, 255, 255));
         btnAnalytics.setForeground(new java.awt.Color(0, 0, 0));
         btnAnalytics.setText("Analytics");
+        btnAnalytics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalyticsActionPerformed(evt);
+            }
+        });
 
-        btnCourse.setBackground(new java.awt.Color(255, 255, 255));
         btnCourse.setForeground(new java.awt.Color(0, 0, 0));
         btnCourse.setText("Courses");
         btnCourse.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +96,7 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
                 .addComponent(btnAnalytics)
                 .addGap(18, 18, 18)
                 .addComponent(btnCourse)
-                .addContainerGap(482, Short.MAX_VALUE))
+                .addContainerGap(498, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAnalytics, btnCourse, btnProfile});
@@ -114,20 +117,22 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         splitPane.setTopComponent(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(828, 448));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 788, Short.MAX_VALUE)
+            .addGap(0, 816, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 442, Short.MAX_VALUE)
+            .addGap(0, 439, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(jPanel2);
 
+        btnLogOut.setForeground(new java.awt.Color(0, 0, 0));
         btnLogOut.setText("Log Out");
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,36 +147,35 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnLogOut)))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(btnLogOut)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
-        ProfessorProfileJPanel profilePanel = new ProfessorProfileJPanel();
-        splitPane.setRightComponent(profilePanel);
+        ProfessorProfileJPanel profilePanel = new ProfessorProfileJPanel(p, m);
+        splitPane.setBottomComponent(profilePanel);
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseActionPerformed
         // TODO add your handling code here:
-        ProfCourseJPanel coursePanel = new ProfCourseJPanel();
-        splitPane.setRightComponent(coursePanel);
+        ProfessorCourseJPanel coursePanel = new ProfessorCourseJPanel(p, workArea, m);
+        splitPane.setBottomComponent(coursePanel);
     }//GEN-LAST:event_btnCourseActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
@@ -180,6 +184,10 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
     }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void btnAnalyticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalyticsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnalyticsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

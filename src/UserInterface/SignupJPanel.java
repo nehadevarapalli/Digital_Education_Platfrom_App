@@ -52,6 +52,8 @@ public class SignupJPanel extends javax.swing.JPanel {
         btnSignup = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtCountry = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
@@ -60,7 +62,7 @@ public class SignupJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Signup");
+        jLabel1.setText("Sign Up");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -82,19 +84,9 @@ public class SignupJPanel extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Role");
 
-        txtName.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtGender.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtUsername.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
-
-        comboRole.setBackground(new java.awt.Color(255, 255, 255));
         comboRole.setForeground(new java.awt.Color(0, 0, 0));
         comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Professor", "Employer" }));
 
-        btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setForeground(new java.awt.Color(0, 0, 0));
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -103,9 +95,8 @@ public class SignupJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSignup.setBackground(new java.awt.Color(255, 255, 255));
         btnSignup.setForeground(new java.awt.Color(0, 0, 0));
-        btnSignup.setText("Signup");
+        btnSignup.setText("Sign Up");
         btnSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignupActionPerformed(evt);
@@ -116,7 +107,9 @@ public class SignupJPanel extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Email");
 
-        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Country");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -125,7 +118,7 @@ public class SignupJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnBack)
-                .addContainerGap(722, Short.MAX_VALUE))
+                .addContainerGap(758, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,21 +143,26 @@ public class SignupJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSignup)
-                            .addComponent(comboRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(235, 235, 235))
+                            .addComponent(comboRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(273, 273, 273))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEmail, txtGender, txtName, txtPassword, txtUsername});
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,6 +175,10 @@ public class SignupJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -199,12 +201,12 @@ public class SignupJPanel extends javax.swing.JPanel {
                     .addComponent(comboRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnSignup)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtEmail, txtGender, txtName, txtPassword, txtUsername});
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -222,11 +224,13 @@ public class SignupJPanel extends javax.swing.JPanel {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String email = txtEmail.getText();
-        if(!(name.isBlank() || gender.isBlank() || username.isBlank() || password.isBlank()) || email.isBlank()) {
+        String country = txtCountry.getText();
+        
+        if(!(name.isBlank() || country.isBlank() || gender.isBlank() || username.isBlank() || password.isBlank()) || email.isBlank()) {
             String role = comboRole.getSelectedItem().toString();
             switch (role) {
                 case "Student" : 
-                    Student s = manager.createStudent(email, true, gender, password, username, null);
+                    Student s = manager.createStudent(name, country, email, true, gender, password, username, null);
                     if (s!=null) {
                         JOptionPane.showMessageDialog(this, "Account created successfully!");
                     }
@@ -235,7 +239,7 @@ public class SignupJPanel extends javax.swing.JPanel {
                     }
                     break;
                 case "Professor": 
-                    Professor p = manager.createProfessor(email, true, gender, password, username, "", "", 0, 0);
+                    Professor p = manager.createProfessor(name, country, email, true, gender, password, username, "", "", 0, 0);
                     if (p!=null) {
                         JOptionPane.showMessageDialog(this, "Account created successfully!");
                     }
@@ -246,7 +250,16 @@ public class SignupJPanel extends javax.swing.JPanel {
                 case "Employer" :
                     break;
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Sign up error", JOptionPane.ERROR_MESSAGE);
         }
+        
+        txtName.setText("");
+        txtGender.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
+        txtEmail.setText("");
+        txtCountry.setText("");
     }//GEN-LAST:event_btnSignupActionPerformed
 
 
@@ -261,6 +274,8 @@ public class SignupJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txtCountry;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtName;

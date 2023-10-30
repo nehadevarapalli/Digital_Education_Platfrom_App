@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 import model.Course;
 import model.Courses;
 import model.Degree;
+import model.Job;
 import model.person.Person;
 import model.person.Persons;
+import model.userProfiles.Employer;
+import model.userProfiles.Employers;
 import model.userProfiles.Professor;
 import model.userProfiles.Professors;
 import model.userProfiles.Student;
@@ -21,101 +23,339 @@ import model.userProfiles.Students;
 
 public class Manager {
 
-    private final Persons persons = new Persons();
-    private final Courses courses = new Courses();
-    private final Students students = new Students();
-    private final Professors professors = new Professors();
-    private HashMap<String, Degree> degreeOfferings = new HashMap<String, Degree>();
+    private Persons persons;
+    private Courses courses;
+    private Students students;
+    private HashMap<String, Degree> degreeOfferings;
+    private Employers employers;
+    private Professors professors;
+    private String[] profs;
+    private String[] genders;
 
-    void populateDegrees() {
-        Degree degree1 = new Degree();
-        degree1.setName("MSIS");
+    public Manager() {
+        this.profs = "Smith,Johnson,Davis,Martinez,Smith,Rodriguez,Williams,Anderson,Miller,Wilson".split(",");
+        this.genders = "Male,Female".split(",");
+        persons = new Persons();
+        courses = new Courses();
+        students = new Students();
+        degreeOfferings = new HashMap<>();
+        professors = new Professors();
+        employers = new Employers();
+    }
+
+    public HashMap<String, Degree> getDegreeOfferings() {
+        return degreeOfferings;
+    }
+
+    public void setDegreeOfferings(HashMap<String, Degree> degreeOfferings) {
+        this.degreeOfferings = degreeOfferings;
+    }
+
+    public Professors getProfessors() {
+        return professors;
+    }
+
+    public void setProfessors(Professors professors) {
+        this.professors = professors;
+    }
+
+    public Employers getEmployers() {
+        return employers;
+    }
+
+    public void setEmployers(Employers employers) {
+        this.employers = employers;
+    }
+
+    public void populateProfessors() {
+//        professors = new Professors();
+
+        for (int i = 0; i < 10; i++) {
+            Professor p = this.createProfessor(profs[i], "USA", profs[i] + "@gmail.com", true, genders[i%2], "Professor@" + i, "professor" + i, "MSIS", "PHD", i + 1, 0);
+            ArrayList<Course> courseList = populateCourses();
+            p.setCourseOfferings(new ArrayList<>(courseList.subList(i*2, (i*2)+2)));
+        }
+    }
+
+    public void populateEmployers() {
+        // Create and add employers with job listings
+//        employers = new Employers();
+        for (int i = 0; i < 5; i++) {
+            Employer employer = new Employer();
+            Person p = createPerson("emp" + i, "USA", "emp" + i + "@gmail.com", true, "Male", "Employer@" + i, "employer" + i, "employer");
+            employer.setName("Employer " + i);
+            employer.setDescription("Description for Employer " + i);
+            employer.setPerson(p);
+
+            // Create and add 5 job listings for each employer
+            for (int j = 1; j <= 5; j++) {
+                Job job = new Job();
+                job.setName("Job " + j);
+                job.setDescription("Description for Job " + j);
+                job.setType("Job Type " + j);
+                job.setPayPerHour(50 + (j * 10)); // Vary the pay rate
+
+                employer.getJobOfferings().add(job);
+            }
+
+            employers.getEmployers().add(employer);
+        }
+    }
+
+    private ArrayList<Course> populateCourses() {
+        ArrayList<Course> courseList = new ArrayList<>();
 
         Course course1 = new Course();
         course1.setCode(101);
         course1.setName("Introduction to Computer Science");
-        course1.setInstructor("Prof. Smith");
+//        course1.setInstructor("Prof. Smith");
         course1.setSchedule("Mon, Wed, Fri 10:00 AM - 11:30 AM");
         course1.setLanguage("Java");
         course1.setDesc("This course provides an introduction to the fundamentals of computer science, including algorithms, data structures, and programming.");
-        course1.setReview(4);
+//        course1.setReview(4);
         course1.setCredits(3);
-        course1.setGrade("A");
+//        course1.setGrade("A");
         course1.setSemester("Fall 23");
 
         Course course2 = new Course();
         course2.setCode(102);
         course2.setName("Data Structures and Algorithms");
-        course2.setInstructor("Prof. Johnson");
+//        course2.setInstructor("Prof. Johnson");
         course2.setSchedule("Tue, Thu 1:00 PM - 2:30 PM");
         course2.setLanguage("Java");
         course2.setDesc("This course builds on the basics of computer science and delves deeper into data structures and algorithms.");
-        course2.setReview(4);
+//        course2.setReview(4);
         course2.setCredits(4);
-        course2.setGrade("B+");
+//        course2.setGrade("B+");
         course2.setSemester("Fall 23");
 
         Course course3 = new Course();
         course3.setCode(103);
         course3.setName("Web Development Fundamentals");
-        course3.setInstructor("Prof. Davis");
+//        course3.setInstructor("Prof. Davis");
         course3.setSchedule("Mon, Wed 3:00 PM - 4:30 PM");
         course3.setLanguage("HTML, CSS, JavaScript");
         course3.setDesc("Learn the basics of web development, including HTML, CSS, and JavaScript.");
-        course3.setReview(4);
+//        course3.setReview(4);
         course3.setCredits(3);
-        course3.setGrade("B");
+//        course3.setGrade("B");
         course3.setSemester("Fall 23");
 
         Course course4 = new Course();
         course4.setCode(104);
         course4.setName("Introduction to Python");
-        course4.setInstructor("Prof. Martinez");
+//        course4.setInstructor("Prof. Martinez");
         course4.setSchedule("Tue, Thu 10:00 AM - 11:30 AM");
         course4.setLanguage("Python");
         course4.setDesc("An introductory course to Python programming language.");
-        course4.setReview(4);
+//        course4.setReview(4);
         course4.setCredits(3);
-        course4.setGrade("A-");
+//        course4.setGrade("A-");
         course4.setSemester("Fall 23");
 
         Course course5 = new Course();
-        course5.setCode(101);
-        course5.setName("Introduction to Computer Science");
-        course5.setInstructor("Prof. Adams");
-        course5.setSchedule("Tue, Thu 10:00 AM - 11:30 AM");
-        course5.setLanguage("Java");
-        course5.setDesc("This course provides an introduction to the fundamentals of computer science, including algorithms, data structures, and programming.");
-        course5.setReview(4);
-        course5.setCredits(3);
-        course5.setGrade("A");
+        course5.setCode(105);
+        course5.setName("Machine Learning Fundamentals");
+        course5.setSchedule("Mon, Wed 2:00 PM - 3:30 PM");
+        course5.setLanguage("Python");
+        course5.setDesc("Explore the basics of machine learning and data analysis using Python.");
+        course5.setCredits(4);
         course5.setSemester("Fall 23");
-        
-        ArrayList<Course> courseList = new ArrayList<>();
+
+        Course course6 = new Course();
+        course6.setCode(103);
+        course6.setName("Database Management Systems");
+        course6.setSchedule("Wed, Fri 3:00 PM - 4:30 PM");
+        course6.setLanguage("SQL");
+        course3.setDesc("Learn the fundamentals of database design and management using SQL.");
+        course6.setCredits(4);
+        course6.setSemester("Fall 23");
+
+        Course course7 = new Course();
+        course7.setCode(107);
+        course7.setName("Digital Marketing Strategy");
+        course7.setSchedule("Mon, Wed 11:30 AM - 1:00 PM");
+        course7.setLanguage("N/A");
+        course7.setDesc("Develop effective digital marketing strategies to promote products and services online.");
+        course7.setCredits(3);
+        course7.setSemester("Fall 23");
+
+        Course course8 = new Course();
+        course8.setCode(108);
+        course8.setName("Ethical Hacking and Cybersecurity");
+        course8.setSchedule("Tue, Thu 2:30 PM - 4:00 PM");
+        course8.setLanguage("N/A");
+        course8.setDesc("Explore the techniques and tools used in ethical hacking and cybersecurity.");
+        course8.setCredits(4);
+        course8.setSemester("Fall 23");
+
+        Course course9 = new Course();
+        course9.setCode(109);
+        course9.setName("Artificial Intelligence and Robotics");
+        course9.setSchedule("Wed, Fri 1:30 PM - 3:00 PM");
+        course9.setLanguage("Python, C++");
+        course9.setDesc("Study artificial intelligence and robotics, including computer vision and autonomous systems.");
+        course9.setCredits(4);
+        course9.setSemester("Fall 23");
+
+        Course course10 = new Course();
+        course10.setCode(110);
+        course10.setName("Data Analytics with R");
+        course10.setSchedule("Mon, Wed 4:30 PM - 6:00 PM");
+        course10.setLanguage("R");
+        course10.setDesc("Analyze and visualize data using the R programming language for data analytics.");
+        course10.setCredits(3);
+        course10.setSemester("Fall 23");
+
+        Course course11 = new Course();
+        course11.setCode(111);
+        course11.setName("Mobile App Development");
+        course11.setSchedule("Tue, Thu 10:30 AM - 12:00 PM");
+        course11.setLanguage("Java, Swift");
+        course11.setDesc("Learn to develop mobile applications for both Android and iOS platforms.");
+        course11.setCredits(4);
+        course11.setSemester("Fall 23");
+
+        Course course12 = new Course();
+        course12.setCode(112);
+        course12.setName("Business Management Fundamentals");
+        course12.setSchedule("Mon, Wed 2:30 PM - 4:00 PM");
+        course12.setLanguage("N/A");
+        course12.setDesc("Introduction to core business management concepts and principles.");
+        course12.setCredits(3);
+        course12.setSemester("Fall 23");
+
+        Course course13 = new Course();
+        course13.setCode(101);
+        course13.setName("Introduction to Programming");
+        course13.setSchedule("Mon, Wed 10:00 AM - 11:30 AM");
+        course13.setLanguage("Python");
+        course13.setDesc("An introductory course for programming beginners, teaching the basics of Python.");
+        course13.setCredits(3);
+        course13.setSemester("Fall 23");
+
+        Course course14 = new Course();
+        course14.setCode(102);
+        course14.setName("Data Structures and Algorithms");
+        course14.setSchedule("Tue, Thu 1:00 PM - 2:30 PM");
+        course14.setLanguage("Java");
+        course14.setDesc("This course builds on the basics of computer science and delves deeper into data structures and algorithms.");
+        course14.setCredits(4);
+        course14.setSemester("Fall 23");
+
+        Course course15 = new Course();
+        course15.setCode(103);
+        course15.setName("Database Management Systems");
+        course15.setSchedule("Wed, Fri 3:00 PM - 4:30 PM");
+        course15.setLanguage("SQL");
+        course15.setDesc("Learn the fundamentals of database design and management using SQL.");
+        course15.setCredits(4);
+        course15.setSemester("Fall 23");
+
+        Course course16 = new Course();
+        course16.setCode(105);
+        course16.setName("Machine Learning Fundamentals");
+        course16.setSchedule("Mon, Wed 2:00 PM - 3:30 PM");
+        course16.setLanguage("Python");
+        course16.setDesc("Explore the basics of machine learning and data analysis using Python.");
+        course16.setCredits(4);
+        course16.setSemester("Fall 23");
+
+        Course course17 = new Course();
+        course17.setCode(205);
+        course17.setName("Big Data Analytics");
+        course17.setSchedule("Mon, Wed 3:30 PM - 5:00 PM");
+        course17.setLanguage("Hadoop, Spark");
+        course17.setDesc("Learn to work with big data and perform analytics on large datasets.");
+        course17.setCredits(4);
+        course17.setSemester("Fall 23");
+
+        Course course18 = new Course();
+        course18.setCode(206);
+        course18.setName("Data Mining and Pattern Recognition");
+        course18.setSchedule("Tue, Thu 10:00 AM - 11:30 AM");
+        course18.setLanguage("Python, Weka");
+        course18.setDesc("Explore data mining techniques and pattern recognition in data.");
+        course18.setCredits(3);
+        course18.setSemester("Fall 23");
+
+        Course course19 = new Course();
+        course19.setCode(207);
+        course19.setName("Deep Learning for Data Science");
+        course19.setSchedule("Mon, Wed 1:00 PM - 2:30 PM");
+        course19.setLanguage("Python, TensorFlow");
+        course19.setDesc("Dive into deep learning concepts and applications for data science.");
+        course19.setCredits(4);
+        course19.setSemester("Fall 23");
+
+        Course course20 = new Course();
+        course20.setCode(208);
+        course20.setName("Data Science Capstone Project");
+        course20.setSchedule("Flexible (Independent Study)");
+        course20.setLanguage("Python, R");
+        course20.setDesc("Apply your data science skills to a real-world project in this capstone course.");
+        course20.setCredits(4);
+        course20.setSemester("Fall 23");
+
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);
         courseList.add(course4);
         courseList.add(course5);
-        
-        degree1.setCourseRequirement(courseList);
-        
-        degreeOfferings.put("MSIS", degree1);
-        degreeOfferings.put("MSCS", degree1);
-        degreeOfferings.put("MSDS", degree1);
+        courseList.add(course6);
+        courseList.add(course7);
+        courseList.add(course8);
+        courseList.add(course9);
+        courseList.add(course10);
+        courseList.add(course11);
+        courseList.add(course12);
+        courseList.add(course13);
+        courseList.add(course14);
+        courseList.add(course15);
+        courseList.add(course16);
+        courseList.add(course17);
+        courseList.add(course18);
+        courseList.add(course19);
+        courseList.add(course20);
+
+        return courseList;
     }
 
-    private Person createPerson(String email, boolean enabled, String gender, String password, String username, String role) {
+    public void populateDegrees() {
+        Degree degree1 = new Degree();
+        degree1.setName("MSIS");
+        degree1.setCourseRequirement(new ArrayList<>(populateCourses().subList(0, 8)));
+
+        Degree degree2 = new Degree();
+        degree2.setName("MSCS");
+        ArrayList<Course> req2 = new ArrayList<Course>(populateCourses().subList(0,4));
+        req2.addAll(populateCourses().subList(6,10));
+        degree2.setCourseRequirement(req2);
+
+        Degree degree3 = new Degree();
+        degree3.setName("MSDS");
+        ArrayList<Course> req3 = new ArrayList<Course>(populateCourses().subList(0,4));
+        req3.addAll(populateCourses().subList(10,14));
+        degree2.setCourseRequirement(req3);
+
+        degreeOfferings.put("MSIS", degree1);
+        degreeOfferings.put("MSCS", degree2);
+        degreeOfferings.put("MSDS", degree3);
+    }
+
+    private Person createPerson(String name, String country, String email, boolean enabled, String gender, String password, String username, String role) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
             Person person = new Person();
+            person.setName(name);
+            person.setCountry(country);
             person.setEmail(email);
             person.setEnabled(enabled);
             person.setGender(gender);
             person.setRole(role);
-            String hashedPassword = hashPassword(person, password);
-            ArrayList<String> hashedPasswordList = new ArrayList<>();
-            hashedPasswordList.add(hashedPassword);
-            person.setHashedPassword(hashedPasswordList);
+            String hashedPassword = hashPassword(person.getSalt(), password);
+//            ArrayList<String> hashedPasswordList = new ArrayList<>();
+
+            person.setCurrentHashedPassword(hashedPassword);
             person.setUsername(username);
             person.setpId(persons.getPersons().size());
             persons.getPersons().add(person);
@@ -127,15 +367,16 @@ public class Manager {
         }
     }
 
-    private Person updatePerson(Person person, String email, boolean enabled, String gender, String password, String username) {
+    private Person updatePerson(Person person, String name, String country, String email, boolean enabled, String gender, String password, String username) {
         if (isValidEmail(email)) {
+            person.setName(name);
+            person.setCountry(country);
             person.setEnabled(enabled);
             person.setGender(gender);
             person.setEmail(email);
-            String hashedPassword = hashPassword(person, password);
-            ArrayList<String> hashedPasswordList = new ArrayList<>();
-            hashedPasswordList.add(hashedPassword);
-            person.setHashedPassword(hashedPasswordList);
+            String hashedPassword = hashPassword(person.getSalt(), password);
+//            ArrayList<String> hashedPasswordList = new ArrayList<>();
+            person.setCurrentHashedPassword(hashedPassword);
             person.setUsername(username);
             persons.update(person.getpId(), person);
 //            JOptionPane.showMessageDialog(null, "Person updated");
@@ -181,9 +422,9 @@ public class Manager {
 //        JOptionPane.showMessageDialog(null, "Course deleted");
     }
 
-    public Student createStudent(String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
+    public Student createStudent(String name, String country, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
-            Person person = createPerson(email, enabled, gender, password, username, "student");
+            Person person = createPerson(name, country, email, enabled, gender, password, username, "student");
             Student student = new Student();
             student.setPerson(person);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
@@ -196,8 +437,8 @@ public class Manager {
         }
     }
 
-    public Student updateStudent(Student student, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
-        Person updatedPerson = updatePerson(student.getPerson(), email, enabled, gender, password, username);
+    public Student updateStudent(Student student, String name, String country, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
+        Person updatedPerson = updatePerson(student.getPerson(), name, country, email, enabled, gender, password, username);
         if (updatedPerson != null) {
             student.setPerson(updatedPerson);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
@@ -217,15 +458,15 @@ public class Manager {
 //        JOptionPane.showMessageDialog(null, "Student deleted");
     }
 
-    public Professor createProfessor(String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
+    public Professor createProfessor(String name, String country, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
-            Person person = createPerson(email, enabled, gender, password, username, "professor");
+            Person person = createPerson(name, country, email, enabled, gender, password, username, "professor");
             Professor professor = new Professor();
             professor.setPerson(person);
             professor.setSpeciality(speciality);
             professor.setQualifications(qualifications);
             professor.setYearsOfExperience(yearsOfExperience);
-            professor.setRating(rating);
+            professor.setRating((float) rating);
             professors.add(professor);
 //            JOptionPane.showMessageDialog(null, "Professor created");
             return professor;
@@ -235,8 +476,8 @@ public class Manager {
         }
     }
 
-    public Professor updateProfessor(Professor professor, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
-        Person updatedPerson = updatePerson(professor.getPerson(), email, enabled, gender, password, username);
+    public Professor updateProfessor(Professor professor, String name, String country, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
+        Person updatedPerson = updatePerson(professor.getPerson(), name, country, email, enabled, gender, password, username);
         if (updatedPerson != null) {
             professor.setPerson(updatedPerson);
             professor.setSpeciality(speciality);
@@ -273,7 +514,7 @@ public class Manager {
             Person admin = new Person();
             admin.setUsername("admin");
             ArrayList<String> hashedPasswordList = new ArrayList<>();
-            hashedPasswordList.add(hashPassword(admin, "admin"));
+            hashedPasswordList.add(hashPassword(admin.getSalt(), "admin"));
             admin.setHashedPassword(hashedPasswordList);
             admin.setpId(10000);
             admin.setEnabled(true);
@@ -281,39 +522,50 @@ public class Manager {
         }
         for (Person person : persons.getPersons()) {
             if (person.isEnabled() && person.getUsername().equals(username)) {
-                if (checkPassword(person, password)) {
+                if (person.getCurrentHashedPassword().equals(hashPassword(person.getSalt(), password))) {
 //                    JOptionPane.showMessageDialog(null, "Login successful.");
-                      if (person.getRole() == "student") {
-                          for (Student s: students.getStudents()) {
-                              if (s.getPerson().equals(person)) {
-                                  return s;
-                              }
-                          }
-                      }
-                      else if (person.getRole() == "professor") {
-                          for (Professor p: professors.getProfessors()) {
-                              if (p.getPerson().equals(person)) {
-                                  return p;
-                              }
-                          }
-                      }
+                    switch (person.getRole()) {
+                        case "student":
+                            for (Student s : students.getStudents()) {
+                                if (s.getPerson().equals(person)) {
+                                    return s;
+                                }
+                            }
+                            break;
+                        case "professor":
+                            for (Professor p : professors.getProfessors()) {
+                                if (p.getPerson().equals(person)) {
+                                    return p;
+                                }
+                            }
+                            break;
+                        case "employer":
+                            for (Employer p : employers.getEmployers()) {
+                                if (p.getPerson().equals(person)) {
+                                    return p;
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
         return null;
     }
 
-    private String hashPassword(Person user, String password) {
+    public String hashPassword(byte[] salt, String password) {
         try {
-            if (user.getSalt() == null) {
+            if (salt == null) {
                 SecureRandom random = new SecureRandom();
-                byte[] salt = new byte[16];
+                salt = new byte[16];
                 random.nextBytes(salt);
-                user.setSalt(salt);
+//                user.setSalt(salt);
             }
 
             MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(user.getSalt());
+            md.update(salt);
             byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
 
             return new String(hashedPassword, StandardCharsets.UTF_16);
@@ -322,24 +574,27 @@ public class Manager {
         }
     }
 
-    private boolean checkPassword(Person user, String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(user.getSalt());
-            byte[] hashedInput = md.digest(password.getBytes(StandardCharsets.UTF_8));
-            String hashedInputString = new String(hashedInput, StandardCharsets.UTF_16);
-            return hashedInputString.equals(user.getHashedPassword().get(user.getHashedPassword().size() - 1));
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Error validating password", e);
-        }
-    }
-
+//    private boolean checkPassword(Person user, String password) {
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("SHA-512");
+//            md.update(user.getSalt());
+//            byte[] hashedInput = md.digest(password.getBytes(StandardCharsets.UTF_8));
+//            String hashedInputString = new String(hashedInput, StandardCharsets.UTF_16);
+//            return user.setCurrentHashedPassword(hashedInputString);
+//        } catch (NoSuchAlgorithmException e) {
+//            throw new RuntimeException("Error validating password", e);
+//        }
+//    }
     private boolean isValidUsername(String username) {
         return username.matches("[a-zA-Z0-9_]+");
     }
 
-    private boolean isValidPassword(String password) {
-        return password.length() >= 6;
+    public boolean isValidPassword(String password) {
+        // Password validation criteria (e.g., minimum 8 characters, containing letters, numbers, and special characters)
+        String passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&*!])[A-Za-z\\d@#$%^&*!]{8,}$";
+        Pattern pattern = Pattern.compile(passwordRegex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
     }
 
     private boolean isValidEmail(String email) {

@@ -23,7 +23,7 @@ public class Student {
     public Student() {
         transcript = new HashMap<Course, String>();
     }
-    
+
     public HashMap<Course, String> getTranscript() {
         return transcript;
     }
@@ -47,14 +47,17 @@ public class Student {
     public void setPerson(Person person) {
         this.person = person;
     }
+
+    public String display() {
+        return "Student{"
+                + "person=" + person
+                + ", selectedDegree='" + selectedDegree + '\''
+                + ", transcript=" + transcript.toString()
+                + '}';
+    }
     
     @Override
     public String toString() {
-        return "Student{" +
-                "person=" + person +
-                ", selectedDegree='" + selectedDegree + '\'' +
-                ", transcript=" + transcript.toString() +
-                '}';
+        return this.getPerson().getName();
     }
-
 }
