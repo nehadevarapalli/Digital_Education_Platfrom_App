@@ -228,6 +228,7 @@ public class ProfessorGradesJPanel extends javax.swing.JPanel {
         selectedStudent.getTranscript().put(course, grade);
         populateTable();
         
+        btnSave.setEnabled(false);
         txtName.setText("");
         txtGrade.setText("");
     }//GEN-LAST:event_btnSaveActionPerformed
