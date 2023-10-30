@@ -506,6 +506,17 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         newCourse.setSemester(courseSemester);
 
         populateTable();
+        JOptionPane.showMessageDialog(this, "Course created successfully!");
+        
+        name.setText("");
+        instructor.setText("");
+        schedule.setText("");
+        language.setText("");
+        desc.setText("");
+        semester.setText("");
+        credits.setText("");
+        code.setText("");
+        txtRegion.setText("");
     }//GEN-LAST:event_createCourseActionPerformed
 
     private void txtRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegionActionPerformed
