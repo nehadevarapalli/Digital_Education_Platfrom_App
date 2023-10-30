@@ -39,6 +39,7 @@ public class StudentProfileJPanel extends javax.swing.JPanel {
         btnUpdatePassword = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(828, 448));
 
         jLabel2.setText("Name:");
 

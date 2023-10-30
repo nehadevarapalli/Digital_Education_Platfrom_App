@@ -180,7 +180,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Don't have an account?");
 
-        btnSignup.setBackground(new java.awt.Color(255, 255, 255));
         btnSignup.setForeground(new java.awt.Color(0, 0, 0));
         btnSignup.setText("Signup");
         btnSignup.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +188,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
         btnLogin.setForeground(new java.awt.Color(0, 0, 0));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -249,7 +247,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(btnSignup))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel3);
