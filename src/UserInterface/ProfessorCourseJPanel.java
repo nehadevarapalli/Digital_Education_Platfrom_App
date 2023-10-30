@@ -57,7 +57,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         searchNUIDTF = new javax.swing.JTextField();
         nameLbl = new javax.swing.JLabel();
         descLbl = new javax.swing.JLabel();
-        instructor = new javax.swing.JTextField();
         creditsLbl = new javax.swing.JLabel();
         languageLbl = new javax.swing.JLabel();
         schedule = new javax.swing.JTextField();
@@ -65,7 +64,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         credits = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCourse = new javax.swing.JTable();
-        instructorLbl = new javax.swing.JLabel();
         languageLbl1 = new javax.swing.JLabel();
         txtRegion = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -147,13 +145,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         descLbl.setForeground(new java.awt.Color(0, 0, 0));
         descLbl.setText("Description");
 
-        instructor.setForeground(new java.awt.Color(0, 0, 0));
-        instructor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                instructorActionPerformed(evt);
-            }
-        });
-
         creditsLbl.setBackground(new java.awt.Color(255, 255, 255));
         creditsLbl.setFont(creditsLbl.getFont());
         creditsLbl.setForeground(new java.awt.Color(0, 0, 0));
@@ -211,11 +202,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tblCourse);
-
-        instructorLbl.setBackground(new java.awt.Color(255, 255, 255));
-        instructorLbl.setFont(instructorLbl.getFont());
-        instructorLbl.setForeground(new java.awt.Color(0, 0, 0));
-        instructorLbl.setText("Instructor");
 
         languageLbl1.setBackground(new java.awt.Color(255, 255, 255));
         languageLbl1.setFont(languageLbl1.getFont());
@@ -291,18 +277,14 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGap(1, 1, 1)
-                                                    .addComponent(nameLbl))
-                                                .addComponent(instructorLbl))
+                                            .addGap(1, 1, 1)
+                                            .addComponent(nameLbl)
                                             .addGap(39, 39, 39))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(languageLbl)
                                             .addGap(40, 40, 40)))
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(instructor, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(schedule, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(language, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(18, 18, 18)
@@ -344,9 +326,9 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {creditsLbl, creditsLbl1, descLbl, instructorLbl, languageLbl, languageLbl1, languageLbl2, nameLbl, scheduleLbl});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {creditsLbl, creditsLbl1, descLbl, languageLbl, languageLbl1, languageLbl2, nameLbl, scheduleLbl});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {credits, instructor, language, name, schedule});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {credits, language, name, schedule});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,11 +353,7 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nameLbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(instructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(instructorLbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(schedule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(scheduleLbl)))
@@ -403,10 +381,10 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
                             .addComponent(credits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(creditsLbl)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {creditsLbl, creditsLbl1, descLbl, instructorLbl, languageLbl, languageLbl1, languageLbl2, nameLbl, scheduleLbl});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {creditsLbl, creditsLbl1, descLbl, languageLbl, languageLbl1, languageLbl2, nameLbl, scheduleLbl});
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -434,7 +412,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
         Course selectedCourse = (Course) model.getValueAt(selectedRowIndex, 0);
         name.setText(selectedCourse.getName());
-        instructor.setText(p.getPerson().getName());
         schedule.setText(selectedCourse.getSchedule());
         language.setText(selectedCourse.getLanguage());
         desc.setText(selectedCourse.getDesc());
@@ -493,17 +470,12 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         obj1.setRowFilter(RowFilter.regexFilter(searchNUIDTF.getText()));
     }//GEN-LAST:event_searchNUIDTFKeyReleased
 
-    private void instructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_instructorActionPerformed
-
     private void scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_scheduleActionPerformed
 
     private void createCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCourseActionPerformed
         String courseName = name.getText();
-        String courseInstructor = instructor.getText();
         String courseSchedule = schedule.getText();
         String courseLanguage = language.getText();
         String courseDescription = desc.getText();
@@ -517,7 +489,7 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
             return;
         }
 
-        if (courseName.isBlank() || courseInstructor.isBlank() || courseSchedule.isBlank() || courseLanguage.isBlank() || credits.getText().isBlank() || courseDescription.isBlank() || courseSemester.isBlank() || code.getText().isBlank()) {
+        if (courseName.isBlank() || courseSchedule.isBlank() || courseLanguage.isBlank() || credits.getText().isBlank() || courseDescription.isBlank() || courseSemester.isBlank() || code.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please fill all the details.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -535,7 +507,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Course created successfully!");
 
         name.setText("");
-        instructor.setText("");
         schedule.setText("");
         language.setText("");
         desc.setText("");
@@ -552,7 +523,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         name.setText("");
-        instructor.setText("");
         schedule.setText("");
         language.setText("");
         credits.setText("");
@@ -595,7 +565,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         Course selectedCourse = (Course) model.getValueAt(selectedRowIndex, 0);
 
         String courseName = name.getText();
-        String courseInstructor = instructor.getText();
         String courseSchedule = schedule.getText();
         String courseLanguage = language.getText();
         String courseDescription = desc.getText();
@@ -609,7 +578,7 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
             return;
         }
 
-        if (courseName.isBlank() || courseInstructor.isBlank() || courseSchedule.isBlank() || courseLanguage.isBlank() || credits.getText().isBlank() || courseDescription.isBlank() || courseSemester.isBlank() || code.getText().isBlank()) {
+        if (courseName.isBlank() || courseSchedule.isBlank() || courseLanguage.isBlank() || credits.getText().isBlank() || courseDescription.isBlank() || courseSemester.isBlank() || code.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Please fill all the details.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -626,7 +595,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         populateTable();
         
         name.setText("");
-        instructor.setText("");
         schedule.setText("");
         language.setText("");
         credits.setText("");
@@ -650,8 +618,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel creditsLbl1;
     private javax.swing.JTextArea desc;
     private javax.swing.JLabel descLbl;
-    private javax.swing.JTextField instructor;
-    private javax.swing.JLabel instructorLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
