@@ -26,12 +26,45 @@ public class Manager {
     private final Persons persons = new Persons();
     private final Courses courses = new Courses();
     private final Students students = new Students();
-    private final Professors professors = new Professors();
-    private HashMap<String, Degree> degreeOfferings = new HashMap<String, Degree>();
-    private Employers employerList = new Employers();
+    private HashMap<String, Degree> degreeOfferings;
+    private Employers employers;
+    private Professors professors;
 
-    public Employers populateEmployers() {
+    public Manager() {
+        degreeOfferings = new HashMap<String, Degree>();
+        professors = new Professors();
+        employers = new Employers();
+    }
+
+    public Professors getProfessors() {
+        return professors;
+    }
+
+    public void setProfessors(Professors professors) {
+        this.professors = professors;
+    }
+
+    public Employers getEmployers() {
+        return employers;
+    }
+
+    public void setEmployers(Employers employers) {
+        this.employers = employers;
+    }
+
+    public void populateProfessors() {
+//        professors = new Professors();
+        for (int i = 0; i <= 5; i++) {
+            Professor p = this.createProfessor("professor" + i, "USA", "prof" + i + "@gmail.com", true, "Male", "professor" + i, "professor" + i, "MSIS", "PHD", i + 1, 0);
+            ArrayList<Course> courseList = populateCourses();
+            p.setCourseOfferings(courseList);
+            professors.add(p);
+        }
+    }
+
+    public void populateEmployers() {
         // Create and add employers with job listings
+//        employers = new Employers();
         for (int i = 1; i <= 5; i++) {
             Employer employer = new Employer();
             employer.setName("Employer " + i);
@@ -48,14 +81,12 @@ public class Manager {
                 employer.getJobOfferings().add(job);
             }
 
-            employerList.getEmployers().add(employer);
+            employers.getEmployers().add(employer);
         }
-        return employerList;
     }
 
-    public void populateDegrees() {
-        Degree degree1 = new Degree();
-        degree1.setName("MSIS");
+    private ArrayList<Course> populateCourses() {
+        ArrayList<Course> courseList = new ArrayList<>();
 
         Course course1 = new Course();
         course1.setCode(101);
@@ -117,14 +148,20 @@ public class Manager {
         course5.setGrade("A");
         course5.setSemester("Fall 23");
 
-        ArrayList<Course> courseList = new ArrayList<>();
         courseList.add(course1);
         courseList.add(course2);
         courseList.add(course3);
         courseList.add(course4);
         courseList.add(course5);
 
-        degree1.setCourseRequirement(courseList);
+        return courseList;
+    }
+
+    public void populateDegrees() {
+        Degree degree1 = new Degree();
+        degree1.setName("MSIS");
+
+        degree1.setCourseRequirement(populateCourses());
 
         degreeOfferings.put("MSIS", degree1);
         degreeOfferings.put("MSCS", degree1);
@@ -155,7 +192,7 @@ public class Manager {
         }
     }
 
-    private Person updatePerson(Person person, String name, String country,String email, boolean enabled, String gender, String password, String username) {
+    private Person updatePerson(Person person, String name, String country, String email, boolean enabled, String gender, String password, String username) {
         if (isValidEmail(email)) {
             person.setName(name);
             person.setCountry(country);

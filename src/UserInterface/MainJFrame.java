@@ -6,9 +6,13 @@ package UserInterface;
 
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
+import model.Course;
+import model.Job;
 import model.person.Person;
+import model.userProfiles.Employer;
 import model.userProfiles.Employers;
 import model.userProfiles.Professor;
+import model.userProfiles.Professors;
 import model.userProfiles.Student;
 import utils.Manager;
 
@@ -23,14 +27,36 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    Professors professorList;
+    Employers employerList;
+    
     public MainJFrame() {
         manager = new Manager();
+        manager.populateDegrees();
+        manager.populateEmployers();
+        manager.populateProfessors();
         initComponents();
         Student student1 = manager.createStudent("Joe", "USA", "student1@gmail.com", true, "Female", "password", "student1", "MSIS");
         Professor professor1 = manager.createProfessor("Albert", "Australia", "abcd@gmail.com", true, "Male", "abcdefg", "hello", "MSIS", "PHD", 5, 5);
         System.out.println(professor1.toString());
-        Employers employerList = manager.populateEmployers();
-        employerList.toString();
+        test();
+    }
+    
+    private void test() {
+        Employers employers = manager.getEmployers();
+        for (Employer e: employers.getEmployers()) {
+            System.out.println(e.getName());
+//            System.out.println(e.getDescription());
+            for (Job j: e.getJobOfferings()) {
+                System.out.println(j.getName());
+            }
+        }
+        for (Professor p: manager.getProfessors().getProfessors()) {
+            System.out.println(p.getPerson().getName());
+            for (Course c: p.getCourseOfferings()) {
+                System.out.println(c.getName());
+            }
+        }
     }
 
     /**
