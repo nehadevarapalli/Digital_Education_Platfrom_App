@@ -36,7 +36,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         Student student1 = manager.createStudent("Joe", "USA", "student1@gmail.com", true, "Female", "password", "student1", "MSIS");
         Professor professor1 = manager.createProfessor("Albert", "Australia", "abcd@gmail.com", true, "Male", "abcdefg", "hello", "MSIS", "PHD", 5, 5);
-        System.out.println(professor1.toString());
+//        System.out.println(professor1.toString());
         test();
     }
 

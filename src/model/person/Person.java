@@ -4,6 +4,7 @@
  */
 package model.person;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +22,28 @@ public class Person {
     private String country;
     private int pId;
     private byte[] salt;
+    private String currentHashedPassword;
     private ArrayList<String> hashedPassword;
+
+    public Person() {
+        hashedPassword = new ArrayList<>();
+        SecureRandom random = new SecureRandom();
+        salt = new byte[16];
+        random.nextBytes(salt);
+    }
+
+    public String getCurrentHashedPassword() {
+        return currentHashedPassword;
+    }
+
+    public boolean setCurrentHashedPassword(String newHashedPassword) {
+        if (!hashedPassword.contains(newHashedPassword)) {
+            hashedPassword.add(newHashedPassword);
+            this.currentHashedPassword = newHashedPassword;
+            return true;
+        }
+        return false;
+    }
 
     public String getRole() {
         return role;
