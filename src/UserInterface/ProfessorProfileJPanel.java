@@ -4,7 +4,9 @@
  */
 package UserInterface;
 
+import javax.swing.JOptionPane;
 import model.userProfiles.Professor;
+import utils.Manager;
 
 /**
  *
@@ -16,10 +18,14 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
      * Creates new form ProfessorProfileJPanel
      */
     Professor p;
-    
+    Manager m;
+   
     public ProfessorProfileJPanel(Professor p) {
         initComponents();
+        btnSave.setEnabled(false);
+        btnEdit.setEnabled(true);
         this.p = p;
+        m = new Manager();
         populateProfessorProfile();
     }
 
@@ -51,8 +57,8 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         txtUsername = new javax.swing.JTextField();
         txtQualification = new javax.swing.JTextField();
         txtSpecialty = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         btnUpdatePassword = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
 
@@ -77,29 +83,44 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Speciality");
 
-        txtGender.setEditable(false);
         txtGender.setBackground(new java.awt.Color(255, 255, 255));
+        txtGender.setEnabled(false);
 
-        txtCountry.setEditable(false);
         txtCountry.setBackground(new java.awt.Color(255, 255, 255));
+        txtCountry.setEnabled(false);
 
-        txtUsername.setEditable(false);
         txtUsername.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsername.setEnabled(false);
 
-        txtQualification.setEditable(false);
         txtQualification.setBackground(new java.awt.Color(255, 255, 255));
+        txtQualification.setEnabled(false);
 
-        txtSpecialty.setEditable(false);
         txtSpecialty.setBackground(new java.awt.Color(255, 255, 255));
+        txtSpecialty.setEnabled(false);
 
-        jButton1.setText("Edit");
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Save");
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnUpdatePassword.setText("Update Password");
+        btnUpdatePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdatePasswordActionPerformed(evt);
+            }
+        });
 
-        txtName.setEditable(false);
         txtName.setBackground(new java.awt.Color(255, 255, 255));
+        txtName.setEnabled(false);
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
@@ -111,21 +132,12 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(251, 251, 251)
+                .addGap(280, 280, 280)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
-                            .addComponent(jLabel7))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addGap(30, 30, 30)
-                                .addComponent(btnUpdatePassword))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtSpecialty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSpecialty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
@@ -146,8 +158,14 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addGap(18, 18, 18)
-                            .addComponent(txtQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(247, 247, 247))
+                            .addComponent(txtQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnUpdatePassword)))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCountry, txtGender, txtName, txtQualification, txtSpecialty, txtUsername});
@@ -183,8 +201,8 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
                     .addComponent(txtSpecialty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(btnEdit)
+                    .addComponent(btnSave)
                     .addComponent(btnUpdatePassword))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
@@ -199,11 +217,56 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        if(!isFieldsFilled()) {
+            JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        p.getPerson().setName(txtName.getText());
+        p.getPerson().setGender(txtGender.getText());
+        p.getPerson().setCountry(txtCountry.getText());
+        p.setQualifications(txtQualification.getText());
+        p.setSpeciality(txtSpecialty.getText());
+        p.getPerson().setUsername(txtUsername.getText());
+        
+        btnSave.setEnabled(false);
+        btnEdit.setEnabled(true);
+        
+        JOptionPane.showMessageDialog(this, "Account Updated Successfully.");
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private boolean isFieldsFilled() {
+        return !(txtName.getText().isBlank() || txtGender.getText().isBlank() || txtCountry.getText().isBlank() || txtUsername.getText().isBlank() || txtQualification.getText().isBlank() || txtSpecialty.getText().isBlank());
+    }
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        txtName.setEnabled(true);
+        txtCountry.setEnabled(true);
+        txtGender.setEnabled(true);
+        txtQualification.setEnabled(true);
+        txtSpecialty.setEnabled(true);
+        txtUsername.setEnabled(true);
+        btnSave.setEnabled(true);
+        btnEdit.setEnabled(false);
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnUpdatePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePasswordActionPerformed
+        // TODO add your handling code here:
+//        String newPassword = showPasswordInputDialog();
+//        
+//        if(m.isValidPassword(newPassword)) {
+//            String hashedpwd = m.hashPassword(p.getPerson(), newPassword);
+//            p.getPerson().se
+//        }
+    }//GEN-LAST:event_btnUpdatePasswordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdatePassword;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
