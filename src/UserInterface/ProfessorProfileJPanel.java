@@ -257,11 +257,15 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
     private void btnUpdatePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePasswordActionPerformed
         // TODO add your handling code here:
         String newPassword = showPasswordInputDialog();
+        if (!m.isValidPassword(newPassword)) {
+            JOptionPane.showMessageDialog(this, "Please choose a password with one uppercase letter, lowercase letters, a special character and a number.");
+        }
+
+        newPassword = m.hashPassword(p.getPerson().getSalt(), newPassword);
+
         if (newPassword != null && !newPassword.isEmpty()) {
             if (!p.getPerson().setCurrentHashedPassword(newPassword)) {
                 JOptionPane.showMessageDialog(this, "You cannot use a previously used password. Please choose a different one.");
-            } else if (!m.isValidPassword(newPassword)) {
-                JOptionPane.showMessageDialog(this, "Please choose a password with one uppercase letter, lowercase letters, a special character and a number.");
             } else {
                 p.getPerson().setCurrentHashedPassword(newPassword);
                 JOptionPane.showMessageDialog(this, "Password updated.");

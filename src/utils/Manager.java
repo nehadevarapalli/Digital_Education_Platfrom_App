@@ -391,7 +391,7 @@ public class Manager {
         return null;
     }
 
-    private String hashPassword(byte[] salt, String password) {
+    public String hashPassword(byte[] salt, String password) {
         try {
             if (salt == null) {
                 SecureRandom random = new SecureRandom();
