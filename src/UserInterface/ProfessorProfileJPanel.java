@@ -26,7 +26,7 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
     private void populateProfessorProfile() {
         txtName.setText(p.getPerson().getName());
         txtGender.setText(p.getPerson().getGender());
-        txtCountry.setText("Need to implement");
+        txtCountry.setText(p.getPerson().getCountry());
         txtUsername.setText(p.getPerson().getUsername());
         txtQualification.setText(p.getQualifications());
         txtSpecialty.setText(p.getSpeciality());
