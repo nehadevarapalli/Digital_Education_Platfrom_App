@@ -206,7 +206,7 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
 
     private void btnTranscriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTranscriptActionPerformed
         // TODO add your handling code here:
-        TranscriptJPanel transcriptPanel = new TranscriptJPanel();
+        TranscriptJPanel transcriptPanel = new TranscriptJPanel(s);
         splitPane.setBottomComponent(transcriptPanel);
     }//GEN-LAST:event_btnTranscriptActionPerformed
 
