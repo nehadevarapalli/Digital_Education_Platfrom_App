@@ -13,25 +13,26 @@ import java.util.ArrayList;
  */
 public class Courses {
 
-  final private ArrayList<Course> courses;
+    final private ArrayList<Course> courses;
 
-
-  public Courses() {
-    this.courses = new ArrayList<>();
+    public Courses() {
+        this.courses = new ArrayList<>();
 //    populateCourses();
-  }
+    }
 
-  public ArrayList<Course> getCourses() {
-    return courses;
-  }
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
 
-  public void add(Course course) {
-    courses.add(course);
-  }
-   public void delete(Course course) {
-    courses.remove(course);
-  }
-    public void update(int code,Course course) {
-    courses.set(code, course);
-  }
+    public void add(Course course) {
+        courses.add(course);
+    }
+
+    public void delete(Course course) {
+        courses.remove(course);
+    }
+
+    public void update(int code, Course course) {
+        courses.set(code, course);
+    }
 }

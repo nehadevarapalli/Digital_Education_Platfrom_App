@@ -71,7 +71,7 @@ public class Manager {
 //        professors = new Professors();
 
         for (int i = 0; i < 10; i++) {
-            Professor p = this.createProfessor(profs[i], "USA", profs[i] + "@gmail.com", true, genders[i%2], "professor" + i, "professor" + i, "MSIS", "PHD", i + 1, 0);
+            Professor p = this.createProfessor(profs[i], "USA", profs[i] + "@gmail.com", true, genders[i%2], "Professor@" + i, "professor" + i, "MSIS", "PHD", i + 1, 0);
             ArrayList<Course> courseList = populateCourses();
             p.setCourseOfferings(new ArrayList<>(courseList.subList(i*2, (i*2)+2)));
         }
@@ -555,7 +555,7 @@ public class Manager {
         return null;
     }
 
-    private String hashPassword(byte[] salt, String password) {
+    public String hashPassword(byte[] salt, String password) {
         try {
             if (salt == null) {
                 SecureRandom random = new SecureRandom();
@@ -589,8 +589,12 @@ public class Manager {
         return username.matches("[a-zA-Z0-9_]+");
     }
 
-    private boolean isValidPassword(String password) {
-        return password.length() >= 6;
+    public boolean isValidPassword(String password) {
+        // Password validation criteria (e.g., minimum 8 characters, containing letters, numbers, and special characters)
+        String passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&*!])[A-Za-z\\d@#$%^&*!]{8,}$";
+        Pattern pattern = Pattern.compile(passwordRegex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
     }
 
     private boolean isValidEmail(String email) {

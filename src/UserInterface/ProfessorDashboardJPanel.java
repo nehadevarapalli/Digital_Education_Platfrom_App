@@ -168,13 +168,13 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
-        ProfessorProfileJPanel profilePanel = new ProfessorProfileJPanel(p);
+        ProfessorProfileJPanel profilePanel = new ProfessorProfileJPanel(p, m);
         splitPane.setBottomComponent(profilePanel);
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseActionPerformed
         // TODO add your handling code here:
-        ProfessorCourseJPanel coursePanel = new ProfessorCourseJPanel(p);
+        ProfessorCourseJPanel coursePanel = new ProfessorCourseJPanel(p, workArea, m);
         splitPane.setBottomComponent(coursePanel);
     }//GEN-LAST:event_btnCourseActionPerformed
 

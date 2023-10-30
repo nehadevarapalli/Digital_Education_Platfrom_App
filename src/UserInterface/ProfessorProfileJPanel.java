@@ -5,6 +5,7 @@
 package UserInterface;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import model.userProfiles.Professor;
 import utils.Manager;
 
@@ -19,13 +20,13 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
      */
     Professor p;
     Manager m;
-   
-    public ProfessorProfileJPanel(Professor p) {
+
+    public ProfessorProfileJPanel(Professor p, Manager m) {
         initComponents();
         btnSave.setEnabled(false);
         btnEdit.setEnabled(true);
         this.p = p;
-        m = new Manager();
+        this.m = m;
         populateProfessorProfile();
     }
 
@@ -37,6 +38,7 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         txtQualification.setText(p.getQualifications());
         txtSpecialty.setText(p.getSpeciality());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,21 +221,21 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(!isFieldsFilled()) {
+        if (!isFieldsFilled()) {
             JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         p.getPerson().setName(txtName.getText());
         p.getPerson().setGender(txtGender.getText());
         p.getPerson().setCountry(txtCountry.getText());
         p.setQualifications(txtQualification.getText());
         p.setSpeciality(txtSpecialty.getText());
         p.getPerson().setUsername(txtUsername.getText());
-        
+
         btnSave.setEnabled(false);
         btnEdit.setEnabled(true);
-        
+
         JOptionPane.showMessageDialog(this, "Account Updated Successfully.");
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -254,14 +256,41 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
 
     private void btnUpdatePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePasswordActionPerformed
         // TODO add your handling code here:
-//        String newPassword = showPasswordInputDialog();
-//        
-//        if(m.isValidPassword(newPassword)) {
-//            String hashedpwd = m.hashPassword(p.getPerson(), newPassword);
-//            p.getPerson().se
-//        }
+        String newPassword = showPasswordInputDialog();
+        if (!m.isValidPassword(newPassword)) {
+            JOptionPane.showMessageDialog(this, "Please choose a password with one uppercase letter, lowercase letters, a special character and a number.");
+        }
+
+        newPassword = m.hashPassword(p.getPerson().getSalt(), newPassword);
+
+        if (newPassword != null && !newPassword.isEmpty()) {
+            if (!p.getPerson().setCurrentHashedPassword(newPassword)) {
+                JOptionPane.showMessageDialog(this, "You cannot use a previously used password. Please choose a different one.");
+            } else {
+                p.getPerson().setCurrentHashedPassword(newPassword);
+                JOptionPane.showMessageDialog(this, "Password updated.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No changes made to password.");
+        }
     }//GEN-LAST:event_btnUpdatePasswordActionPerformed
 
+    public static String showPasswordInputDialog() {
+        JPasswordField passwordField = new JPasswordField();
+
+        Object[] message = {
+            "Enter Password:", passwordField
+        };
+
+        int option = JOptionPane.showConfirmDialog(null, message, "Password Input", JOptionPane.OK_CANCEL_OPTION);
+
+        if (option == JOptionPane.OK_OPTION) {
+            char[] password = passwordField.getPassword();
+            return new String(password);
+        } else {
+            return null;  // User canceled the input
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
