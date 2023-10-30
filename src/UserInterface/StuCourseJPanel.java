@@ -79,6 +79,8 @@ public class StuCourseJPanel extends javax.swing.JPanel {
         code1 = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         scheduleLbl.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
         scheduleLbl.setText("Schedule");
 

@@ -116,21 +116,24 @@ public class Course {
     public void setRegisteredStudents(ArrayList<Student> registeredStudents) {
         this.registeredStudents = registeredStudents;
     }
-
+  
+    public String display() {
+        return "Course{" +
+                "code=" + code +
+                ", name='" + name + '\'' +
+                ", instructor='" + instructor + '\'' +
+                ", schedule='" + schedule + '\'' +
+                ", language='" + language + '\'' +
+                ", desc='" + desc + '\'' +
+                ", review=" + review +
+                ", credits=" + credits +
+                ", semester='" + semester + '\'' +
+                ", grade='" + grade + '\'' +
+                '}';
+    }
+    
     @Override
     public String toString() {
-        return "Course{"
-                + "code=" + code
-                + ", name='" + name + '\''
-                + ", instructor='" + instructor + '\''
-                + ", schedule='" + schedule + '\''
-                + ", language='" + language + '\''
-                + ", desc='" + desc + '\''
-                + ", review=" + review
-                + ", credits=" + credits
-                + ", semester='" + semester + '\''
-                + ", grade='" + grade + '\''
-                + '}';
+        return String.valueOf(code);
     }
-
 }
