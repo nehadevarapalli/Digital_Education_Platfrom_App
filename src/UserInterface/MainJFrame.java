@@ -181,7 +181,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel9.setText("Don't have an account?");
 
         btnSignup.setForeground(new java.awt.Color(0, 0, 0));
-        btnSignup.setText("Signup");
+        btnSignup.setText("Sign Up");
         btnSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignupActionPerformed(evt);

@@ -250,7 +250,16 @@ public class SignupJPanel extends javax.swing.JPanel {
                 case "Employer" :
                     break;
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Sign up error", JOptionPane.ERROR_MESSAGE);
         }
+        
+        txtName.setText("");
+        txtGender.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
+        txtEmail.setText("");
+        txtCountry.setText("");
     }//GEN-LAST:event_btnSignupActionPerformed
 
 
