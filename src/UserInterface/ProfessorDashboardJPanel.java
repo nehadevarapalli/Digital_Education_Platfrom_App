@@ -174,7 +174,7 @@ public class ProfessorDashboardJPanel extends javax.swing.JPanel {
 
     private void btnCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseActionPerformed
         // TODO add your handling code here:
-        ProfessorCourseJPanel coursePanel = new ProfessorCourseJPanel();
+        ProfessorCourseJPanel coursePanel = new ProfessorCourseJPanel(p);
         splitPane.setBottomComponent(coursePanel);
     }//GEN-LAST:event_btnCourseActionPerformed
 

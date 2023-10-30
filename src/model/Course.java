@@ -119,8 +119,7 @@ public class Course {
         this.registeredStudents = registeredStudents;
     }
 
-  @Override
-    public String toString() {
+    public String display() {
         return "Course{" +
                 "code=" + code +
                 ", name='" + name + '\'' +
@@ -135,4 +134,8 @@ public class Course {
                 '}';
     }
     
+    @Override
+    public String toString() {
+        return String.valueOf(code);
+    }
 }
