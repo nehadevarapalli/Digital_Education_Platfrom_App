@@ -80,9 +80,9 @@ public class Manager {
     public void populateEmployers() {
         // Create and add employers with job listings
 //        employers = new Employers();
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 0; i < 5; i++) {
             Employer employer = new Employer();
-            Person p = createPerson("emp" + i, "USA", "emp" + i + "@gmail.com", true, "Male", "employer" + i, "employer" + i, "employer");
+            Person p = createPerson("emp" + i, "USA", "emp" + i + "@gmail.com", true, "Male", "Employer@" + i, "employer" + i, "employer");
             employer.setName("Employer " + i);
             employer.setDescription("Description for Employer " + i);
             employer.setPerson(p);

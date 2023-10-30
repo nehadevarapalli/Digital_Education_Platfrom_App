@@ -40,7 +40,7 @@ public class ProfessorGradesJPanel extends javax.swing.JPanel {
         for (Student student : regStudents) {
             model.addRow(new Object[]{
                 student,
-                student.getSelectedDegree(),
+                student.getSelectedDegree().getName(),
                 student.getTranscript().get(course),
                 });
         }
