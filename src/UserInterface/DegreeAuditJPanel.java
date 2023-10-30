@@ -54,11 +54,9 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(0, 0, 0));
 
-        comboCurrentDegree.setBackground(new java.awt.Color(255, 255, 255));
         comboCurrentDegree.setForeground(new java.awt.Color(0, 0, 0));
         comboCurrentDegree.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MSIS", "MSCS", "MSDS" }));
 
-        comboSwitchDegree.setBackground(new java.awt.Color(255, 255, 255));
         comboSwitchDegree.setForeground(new java.awt.Color(0, 0, 0));
         comboSwitchDegree.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MSIS", "MSCS", "MSDS" }));
 
@@ -70,7 +68,6 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Switch Degree");
 
-        btnAssessSwitch.setBackground(new java.awt.Color(255, 255, 255));
         btnAssessSwitch.setForeground(new java.awt.Color(0, 0, 0));
         btnAssessSwitch.setText("Assess Switch");
         btnAssessSwitch.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +76,6 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnConfirmSwitch.setBackground(new java.awt.Color(255, 255, 255));
         btnConfirmSwitch.setForeground(new java.awt.Color(0, 0, 0));
         btnConfirmSwitch.setText("Confirm Switch");
         btnConfirmSwitch.addActionListener(new java.awt.event.ActionListener() {
@@ -92,10 +88,8 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("No. of relevant courses");
 
-        txtRelevantCoursesNumber.setBackground(new java.awt.Color(255, 255, 255));
         txtRelevantCoursesNumber.setForeground(new java.awt.Color(0, 0, 0));
 
-        btnGraduate.setBackground(new java.awt.Color(255, 255, 255));
         btnGraduate.setForeground(new java.awt.Color(0, 0, 0));
         btnGraduate.setText("Graduate");
         btnGraduate.addActionListener(new java.awt.event.ActionListener() {
@@ -109,26 +103,30 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboCurrentDegree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnGraduate))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnConfirmSwitch)
+                        .addGap(169, 169, 169)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboCurrentDegree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnGraduate))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboSwitchDegree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAssessSwitch)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtRelevantCoursesNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboSwitchDegree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAssessSwitch)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtRelevantCoursesNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(162, Short.MAX_VALUE))
+                        .addGap(334, 334, 334)
+                        .addComponent(btnConfirmSwitch)))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2});
@@ -136,7 +134,7 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboCurrentDegree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -149,9 +147,9 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(txtRelevantCoursesNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGraduate))
-                .addGap(63, 63, 63)
+                .addGap(60, 60, 60)
                 .addComponent(btnConfirmSwitch)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2});
@@ -175,6 +173,8 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
         System.out.println(switchDegree.getCourseRequirement());
         int relevantCoursesNumber = currentDegree.switchDegree(s, switchDegree, false);
         JOptionPane.showMessageDialog(this, "Degree switched!");
+        
+        comboCurrentDegree.setSelectedItem(s.getSelectedDegree().getName());
     }//GEN-LAST:event_btnConfirmSwitchActionPerformed
 
     private void btnGraduateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraduateActionPerformed

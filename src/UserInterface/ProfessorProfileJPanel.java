@@ -237,6 +237,13 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         btnEdit.setEnabled(true);
 
         JOptionPane.showMessageDialog(this, "Account Updated Successfully.");
+        
+        txtName.setEnabled(false);
+        txtCountry.setEnabled(false);
+        txtGender.setEnabled(false);
+        txtQualification.setEnabled(false);
+        txtSpecialty.setEnabled(false);
+        txtUsername.setEnabled(false);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private boolean isFieldsFilled() {
@@ -259,6 +266,7 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         String newPassword = showPasswordInputDialog();
         if (!m.isValidPassword(newPassword)) {
             JOptionPane.showMessageDialog(this, "Please choose a password with one uppercase letter, lowercase letters, a special character and a number.");
+            return;
         }
 
         newPassword = m.hashPassword(p.getPerson().getSalt(), newPassword);
