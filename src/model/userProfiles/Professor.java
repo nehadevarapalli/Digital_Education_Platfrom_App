@@ -4,6 +4,8 @@
  */
 package model.userProfiles;
 
+import java.util.ArrayList;
+import model.Course;
 import model.person.Person;
 
 /**
@@ -11,12 +13,17 @@ import model.person.Person;
  * @author arnav
  */
 public class Professor {
-    public String speciality;
-    public String qualifications;
-    public int yearsOfExperience;
-    public int rating;
-    public Person person;
+    private String speciality;
+    private String qualifications;
+    private int yearsOfExperience;
+    private int rating;
+    private Person person;
+    private ArrayList<Course> courseOfferings;
 
+    public Professor() {
+        courseOfferings = new ArrayList<>();
+    }
+    
     public Person getPerson() {
         return person;
     }
@@ -57,6 +64,42 @@ public class Professor {
     public void setRating(int rating) {
         this.rating = rating;
     }
+    
+    public ArrayList<Course> getCourseOfferings() {
+        return courseOfferings;
+    }
+
+    public void setCourseOfferings(ArrayList<Course> courseOfferings) {
+        this.courseOfferings = courseOfferings;
+    }
+    
+    public Course addCourse() {
+        Course c = new Course();
+        courseOfferings.add(c);
+        return c;
+    }
+    
+    public boolean removeCourse(String name) {
+        for (Course c: courseOfferings) {
+            if (c.getName().equals(name)) {
+                courseOfferings.remove(c);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+//    public boolean updateCourse(String name, Course newCourse) {
+//        for (Course c: courseOfferings) {
+//            if (c.getName().equals(name)) {
+//                courseOfferings.add(newCourse);
+//                newCourse.setRegisteredStudents(c.getRegisteredStudents());
+//                courseOfferings.remove(c);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
     
       @Override
     public String toString() {

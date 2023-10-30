@@ -28,7 +28,7 @@ public class Professors {
    public void delete(Professor professor) {
     professors.remove(professor);
   }
-    public void update(int code,Professor professor) {
+    public void update(int code, Professor professor) {
     professors.set(code, professor);
   }
 

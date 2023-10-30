@@ -4,6 +4,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import model.userProfiles.Student;
+
 /**
  *
  * @author arnav
@@ -20,7 +23,12 @@ public class Course {
     private int credits;
     private String semester;
     private String grade;
+    private ArrayList<Student> registeredStudents;
 
+    public Course() {
+        registeredStudents = new ArrayList<>();
+    }
+    
     public String getSemester() {
         return semester;
     }
@@ -101,6 +109,14 @@ public class Course {
 
     public void setCredits(int credits) {
         this.credits = credits;
+    }
+    
+    public ArrayList<Student> getRegisteredStudents() {
+        return registeredStudents;
+    }
+
+    public void setRegisteredStudents(ArrayList<Student> registeredStudents) {
+        this.registeredStudents = registeredStudents;
     }
 
   @Override
