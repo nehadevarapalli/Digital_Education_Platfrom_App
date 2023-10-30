@@ -36,6 +36,14 @@ public class Manager {
         employers = new Employers();
     }
 
+    public HashMap<String, Degree> getDegreeOfferings() {
+        return degreeOfferings;
+    }
+
+    public void setDegreeOfferings(HashMap<String, Degree> degreeOfferings) {
+        this.degreeOfferings = degreeOfferings;
+    }
+    
     public Professors getProfessors() {
         return professors;
     }
@@ -67,8 +75,10 @@ public class Manager {
 //        employers = new Employers();
         for (int i = 1; i <= 5; i++) {
             Employer employer = new Employer();
+            Person p = createPerson("emp" +i, "USA", "emp"+i+"@gmail.com", true, "Male", "employer" +i, "employer" +i, "employer");
             employer.setName("Employer " + i);
             employer.setDescription("Description for Employer " + i);
+            employer.setPerson(p);
 
             // Create and add 5 job listings for each employer
             for (int j = 1; j <= 5; j++) {
@@ -160,12 +170,19 @@ public class Manager {
     public void populateDegrees() {
         Degree degree1 = new Degree();
         degree1.setName("MSIS");
-
         degree1.setCourseRequirement(populateCourses());
 
+        Degree degree2 = new Degree();
+        degree2.setName("MSCS");
+        degree2.setCourseRequirement(populateCourses());
+        
+        Degree degree3 = new Degree();
+        degree3.setName("MSDS");
+        degree3.setCourseRequirement(populateCourses());
+        
         degreeOfferings.put("MSIS", degree1);
-        degreeOfferings.put("MSCS", degree1);
-        degreeOfferings.put("MSDS", degree1);
+        degreeOfferings.put("MSCS", degree2);
+        degreeOfferings.put("MSDS", degree3);
     }
 
     private Person createPerson(String name, String country, String email, boolean enabled, String gender, String password, String username, String role) {
@@ -358,6 +375,12 @@ public class Manager {
                         }
                     } else if (person.getRole() == "professor") {
                         for (Professor p : professors.getProfessors()) {
+                            if (p.getPerson().equals(person)) {
+                                return p;
+                            }
+                        }
+                    } else if (person.getRole() == "employer") {
+                        for (Employer p : employers.getEmployers()) {
                             if (p.getPerson().equals(person)) {
                                 return p;
                             }
