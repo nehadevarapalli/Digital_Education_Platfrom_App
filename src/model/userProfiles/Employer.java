@@ -54,4 +54,8 @@ public class Employer {
         this.jobOfferings = jobOfferings;
     }
     
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

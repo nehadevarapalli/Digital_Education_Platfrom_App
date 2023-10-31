@@ -74,7 +74,6 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(0, 0, 0));
 
-        tblJobs.setBackground(new java.awt.Color(255, 255, 255));
         tblJobs.setForeground(new java.awt.Color(0, 0, 0));
         tblJobs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,7 +96,6 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblJobs);
 
-        btnDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnDelete.setForeground(new java.awt.Color(0, 0, 0));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +104,6 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnView.setBackground(new java.awt.Color(255, 255, 255));
         btnView.setForeground(new java.awt.Color(0, 0, 0));
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +112,6 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnCreate.setBackground(new java.awt.Color(255, 255, 255));
         btnCreate.setForeground(new java.awt.Color(0, 0, 0));
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -140,13 +136,10 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Pay/hr");
 
-        txtName.setBackground(new java.awt.Color(255, 255, 255));
         txtName.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtType.setBackground(new java.awt.Color(255, 255, 255));
         txtType.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtPay.setBackground(new java.awt.Color(255, 255, 255));
         txtPay.setForeground(new java.awt.Color(0, 0, 0));
 
         txtApplicants.setBackground(new java.awt.Color(255, 255, 255));
@@ -224,6 +217,8 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, lblName});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreate, btnDelete, btnView});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtName, txtPay, txtType});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
