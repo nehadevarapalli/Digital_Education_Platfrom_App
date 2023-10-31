@@ -557,7 +557,7 @@ public class Manager {
         }
     }
 
-    private boolean isValidUsername(String username) {
+    public boolean isValidUsername(String username) {
         return username.matches("[a-zA-Z0-9_]+");
     }
 

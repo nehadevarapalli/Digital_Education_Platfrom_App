@@ -261,7 +261,10 @@ public class MainJFrame extends javax.swing.JFrame {
                 CardLayout layout = (CardLayout) workArea.getLayout();
                 layout.next(workArea);
             } else if (p.getClass() == Admin.class) {
-//                TODO
+                AdminDashboardJPanel panel = new AdminDashboardJPanel(manager, workArea);
+                workArea.add("adminDashboard", panel);
+                CardLayout layout = (CardLayout) workArea.getLayout();
+                layout.next(workArea);
             }
         } else {
             JOptionPane.showMessageDialog(this, "User not found!", "Login Error", JOptionPane.ERROR_MESSAGE);
