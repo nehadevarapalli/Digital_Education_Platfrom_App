@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Job;
 import model.userProfiles.Employer;
+import model.userProfiles.Student;
 import utils.Manager;
 
 /**
@@ -64,6 +65,10 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
         txtType = new javax.swing.JTextField();
         txtPay = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
+        txtApplicants = new javax.swing.JTextArea();
+        btnApplicants = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -144,48 +149,76 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
         txtPay.setBackground(new java.awt.Color(255, 255, 255));
         txtPay.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtApplicants.setBackground(new java.awt.Color(255, 255, 255));
+        txtApplicants.setColumns(20);
+        txtApplicants.setForeground(new java.awt.Color(0, 0, 0));
+        txtApplicants.setRows(5);
+        jScrollPane2.setViewportView(txtApplicants);
+
+        btnApplicants.setBackground(new java.awt.Color(255, 255, 255));
+        btnApplicants.setForeground(new java.awt.Color(0, 0, 0));
+        btnApplicants.setText("View Applicants");
+        btnApplicants.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApplicantsActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Applicants");
+
         txtDescription.setBackground(new java.awt.Color(255, 255, 255));
         txtDescription.setColumns(20);
         txtDescription.setForeground(new java.awt.Color(0, 0, 0));
         txtDescription.setRows(5);
-        jScrollPane2.setViewportView(txtDescription);
+        jScrollPane3.setViewportView(txtDescription);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnApplicants, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPay))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtType))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblName)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCreate)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnView)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDelete))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 55, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(542, 542, 542)
-                .addComponent(btnCreate)
-                .addGap(18, 18, 18)
-                .addComponent(btnView)
-                .addGap(18, 18, 18)
-                .addComponent(btnDelete)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPay))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtType))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblName)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(57, 57, 57)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, lblName});
@@ -201,7 +234,8 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
                     .addComponent(btnView)
-                    .addComponent(btnCreate))
+                    .addComponent(btnCreate)
+                    .addComponent(btnApplicants))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -217,6 +251,8 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(txtPay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
@@ -287,18 +323,40 @@ public class EmployerJobsJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
+    private void btnApplicantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplicantsActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblJobs.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tblJobs.getModel();
+        Job selectedJob = (Job) model.getValueAt(selectedRowIndex, 0);
+        String applicants = "";
+        for (Student s: selectedJob.getAppliedStudents()) {
+            applicants = applicants + s.getPerson().getName() + "\n";
+        }
+        txtApplicants.setText(applicants);
+    }//GEN-LAST:event_btnApplicantsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApplicants;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnView;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblName;
     private javax.swing.JTable tblJobs;
+    private javax.swing.JTextArea txtApplicants;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPay;
