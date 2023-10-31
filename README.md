@@ -16,8 +16,7 @@ In today's fast-paced world of technology, education is changing faster than eve
 The proposed digital educational platform demonstrates a paradigm shift in the traditional education model, empowering professors and students alike. By decentralizing ownership and providing autonomy to professors, it opens up new avenues for education accessibility and affordability. The reputation index and course search capabilities enhance the user experience. Additionally, the system's global accessibility via various devices promotes inclusivity. Overall, this platform has the potential to significantly impact the quality of education and access to learning worldwide.
 
 <p align="center">
-  <img width="336" alt="image" src="https://github.com/aed5100/assignment-3-cyberschool/assets/144740361/fd8c72eb-3d43-486d-8c46-6bf280f0d35b">
-</p>
+<img width="400" alt="image" src="https://github.com/aed5100/assignment-3-cyberschool/assets/144740361/7beb73a4-cd10-4c0e-b52f-80bbf9d72e7a">
 
 <p align="center">
   <img width="312" alt="image" src="https://github.com/aed5100/assignment-3-cyberschool/assets/144740361/a3b691cc-a6a0-4b1d-88ed-66d30a0a2114">
