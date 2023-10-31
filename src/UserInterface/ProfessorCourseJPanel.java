@@ -35,6 +35,8 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         this.workArea = workArea;
         this.m = m;
         populateTable();
+        btnView.setEnabled(true);
+        btnUpdate.setEnabled(false);
     }
 
     /**
@@ -401,7 +403,6 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-
         int selectedRowIndex = tblCourse.getSelectedRow();
 
         if (selectedRowIndex < 0) {
@@ -419,6 +420,8 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         code.setText(String.valueOf(selectedCourse.getCode()));
         semester.setText(selectedCourse.getSemester());
         txtRegion.setText(p.getPerson().getCountry());
+        
+        btnUpdate.setEnabled(true);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -431,8 +434,8 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         }
         DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
         Course selectedCourse = (Course) model.getValueAt(selectedRowIndex, 0);
-        JOptionPane.showMessageDialog(this, "Course info deleted.");
         p.removeCourse(selectedCourse.getName());
+        JOptionPane.showMessageDialog(this, "Course info deleted.");
         populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -602,6 +605,7 @@ public class ProfessorCourseJPanel extends javax.swing.JPanel {
         txtRegion.setText("");
         code.setText("");
         semester.setText("");
+        btnUpdate.setEnabled(false);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 

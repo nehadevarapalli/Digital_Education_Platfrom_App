@@ -585,7 +585,7 @@ public class Manager {
 //            throw new RuntimeException("Error validating password", e);
 //        }
 //    }
-    private boolean isValidUsername(String username) {
+    public boolean isValidUsername(String username) {
         return username.matches("[a-zA-Z0-9_]+");
     }
 
@@ -617,6 +617,10 @@ public class Manager {
         }
 
         return dateTimeList;
+    }
+    
+    public Students getStudents() {
+        return students;
     }
 
 }
