@@ -35,14 +35,14 @@ public class MainJFrame extends javax.swing.JFrame {
         manager.populateProfessors();
         initComponents();
         Student student1 = manager.createStudent("Joe", "USA", "student1@gmail.com", true, "Female", "password@1", "student1", "MSIS");
-        test();
+//        test();
+        manager.createAdmin("admin", "admin@123");
     }
 
     private void test() {
         Employers employers = manager.getEmployers();
         for (Employer e : employers.getEmployers()) {
             System.out.println(e.getName());
-//            System.out.println(e.getDescription());
             for (Job j : e.getJobOfferings()) {
                 System.out.println(j.getName());
             }
