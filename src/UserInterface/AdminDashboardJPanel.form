@@ -125,8 +125,8 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnProfessors" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnEmployees" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="493" max="32767" attributes="0"/>
+                          <Component id="btnEmployers" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="496" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -137,7 +137,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnStudents" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnProfessors" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnEmployees" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnEmployers" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -167,15 +167,15 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProfessorsActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnEmployees">
+                <Component class="javax.swing.JButton" name="btnEmployers">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Employees"/>
+                    <Property name="text" type="java.lang.String" value="Employers"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmployeesActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmployersActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

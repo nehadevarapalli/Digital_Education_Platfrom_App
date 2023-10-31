@@ -42,7 +42,7 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         btnStudents = new javax.swing.JButton();
         btnProfessors = new javax.swing.JButton();
-        btnEmployees = new javax.swing.JButton();
+        btnEmployers = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnLogOut = new javax.swing.JButton();
 
@@ -77,11 +77,11 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnEmployees.setForeground(new java.awt.Color(0, 0, 0));
-        btnEmployees.setText("Employees");
-        btnEmployees.addActionListener(new java.awt.event.ActionListener() {
+        btnEmployers.setForeground(new java.awt.Color(0, 0, 0));
+        btnEmployers.setText("Employers");
+        btnEmployers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmployeesActionPerformed(evt);
+                btnEmployersActionPerformed(evt);
             }
         });
 
@@ -95,8 +95,8 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnProfessors)
                 .addGap(18, 18, 18)
-                .addComponent(btnEmployees)
-                .addContainerGap(493, Short.MAX_VALUE))
+                .addComponent(btnEmployers)
+                .addContainerGap(496, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +105,7 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnStudents)
                     .addComponent(btnProfessors)
-                    .addComponent(btnEmployees))
+                    .addComponent(btnEmployers))
                 .addContainerGap())
         );
 
@@ -194,11 +194,11 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
         splitPane.setBottomComponent(professorPanel);
     }//GEN-LAST:event_btnProfessorsActionPerformed
 
-    private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
+    private void btnEmployersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployersActionPerformed
         // TODO add your handling code here:
         AdminEmployerJPanel employeePanel = new AdminEmployerJPanel(m);
         splitPane.setBottomComponent(employeePanel);
-    }//GEN-LAST:event_btnEmployeesActionPerformed
+    }//GEN-LAST:event_btnEmployersActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
@@ -209,7 +209,7 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEmployees;
+    private javax.swing.JButton btnEmployers;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnProfessors;
     private javax.swing.JButton btnStudents;
