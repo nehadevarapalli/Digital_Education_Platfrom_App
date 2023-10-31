@@ -24,13 +24,14 @@ public class AdminStudentJPanel extends javax.swing.JPanel {
      * Creates new form AdminStudentJPanel
      */
     Manager m;
-    Students students = m.getStudents();
+    Students students;
     JPanel workArea;
     
     public AdminStudentJPanel(Manager m, JPanel workArea) {
         initComponents();
         this.m = m;
         this.workArea = workArea;
+        this.students = m.getStudents();
         populateTable();
         btnSave.setEnabled(false);
         btnView.setEnabled(true);
