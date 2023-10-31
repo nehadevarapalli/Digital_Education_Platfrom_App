@@ -14,6 +14,7 @@ import model.Degree;
 import model.Job;
 import model.person.Person;
 import model.person.Persons;
+import model.userProfiles.Admin;
 import model.userProfiles.Employer;
 import model.userProfiles.Employers;
 import model.userProfiles.Professor;
@@ -29,6 +30,7 @@ public class Manager {
     private HashMap<String, Degree> degreeOfferings;
     private Employers employers;
     private Professors professors;
+    private ArrayList<Admin> admins;
     private String[] profs;
     private String[] genders;
 
@@ -41,6 +43,7 @@ public class Manager {
         degreeOfferings = new HashMap<>();
         professors = new Professors();
         employers = new Employers();
+        admins = new ArrayList<Admin>();
     }
 
     public HashMap<String, Degree> getDegreeOfferings() {
@@ -68,18 +71,15 @@ public class Manager {
     }
 
     public void populateProfessors() {
-//        professors = new Professors();
-
         for (int i = 0; i < 10; i++) {
-            Professor p = this.createProfessor(profs[i], "USA", profs[i] + "@gmail.com", true, genders[i%2], "Professor@" + i, "professor" + i, "MSIS", "PHD", i + 1, 0);
+            Professor p = this.createProfessor(profs[i], "USA", profs[i] + "@gmail.com", true, genders[i % 2], "Professor@" + i, "professor" + i, "MSIS", "PHD", i + 1, 0);
             ArrayList<Course> courseList = populateCourses();
-            p.setCourseOfferings(new ArrayList<>(courseList.subList(i*2, (i*2)+2)));
+            p.setCourseOfferings(new ArrayList<>(courseList.subList(i * 2, (i * 2) + 2)));
         }
     }
 
     public void populateEmployers() {
         // Create and add employers with job listings
-//        employers = new Employers();
         for (int i = 0; i < 5; i++) {
             Employer employer = new Employer();
             Person p = createPerson("emp" + i, "USA", "emp" + i + "@gmail.com", true, "Male", "Employer@" + i, "employer" + i, "employer");
@@ -108,49 +108,37 @@ public class Manager {
         Course course1 = new Course();
         course1.setCode(101);
         course1.setName("Introduction to Computer Science");
-//        course1.setInstructor("Prof. Smith");
         course1.setSchedule("Mon, Wed, Fri 10:00 AM - 11:30 AM");
         course1.setLanguage("Java");
         course1.setDesc("This course provides an introduction to the fundamentals of computer science, including algorithms, data structures, and programming.");
-//        course1.setReview(4);
         course1.setCredits(3);
-//        course1.setGrade("A");
         course1.setSemester("Fall 23");
 
         Course course2 = new Course();
         course2.setCode(102);
         course2.setName("Data Structures and Algorithms");
-//        course2.setInstructor("Prof. Johnson");
         course2.setSchedule("Tue, Thu 1:00 PM - 2:30 PM");
         course2.setLanguage("Java");
         course2.setDesc("This course builds on the basics of computer science and delves deeper into data structures and algorithms.");
-//        course2.setReview(4);
         course2.setCredits(4);
-//        course2.setGrade("B+");
         course2.setSemester("Fall 23");
 
         Course course3 = new Course();
         course3.setCode(103);
         course3.setName("Web Development Fundamentals");
-//        course3.setInstructor("Prof. Davis");
         course3.setSchedule("Mon, Wed 3:00 PM - 4:30 PM");
         course3.setLanguage("HTML, CSS, JavaScript");
         course3.setDesc("Learn the basics of web development, including HTML, CSS, and JavaScript.");
-//        course3.setReview(4);
         course3.setCredits(3);
-//        course3.setGrade("B");
         course3.setSemester("Fall 23");
 
         Course course4 = new Course();
         course4.setCode(104);
         course4.setName("Introduction to Python");
-//        course4.setInstructor("Prof. Martinez");
         course4.setSchedule("Tue, Thu 10:00 AM - 11:30 AM");
         course4.setLanguage("Python");
         course4.setDesc("An introductory course to Python programming language.");
-//        course4.setReview(4);
         course4.setCredits(3);
-//        course4.setGrade("A-");
         course4.setSemester("Fall 23");
 
         Course course5 = new Course();
@@ -328,14 +316,14 @@ public class Manager {
 
         Degree degree2 = new Degree();
         degree2.setName("MSCS");
-        ArrayList<Course> req2 = new ArrayList<Course>(populateCourses().subList(0,4));
-        req2.addAll(populateCourses().subList(6,10));
+        ArrayList<Course> req2 = new ArrayList<Course>(populateCourses().subList(0, 4));
+        req2.addAll(populateCourses().subList(6, 10));
         degree2.setCourseRequirement(req2);
 
         Degree degree3 = new Degree();
         degree3.setName("MSDS");
-        ArrayList<Course> req3 = new ArrayList<Course>(populateCourses().subList(0,4));
-        req3.addAll(populateCourses().subList(10,14));
+        ArrayList<Course> req3 = new ArrayList<Course>(populateCourses().subList(0, 4));
+        req3.addAll(populateCourses().subList(10, 14));
         degree2.setCourseRequirement(req3);
 
         degreeOfferings.put("MSIS", degree1);
@@ -353,16 +341,13 @@ public class Manager {
             person.setGender(gender);
             person.setRole(role);
             String hashedPassword = hashPassword(person.getSalt(), password);
-//            ArrayList<String> hashedPasswordList = new ArrayList<>();
 
             person.setCurrentHashedPassword(hashedPassword);
             person.setUsername(username);
             person.setpId(persons.getPersons().size());
             persons.getPersons().add(person);
-//            JOptionPane.showMessageDialog(null, "Person created");
             return person;
         } else {
-//            JOptionPane.showMessageDialog(null, "Invalid email format.");
             return null;
         }
     }
@@ -375,14 +360,11 @@ public class Manager {
             person.setGender(gender);
             person.setEmail(email);
             String hashedPassword = hashPassword(person.getSalt(), password);
-//            ArrayList<String> hashedPasswordList = new ArrayList<>();
             person.setCurrentHashedPassword(hashedPassword);
             person.setUsername(username);
             persons.update(person.getpId(), person);
-//            JOptionPane.showMessageDialog(null, "Person updated");
             return person;
         } else {
-//            JOptionPane.showMessageDialog(null, "Invalid email");
             return null;
         }
     }
@@ -398,7 +380,6 @@ public class Manager {
         course.setSchedule(schedule);
         course.setSemester(semester);
         courses.add(course);
-//        JOptionPane.showMessageDialog(null, "Course created");
         return course;
     }
 
@@ -411,7 +392,6 @@ public class Manager {
         course.setSemester(semester);
         course.setSchedule(schedule);
         courses.getCourses().set(course.getCode(), course);
-//        JOptionPane.showMessageDialog(null, "Course updated");
         return course;
     }
 
@@ -419,7 +399,6 @@ public class Manager {
         ArrayList<Course> coursesList = courses.getCourses();
         Course courseR = coursesList.get(code);
         return coursesList.remove(courseR);
-//        JOptionPane.showMessageDialog(null, "Course deleted");
     }
 
     public Student createStudent(String name, String country, String email, boolean enabled, String gender, String password, String username, String selectedDegree) {
@@ -429,10 +408,8 @@ public class Manager {
             student.setPerson(person);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
             students.add(student);
-//            JOptionPane.showMessageDialog(null, "Student created");
             return student;
         } else {
-//            JOptionPane.showMessageDialog(null, "Invalid email format.");
             return null;
         }
     }
@@ -443,10 +420,8 @@ public class Manager {
             student.setPerson(updatedPerson);
             student.setSelectedDegree(degreeOfferings.get(selectedDegree));
             students.update(student.getPerson().getpId(), student);
-//            JOptionPane.showMessageDialog(null, "Student updated");
             return student;
         } else {
-//            JOptionPane.showMessageDialog(null, "Error updating student information");
             return null;
         }
     }
@@ -455,7 +430,6 @@ public class Manager {
         ArrayList<Student> studentsList = students.getStudents();
         Student student = studentsList.get(studentId);
         return studentsList.remove(student);
-//        JOptionPane.showMessageDialog(null, "Student deleted");
     }
 
     public Professor createProfessor(String name, String country, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
@@ -468,12 +442,18 @@ public class Manager {
             professor.setYearsOfExperience(yearsOfExperience);
             professor.setRating((float) rating);
             professors.add(professor);
-//            JOptionPane.showMessageDialog(null, "Professor created");
             return professor;
         } else {
-//            JOptionPane.showMessageDialog(null, "Invalid email format.");
             return null;
         }
+    }
+
+    public Admin createAdmin(String username, String password) {
+        Person p = createPerson("admin", "admin", "admin@admin.com", true, "admin ", password, username, "admin");
+        Admin admin = new Admin();
+        admin.setPerson(p);
+        admins.add(admin);
+        return admin;
     }
 
     public Professor updateProfessor(Professor professor, String name, String country, String email, boolean enabled, String gender, String password, String username, String speciality, String qualifications, int yearsOfExperience, int rating) {
@@ -485,10 +465,8 @@ public class Manager {
             professor.setYearsOfExperience(yearsOfExperience);
             professor.setRating(rating);
             professors.update(professor.getPerson().getpId(), professor);
-//            JOptionPane.showMessageDialog(null, "Professor updated");
             return professor;
         } else {
-//            JOptionPane.showMessageDialog(null, "Error updating professor information");
             return null;
         }
     }
@@ -497,7 +475,6 @@ public class Manager {
         ArrayList<Professor> professorsList = professors.getProfessors();
         Professor professor = professorsList.get(professorId);
         return professorsList.remove(professor);
-//        JOptionPane.showMessageDialog(null, "Professor deleted");
     }
 
     private boolean containsAdmin() {
@@ -523,7 +500,6 @@ public class Manager {
         for (Person person : persons.getPersons()) {
             if (person.isEnabled() && person.getUsername().equals(username)) {
                 if (person.getCurrentHashedPassword().equals(hashPassword(person.getSalt(), password))) {
-//                    JOptionPane.showMessageDialog(null, "Login successful.");
                     switch (person.getRole()) {
                         case "student":
                             for (Student s : students.getStudents()) {
@@ -541,6 +517,13 @@ public class Manager {
                             break;
                         case "employer":
                             for (Employer p : employers.getEmployers()) {
+                                if (p.getPerson().equals(person)) {
+                                    return p;
+                                }
+                            }
+                            break;
+                        case "admin":
+                            for (Admin p : admins) {
                                 if (p.getPerson().equals(person)) {
                                     return p;
                                 }
@@ -574,18 +557,7 @@ public class Manager {
         }
     }
 
-//    private boolean checkPassword(Person user, String password) {
-//        try {
-//            MessageDigest md = MessageDigest.getInstance("SHA-512");
-//            md.update(user.getSalt());
-//            byte[] hashedInput = md.digest(password.getBytes(StandardCharsets.UTF_8));
-//            String hashedInputString = new String(hashedInput, StandardCharsets.UTF_16);
-//            return user.setCurrentHashedPassword(hashedInputString);
-//        } catch (NoSuchAlgorithmException e) {
-//            throw new RuntimeException("Error validating password", e);
-//        }
-//    }
-    public boolean isValidUsername(String username) {
+    private boolean isValidUsername(String username) {
         return username.matches("[a-zA-Z0-9_]+");
     }
 

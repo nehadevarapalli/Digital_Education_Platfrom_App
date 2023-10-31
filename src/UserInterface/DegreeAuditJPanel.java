@@ -164,13 +164,14 @@ public class DegreeAuditJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String switchDegreeName = comboSwitchDegree.getSelectedItem().toString();
         Degree switchDegree = m.getDegreeOfferings().get(switchDegreeName);
-        int relevantCoursesNumber = currentDegree.switchDegree(s, switchDegree, true);
+        int relevantCoursesNumber = 0;
 
         HashMap<Course,String> hm = s.getTranscript();
         for (Map.Entry<Course, String> mapElement : hm.entrySet()) {
             Course course = mapElement.getKey();
+            String grade = mapElement.getValue();
             for (Course c : switchDegree.getCourseRequirement()) {
-                if (c.getName().equals(course.getName())) {
+                if (c.getName().equals(course.getName()) && !grade.equals("TBA")) {
                     relevantCoursesNumber++;
                 }
             }
