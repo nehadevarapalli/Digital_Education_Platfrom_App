@@ -8,12 +8,10 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import model.Course;
 import model.Job;
-import model.person.Person;
 import model.userProfiles.Admin;
 import model.userProfiles.Employer;
 import model.userProfiles.Employers;
 import model.userProfiles.Professor;
-import model.userProfiles.Professors;
 import model.userProfiles.Student;
 import utils.Manager;
 
@@ -34,7 +32,7 @@ public class MainJFrame extends javax.swing.JFrame {
         manager.populateEmployers();
         manager.populateProfessors();
         initComponents();
-        Student student1 = manager.createStudent("Joe", "USA", "student1@gmail.com", true, "Female", "password@1", "student1", "MSIS");
+//        Student student1 = manager.createStudent("Joe", "USA", "student1@gmail.com", true, "Female", "password@1", "student1", "MSIS");
 //        test();
         manager.createAdmin("admin", "admin@123");
     }
