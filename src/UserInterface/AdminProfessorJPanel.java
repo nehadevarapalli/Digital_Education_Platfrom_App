@@ -388,8 +388,9 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
         selectedProfessor.getPerson().setUsername(username.getText());
         String newPassword = m.hashPassword(selectedProfessor.getPerson().getSalt(), password.getText());
         selectedProfessor.getPerson().setCurrentHashedPassword(newPassword);
-        JOptionPane.showConfirmDialog(this, "Professor updated.");
+        JOptionPane.showMessageDialog(this, "Professor updated.");
 
+        populateTable();
         btnSave.setEnabled(false);
         btnView.setEnabled(true);
         name.setText("");
