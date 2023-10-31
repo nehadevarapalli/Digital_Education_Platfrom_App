@@ -33,10 +33,12 @@ public class Manager {
     private ArrayList<Admin> admins;
     private String[] profs;
     private String[] genders;
+    private String[] studs;
 
     public Manager() {
         this.profs = "Smith,Johnson,Davis,Martinez,Smith,Rodriguez,Williams,Anderson,Miller,Wilson".split(",");
         this.genders = "Male,Female".split(",");
+        this.studs = "John,Mary,David,Sarah,Michael,Emily,James,Olivia,Daniel,Sophia".split(",");
         persons = new Persons();
         courses = new Courses();
         students = new Students();
@@ -70,10 +72,30 @@ public class Manager {
         this.employers = employers;
     }
 
+    public void populateStudents() {
+        for (int i = 0; i < 10; i++) {
+            Student s = this.createStudent(studs[i], "USA", studs[i] + "@gmail.com", true, genders[i % 2], "password@" + i, "student" + i, "MSCS");
+//            Course course1 = new Course();
+//            course1.setCode(101);
+//            course1.setName("Introduction to Computer Science");
+//            course1.setSchedule("Mon, Wed, Fri 10:00 AM - 11:30 AM");
+//            course1.setLanguage("Java");
+//            course1.setDesc("This course provides an introduction to the fundamentals of computer science, including algorithms, data structures, and programming.");
+//            course1.setCredits(3);
+//            course1.setSemester("Fall 23");
+//            s.getTranscript().put(course1, "TBA");
+        }
+    }
+
     public void populateProfessors() {
+        populateStudents();
         for (int i = 0; i < 10; i++) {
             Professor p = this.createProfessor(profs[i], "USA", profs[i] + "@gmail.com", true, genders[i % 2], "Professor@" + i, "professor" + i, "MSIS", "PHD", i + 1, 0);
             ArrayList<Course> courseList = populateCourses();
+            if (i == 0) {
+                Course c = courseList.get(0);
+                c.setRegisteredStudents(students.getStudents());
+            }
             p.setCourseOfferings(new ArrayList<>(courseList.subList(i * 2, (i * 2) + 2)));
         }
     }
@@ -590,7 +612,7 @@ public class Manager {
 
         return dateTimeList;
     }
-    
+
     public Students getStudents() {
         return students;
     }
