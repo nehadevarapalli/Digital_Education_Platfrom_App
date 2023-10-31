@@ -96,6 +96,11 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         });
 
         btnFindAJob.setText("Find a Job");
+        btnFindAJob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindAJobActionPerformed(evt);
+            }
+        });
 
         btnProfessorReview.setText("Professor Review");
         btnProfessorReview.addActionListener(new java.awt.event.ActionListener() {
@@ -228,6 +233,12 @@ public class StudentDashboardJPanel extends javax.swing.JPanel {
         StudentReviewJPanel reviewPanel = new StudentReviewJPanel(s, m);
         splitPane.setBottomComponent(reviewPanel);
     }//GEN-LAST:event_btnProfessorReviewActionPerformed
+
+    private void btnFindAJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindAJobActionPerformed
+        // TODO add your handling code here:
+        FindAJob jobPanel = new FindAJob(s, m);
+        splitPane.setBottomComponent(jobPanel);
+    }//GEN-LAST:event_btnFindAJobActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCourses;

@@ -6,6 +6,7 @@ package UserInterface;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import model.userProfiles.Employer;
 import model.userProfiles.Professor;
 import utils.Manager;
 
@@ -13,30 +14,29 @@ import utils.Manager;
  *
  * @author ashishnevan
  */
-public class ProfessorProfileJPanel extends javax.swing.JPanel {
+public class EmployerProfileJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ProfessorProfileJPanel
      */
-    Professor p;
+    Employer e;
     Manager m;
 
-    public ProfessorProfileJPanel(Professor p, Manager m) {
+    public EmployerProfileJPanel(Employer e, Manager m) {
         initComponents();
         btnSave.setEnabled(false);
         btnEdit.setEnabled(true);
-        this.p = p;
+        this.e = e;
         this.m = m;
         populateProfessorProfile();
+        txtDescription.setEnabled(false);
     }
 
     private void populateProfessorProfile() {
-        txtName.setText(p.getPerson().getName());
-        txtGender.setText(p.getPerson().getGender());
-        txtCountry.setText(p.getPerson().getCountry());
-        txtUsername.setText(p.getPerson().getUsername());
-        txtQualification.setText(p.getQualifications());
-        txtSpecialty.setText(p.getSpeciality());
+        txtName.setText(e.getPerson().getName());
+        txtDescription.setText(e.getDescription());
+        txtCountry.setText(e.getPerson().getCountry());
+        txtUsername.setText(e.getPerson().getUsername());
     }
 
     /**
@@ -49,20 +49,17 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtGender = new javax.swing.JTextField();
         txtCountry = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
-        txtQualification = new javax.swing.JTextField();
-        txtSpecialty = new javax.swing.JTextField();
         btnEdit = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnUpdatePassword = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(828, 448));
@@ -70,30 +67,15 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Name");
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Gender");
-
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Country");
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Username");
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Qualification");
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Speciality");
-
-        txtGender.setEnabled(false);
-
         txtCountry.setEnabled(false);
 
         txtUsername.setEnabled(false);
-
-        txtQualification.setEnabled(false);
-
-        txtSpecialty.setEnabled(false);
 
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +105,13 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Description");
+
+        txtDescription.setColumns(20);
+        txtDescription.setRows(5);
+        jScrollPane1.setViewportView(txtDescription);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,42 +120,33 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
                 .addGap(280, 280, 280)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSpecialty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUpdatePassword)))
-                .addContainerGap(197, Short.MAX_VALUE))
+                        .addComponent(btnUpdatePassword))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtUsername))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCountry)
+                            .addComponent(jScrollPane1))))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCountry, txtGender, txtName, txtQualification, txtSpecialty, txtUsername});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCountry, txtName, txtUsername});
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel6, jLabel7});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel3, jLabel4, jLabel5});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,36 +156,28 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtQualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtSpecialty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit)
                     .addComponent(btnSave)
                     .addComponent(btnUpdatePassword))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtCountry, txtGender, txtName, txtQualification, txtSpecialty, txtUsername});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtCountry, txtName, txtUsername});
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel6, jLabel7});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel3, jLabel4, jLabel5});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,12 +192,10 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
             return;
         }
 
-        p.getPerson().setName(txtName.getText());
-        p.getPerson().setGender(txtGender.getText());
-        p.getPerson().setCountry(txtCountry.getText());
-        p.setQualifications(txtQualification.getText());
-        p.setSpeciality(txtSpecialty.getText());
-        p.getPerson().setUsername(txtUsername.getText());
+        e.getPerson().setName(txtName.getText());
+        e.getPerson().setCountry(txtCountry.getText());
+        e.getPerson().setUsername(txtUsername.getText());
+        e.setDescription(txtDescription.getText());
 
         btnSave.setEnabled(false);
         btnEdit.setEnabled(true);
@@ -234,22 +204,18 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
         
         txtName.setEnabled(false);
         txtCountry.setEnabled(false);
-        txtGender.setEnabled(false);
-        txtQualification.setEnabled(false);
-        txtSpecialty.setEnabled(false);
         txtUsername.setEnabled(false);
+        txtDescription.setEnabled(false);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private boolean isFieldsFilled() {
-        return !(txtName.getText().isBlank() || txtGender.getText().isBlank() || txtCountry.getText().isBlank() || txtUsername.getText().isBlank() || txtQualification.getText().isBlank() || txtSpecialty.getText().isBlank());
+        return !(txtName.getText().isBlank() || txtCountry.getText().isBlank() || txtUsername.getText().isBlank() || txtDescription.getText().isBlank());
     }
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         txtName.setEnabled(true);
         txtCountry.setEnabled(true);
-        txtGender.setEnabled(true);
-        txtQualification.setEnabled(true);
-        txtSpecialty.setEnabled(true);
+        txtDescription.setEnabled(true);
         txtUsername.setEnabled(true);
         btnSave.setEnabled(true);
         btnEdit.setEnabled(false);
@@ -263,13 +229,13 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
             return;
         }
 
-        newPassword = m.hashPassword(p.getPerson().getSalt(), newPassword);
+        newPassword = m.hashPassword(e.getPerson().getSalt(), newPassword);
 
         if (newPassword != null && !newPassword.isEmpty()) {
-            if (!p.getPerson().setCurrentHashedPassword(newPassword)) {
+            if (!e.getPerson().setCurrentHashedPassword(newPassword)) {
                 JOptionPane.showMessageDialog(this, "You cannot use a previously used password. Please choose a different one.");
             } else {
-                p.getPerson().setCurrentHashedPassword(newPassword);
+                e.getPerson().setCurrentHashedPassword(newPassword);
                 JOptionPane.showMessageDialog(this, "Password updated.");
             }
         } else {
@@ -299,16 +265,13 @@ public class ProfessorProfileJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdatePassword;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCountry;
-    private javax.swing.JTextField txtGender;
+    private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtQualification;
-    private javax.swing.JTextField txtSpecialty;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import model.userProfiles.Student;
+
 /**
  *
  * @author ashishnevan
@@ -13,6 +16,19 @@ public class Job {
     private String description;
     private String type;
     private float payPerHour;
+    private ArrayList<Student> appliedStudents;
+    
+    public Job() {
+        appliedStudents = new ArrayList<>();
+    }
+
+    public ArrayList<Student> getAppliedStudents() {
+        return appliedStudents;
+    }
+
+    public void setAppliedStudents(ArrayList<Student> appliedStudents) {
+        this.appliedStudents = appliedStudents;
+    }
 
     public String getName() {
         return name;
@@ -44,5 +60,10 @@ public class Job {
 
     public void setPayPerHour(float payPerHour) {
         this.payPerHour = payPerHour;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
     }
 }
