@@ -28,6 +28,8 @@ public class AdminTranscriptJPanel extends javax.swing.JPanel {
         initComponents();
         this.s = s;
         this.workArea = workArea;
+        chkboxRelevant.setSelected(false);
+        populateTable(false);
     }
 
     /**

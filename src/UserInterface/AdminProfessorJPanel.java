@@ -4,6 +4,7 @@
  */
 package UserInterface;
 
+import static UserInterface.ProfessorProfileJPanel.showPasswordInputDialog;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -73,8 +74,6 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         btnView = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -86,6 +85,7 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
         country = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         rating = new javax.swing.JTextField();
+        btnUpdatePassword = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(828, 448));
@@ -137,8 +137,6 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Username");
 
-        jLabel6.setText("Password");
-
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +173,13 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
 
         rating.setEnabled(false);
 
+        btnUpdatePassword.setText("Update Password");
+        btnUpdatePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdatePasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -207,7 +212,10 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
                                 .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnClear)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnClear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnUpdatePassword))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -229,19 +237,15 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel4))
+                                        .addComponent(jLabel4)
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 12, Short.MAX_VALUE))))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel7, jLabel8, jLabel9});
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {country, email, gender, name, password, qualification, rating, specialty, username});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {country, email, gender, name, qualification, rating, specialty, username});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,8 +256,9 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
                     .addComponent(btnView)
                     .addComponent(btnDelete)
                     .addComponent(btnSave)
-                    .addComponent(btnClear))
-                .addGap(22, 22, 22)
+                    .addComponent(btnClear)
+                    .addComponent(btnUpdatePassword))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
@@ -268,32 +273,29 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
                         .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel7)
+                                .addComponent(qualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel5)
+                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(qualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel4))))
-                .addGap(0, 43, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))))))
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel7, jLabel8, jLabel9});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -339,7 +341,6 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
         country.setText(selectedProfessor.getPerson().getCountry());
         email.setText(selectedProfessor.getPerson().getEmail());
         username.setText(selectedProfessor.getPerson().getUsername());
-        password.setText(selectedProfessor.getPerson().getCurrentHashedPassword());
 
         btnSave.setEnabled(true);
     }//GEN-LAST:event_btnViewActionPerformed
@@ -371,7 +372,7 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblProfessor.getModel();
         Professor selectedProfessor = (Professor) model.getValueAt(selectedRowIndex, 0);
 
-        if(name.getText().isBlank() || gender.getText().isBlank() || specialty.getText().isBlank() || qualification.getText().isBlank() || country.getText().isBlank() || email.getText().isBlank() || username.getText().isBlank() || password.getText().isBlank()){
+        if(name.getText().isBlank() || gender.getText().isBlank() || specialty.getText().isBlank() || qualification.getText().isBlank() || country.getText().isBlank() || email.getText().isBlank() || username.getText().isBlank()){
             JOptionPane.showMessageDialog(this, "Please fill all the details.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -386,8 +387,7 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
         selectedProfessor.getPerson().setCountry(country.getText());
         selectedProfessor.setQualifications(qualification.getText());
         selectedProfessor.getPerson().setUsername(username.getText());
-        String newPassword = m.hashPassword(selectedProfessor.getPerson().getSalt(), password.getText());
-        selectedProfessor.getPerson().setCurrentHashedPassword(newPassword);
+
         JOptionPane.showMessageDialog(this, "Professor updated.");
 
         populateTable();
@@ -401,7 +401,6 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
         country.setText("");
         email.setText("");
         username.setText("");
-        password.setText("");
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -414,14 +413,46 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
         rating.setText("");
         email.setText("");
         username.setText("");
-        password.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnUpdatePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePasswordActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblProfessor.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a Professor.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblProfessor.getModel();
+        Professor p = (Professor) model.getValueAt(selectedRowIndex, 0);
+        
+        String newPassword = showPasswordInputDialog();
+        if (!m.isValidPassword(newPassword)) {
+            JOptionPane.showMessageDialog(this, "Please choose a password with one uppercase letter, lowercase letters, a special character and a number.");
+            return;
+        }
+
+        newPassword = m.hashPassword(p.getPerson().getSalt(), newPassword);
+
+        if (newPassword != null && !newPassword.isEmpty()) {
+            if (!p.getPerson().setCurrentHashedPassword(newPassword)) {
+                JOptionPane.showMessageDialog(this, "You cannot use a previously used password. Please choose a different one.");
+            } else {
+                p.getPerson().setCurrentHashedPassword(newPassword);
+                JOptionPane.showMessageDialog(this, "Password updated.");
+            }
+            populateTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "No changes made to password.");
+        }
+    }//GEN-LAST:event_btnUpdatePasswordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdatePassword;
     private javax.swing.JButton btnView;
     private javax.swing.JTextField country;
     private javax.swing.JTextField email;
@@ -431,14 +462,12 @@ public class AdminProfessorJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField name;
-    private javax.swing.JTextField password;
     private javax.swing.JTextField qualification;
     private javax.swing.JTextField rating;
     private javax.swing.JTextField specialty;
