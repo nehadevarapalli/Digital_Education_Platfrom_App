@@ -12,24 +12,26 @@ import java.util.ArrayList;
  */
 public class Professors {
 
-  public ArrayList<Professor> professors;
-  
-  public Professors() {
-      professors = new ArrayList<Professor>();
-  }
-  
-  public ArrayList<Professor> getProfessors() {
-    return professors;
-  }
+    public ArrayList<Professor> professors;
 
-  public void add(Professor professor) {
-    professors.add(professor);
-  }
-   public void delete(Professor professor) {
-    professors.remove(professor);
-  }
+    public Professors() {
+        professors = new ArrayList<Professor>();
+    }
+
+    public ArrayList<Professor> getProfessors() {
+        return professors;
+    }
+
+    public void add(Professor professor) {
+        professors.add(professor);
+    }
+
+    public void delete(Professor professor) {
+        professors.remove(professor);
+    }
+
     public void update(int code, Professor professor) {
-    professors.set(code, professor);
-  }
+        professors.set(code, professor);
+    }
 
 }

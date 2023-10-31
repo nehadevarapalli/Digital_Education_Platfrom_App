@@ -590,5 +590,9 @@ public class Manager {
 
         return dateTimeList;
     }
+    
+    public Students getStudents() {
+        return students;
+    }
 
 }
