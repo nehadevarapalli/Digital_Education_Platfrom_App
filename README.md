@@ -19,8 +19,7 @@ The proposed digital educational platform demonstrates a paradigm shift in the t
 **Architecture diagram:**
 
 <p align="center">
-  <img width="312" alt="image" src="https://github.com/aed5100/assignment-3-cyberschool/assets/144740361/a3b691cc-a6a0-4b1d-88ed-66d30a0a2114">
-</p>
+<img width="358" alt="Screenshot 2023-10-30 at 11 39 53 PM" src="https://github.com/aed5100/assignment-3-cyberschool/assets/144740361/83e21fcb-e8a7-43bd-8d15-447f45d8148d">
 
  **Class diagram:**
 <p align="center">
