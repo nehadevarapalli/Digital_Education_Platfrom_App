@@ -331,7 +331,7 @@ public class Manager {
         degreeOfferings.put("MSDS", degree3);
     }
 
-    private Person createPerson(String name, String country, String email, boolean enabled, String gender, String password, String username, String role) {
+    public Person createPerson(String name, String country, String email, boolean enabled, String gender, String password, String username, String role) {
         if (isValidEmail(email) && isValidUsername(username) && isValidPassword(password)) {
             Person person = new Person();
             person.setName(name);

@@ -196,6 +196,8 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
 
     private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
         // TODO add your handling code here:
+        AdminEmployerJPanel employeePanel = new AdminEmployerJPanel(m);
+        splitPane.setBottomComponent(employeePanel);
     }//GEN-LAST:event_btnEmployeesActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
