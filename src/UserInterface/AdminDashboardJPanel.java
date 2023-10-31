@@ -18,13 +18,11 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminDashboardJPanel
      */
-    Student s;
     Manager m;
     JPanel workArea;
     
-    public AdminDashboardJPanel(Student s, Manager m, JPanel workArea) {
+    public AdminDashboardJPanel(Manager m, JPanel workArea) {
         initComponents();
-        this.s = s;
         this.m = m;
         this.workArea = workArea;
     }
